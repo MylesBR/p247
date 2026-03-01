@@ -1,61 +1,61 @@
 ---
 layout: post
-title: "Why Your Whoop Recovery Score Is Wrong (And What To Do About It)"
+title: "Your wearable is measuring the right things. It's just missing context."
 date: 2026-03-02
 author: Myles Bruggeling
 categories: [recovery, data, wearables]
-description: "Your Whoop says green. You feel like garbage. Here's why that happens — and what a better system looks like."
+description: "Green recovery score, felt like garbage. Here's what's actually going on — and what a better system looks like."
 ---
 
 You wake up. Two hours of broken sleep. 3am wide awake, staring at the ceiling. You feel like garbage.
 
-You check your Whoop. Green recovery. 79%.
+You check your wearable. Green recovery. 79%.
 
-This isn't a glitch. It's by design — and it's a problem.
+This isn't a glitch. It's by design — and it's worth understanding.
 
-## What Whoop Actually Measures
+## What your recovery score actually measures
 
-Whoop's recovery score is built primarily on HRV (heart rate variability) and resting heart rate, compared to your recent baseline. If both trend better than yesterday, you get a green. Simple formula, fast calculation.
+Most wearables build their recovery score primarily on HRV (heart rate variability) and resting heart rate, compared to your recent baseline. If both trend better than yesterday, you get a green. Simple formula, fast calculation.
 
 The problem: yesterday you had a brutal training session. Your HRV crashed. Your RHR spiked. Today, both rebounded — not because you're recovered, but because the acute stress from yesterday dissipated overnight.
 
-Meanwhile, the 3am wake-up? The two hours of fragmented sleep? The cortisol spike from lying there anxious at 3:17am? Whoop didn't see any of that. It saw HRV up, RHR down, called it green.
+Meanwhile, the 3am wake-up? The two hours of fragmented sleep? The cortisol spike from lying there anxious? The device didn't see any of that. It saw HRV up, RHR down, called it green.
 
 You pushed through. By 2pm you were running on fumes.
 
-## The Context Blindness Problem
+## The missing piece: context
 
-Single-metric trend scoring has one fatal flaw: it has no context.
+Single-metric trend scoring has one limitation that's easy to miss — it has no context.
 
 It can't see that you had a glass of wine at dinner. It can't see that your kid was sick and you were up four times. It can't see that you're three weeks into a training block and cumulative fatigue is building under the surface — slowly, quietly, invisibly — until you blow up in week four.
 
-Serious athletes learn this the hard way. Most figure it out after 6–12 months of wearing the device and noticing the mismatches. A few never figure it out and just assume the watch is broken.
+Serious athletes figure this out eventually. Most get there after 6–12 months of wearing the device and noticing the mismatches. A few never connect the dots and just assume the device is off.
 
-It's not broken. It's just incomplete.
+It's not off. It's just working with incomplete information.
 
-## What Actually Predicts a Good Training Day
+## What actually predicts a good training day
 
-After talking to hundreds of athletes across Hyrox, Ironman, marathon, and cycling, a pattern emerges. The signals that actually predict a productive training day aren't any single metric — they're a combination:
+After talking to athletes across Hyrox, Ironman, marathon, and cycling, a clear pattern emerges. The signals that predict a productive session aren't any single metric. They're a combination:
 
-**HRV trend** — not just today vs yesterday, but the 7-day and 28-day rolling picture. A single bad night looks very different from a slow three-week decline.
+**HRV trend** looks best over 7 and 28-day windows, not just today vs yesterday. A single bad night looks very different from a slow three-week decline.
 
-**Sleep quality, not just duration** — time in deep sleep and REM matters more than total hours. Six hours of uninterrupted sleep beats eight hours of fragmented garbage.
+**Sleep quality** matters more than duration. Six hours of uninterrupted sleep beats eight hours of fragmented garbage.
 
-**Training load trajectory** — where are you in your block? Week 3 of a loading phase looks different from week 1 of a recovery week, even if the HRV numbers are identical.
+**Training load trajectory** puts the number in context. Week 3 of a loading phase looks different from week 1 of a recovery week, even if the HRV numbers are identical.
 
-**Nutrition alignment** — under-fuelled athletes show suppressed HRV that has nothing to do with recovery status. If you were 600 calories short yesterday, your body is still compensating.
+**Nutrition alignment** affects the reading more than most people realise. Under-fuelled athletes show suppressed HRV that has nothing to do with recovery status. If you were 600 calories short yesterday, your body is still compensating.
 
-**Subjective feel** — not instead of data, but alongside it. When feel and data diverge sharply, that's information. Something is missing from the picture.
+**Subjective feel** belongs in the picture too — not instead of data, but alongside it. When feel and data diverge sharply, something is missing from the picture.
 
-## The Manual Integration Problem
+## Why most athletes never get there
 
-Here's the thing: experienced athletes do this synthesis themselves. They've built mental models over years of trial and error. They know that late eating tanks their sleep score. They know that week 3 always feels harder than the data suggests. They know to override the green when they've had three broken nights in a row.
+Experienced athletes do this synthesis themselves. They've built mental models over years of trial and error. They know that late eating tanks their sleep score. They know that week 3 always feels harder than the data suggests. They know to override the green when they've had three broken nights in a row.
 
-But building that mental model takes 12–18 months of consistent self-experimentation. Most people stop wearing the device long before they get there, because the dashboard never tells them anything they can actually act on.
+But that mental model takes 12–18 months to build. Most people stop wearing the device long before they get there, because the dashboard never tells them anything they can actually act on.
 
 The data is there. The interpretation isn't.
 
-## What A Better System Looks Like
+## What a better system looks like
 
 The gap isn't a new wearable. It's not better hardware. It's an analyst layer — something that sits across all your data sources and synthesises them into a single, contextual signal each morning.
 
