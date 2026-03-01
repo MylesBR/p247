@@ -1,0 +1,63 @@
+---
+layout: default
+title: P247 — Performance Intelligence for Serious Athletes
+---
+
+<section style="text-align:center; padding: 80px 20px 60px;">
+  <h1 style="font-size: 2.8rem; font-weight: 700; margin-bottom: 16px;">Performance Intelligence.<br>Delivered Daily.</h1>
+  <p style="font-size: 1.2rem; color: #555; max-width: 600px; margin: 0 auto 40px;">
+    P247 reads your Garmin, Whoop, and nutrition data overnight — and sends you one clear signal each morning. Not a dashboard. Not an AI coach. Your personal performance analyst.
+  </p>
+  <p style="font-size: 1rem; color: #888; margin-bottom: 32px;">
+    Built for Hyrox athletes, Ironman triathletes, marathon runners, and cyclists who train seriously.
+  </p>
+  <!-- HubSpot Waitlist Form -->
+  <div id="hubspot-form" style="max-width: 480px; margin: 0 auto;"></div>
+  <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+  <script>
+    hbspt.forms.create({
+      region: "na1",
+      portalId: "YOUR_PORTAL_ID",
+      formId: "YOUR_FORM_ID",
+      target: "#hubspot-form"
+    });
+  </script>
+  <p style="font-size: 0.85rem; color: #aaa; margin-top: 12px;">Early access. No spam. Unsubscribe anytime.</p>
+</section>
+
+<hr style="border: none; border-top: 1px solid #eee; margin: 0 40px;">
+
+<section style="max-width: 800px; margin: 60px auto; padding: 0 20px;">
+  <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 40px; text-align:center;">Why P247?</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px;">
+    <div>
+      <h3 style="font-weight: 700; margin-bottom: 8px;">🔍 Synthesis, not data</h3>
+      <p style="color: #555; font-size: 0.95rem;">HRV, sleep quality, training load, and nutrition — cross-referenced and interpreted for you. Not another dashboard.</p>
+    </div>
+    <div>
+      <h3 style="font-weight: 700; margin-bottom: 8px;">📲 Proactive, not reactive</h3>
+      <p style="color: #555; font-size: 0.95rem;">Your daily brief arrives before your session. You don't check it — it finds you.</p>
+    </div>
+    <div>
+      <h3 style="font-weight: 700; margin-bottom: 8px;">🎯 Sport-specific</h3>
+      <p style="color: #555; font-size: 0.95rem;">Built for event athletes. Hyrox pacing, Ironman periodisation, marathon taper — not generic fitness advice.</p>
+    </div>
+  </div>
+</section>
+
+<hr style="border: none; border-top: 1px solid #eee; margin: 0 40px;">
+
+<section style="max-width: 800px; margin: 60px auto; padding: 0 20px;">
+  <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 32px; text-align:center;">Latest from the Blog</h2>
+  <ul style="list-style: none; padding: 0;">
+    {% for post in site.posts limit:3 %}
+    <li style="margin-bottom: 32px; border-bottom: 1px solid #f0f0f0; padding-bottom: 32px;">
+      <a href="{{ post.url }}" style="font-size: 1.2rem; font-weight: 700; color: #000; text-decoration: none;">{{ post.title }}</a>
+      <p style="color: #888; font-size: 0.85rem; margin: 4px 0 8px;">{{ post.date | date: "%B %-d, %Y" }} · {{ post.author | default: "Myles Bruggeling" }}</p>
+      <p style="color: #555; font-size: 0.95rem;">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+      <a href="{{ post.url }}" style="font-size: 0.9rem; color: #000; font-weight: 600;">Read more →</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <p style="text-align:center;"><a href="/blog" style="font-size: 0.95rem; color: #000; font-weight: 600;">View all posts →</a></p>
+</section>

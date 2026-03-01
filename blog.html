@@ -1,0 +1,18 @@
+---
+layout: default
+title: Blog — P247
+---
+
+<div style="max-width: 800px; margin: 60px auto; padding: 0 20px;">
+  <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 40px;">Blog</h1>
+  <ul style="list-style: none; padding: 0;">
+    {% for post in site.posts %}
+    <li style="margin-bottom: 40px; border-bottom: 1px solid #f0f0f0; padding-bottom: 40px;">
+      <a href="{{ post.url }}" style="font-size: 1.3rem; font-weight: 700; color: #000; text-decoration: none;">{{ post.title }}</a>
+      <p style="color: #888; font-size: 0.85rem; margin: 6px 0 10px;">{{ post.date | date: "%B %-d, %Y" }} · {{ post.author | default: "Myles Bruggeling" }}</p>
+      <p style="color: #555; font-size: 0.95rem;">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+      <a href="{{ post.url }}" style="font-size: 0.9rem; color: #000; font-weight: 600;">Read more →</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

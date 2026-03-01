@@ -1,0 +1,23 @@
+title: P247
+description: Performance Intelligence for Serious Athletes
+url: "https://p247.io"
+baseurl: ""
+author: Myles Bruggeling
+
+# Blog settings
+permalink: /blog/:slug/
+paginate: 10
+
+# Theme
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Navigation
+header_pages:
+  - blog.html
+  - about.md
