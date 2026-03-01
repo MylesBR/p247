@@ -6,7 +6,6 @@ author: Myles Bruggeling
 
 # Blog settings
 permalink: /blog/:slug/
-paginate: 10
 
 # Theme
 theme: minima
