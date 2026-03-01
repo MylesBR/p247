@@ -6,6 +6,7 @@ author: Myles Bruggeling
 
 # Blog settings
 permalink: /blog/:slug/
+future: true
 
 # Theme
 theme: minima
