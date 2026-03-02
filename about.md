@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: about
 title: About P247
 permalink: /about/
 ---
