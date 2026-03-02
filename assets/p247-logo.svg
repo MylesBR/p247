@@ -1,0 +1,12 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#0A0F1E"/>
+  <!-- Monogram square -->
+  <rect x="40" y="100" width="140" height="140" rx="28" fill="#111827"/>
+  <!-- P in blue -->
+  <text x="66" y="206" font-family="Arial,Helvetica,sans-serif" font-size="120" font-weight="900" fill="#00B4FF">P</text>
+  <!-- P247 wordmark -->
+  <text x="196" y="190" font-family="Arial,Helvetica,sans-serif" font-size="90" font-weight="900" letter-spacing="-3" fill="#ffffff">P<tspan fill="#00B4FF">247</tspan></text>
+  <!-- Subtitle -->
+  <text x="198" y="222" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="400" letter-spacing="5" fill="#555555">PERFORMANCE 24/7</text>
+</svg>
