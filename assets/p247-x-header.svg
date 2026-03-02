@@ -1,0 +1,38 @@
+<svg width="1500" height="500" viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1500" height="500" fill="#0A0F1E"/>
+
+  <!-- Subtle grid lines for depth -->
+  <line x1="0" y1="250" x2="1500" y2="250" stroke="#111827" stroke-width="1"/>
+  <line x1="750" y1="0" x2="750" y2="500" stroke="#111827" stroke-width="1"/>
+
+  <!-- Orange accent bar left -->
+  <rect x="0" y="0" width="6" height="500" fill="#FF6B00"/>
+
+  <!-- Blue glow circle (background depth) -->
+  <circle cx="1200" cy="250" r="300" fill="#00B4FF" opacity="0.04"/>
+  <circle cx="1200" cy="250" r="180" fill="#00B4FF" opacity="0.05"/>
+
+  <!-- Monogram -->
+  <rect x="80" y="140" width="160" height="160" rx="28" fill="#111827"/>
+  <text x="108" y="266" font-family="Arial,Helvetica,sans-serif" font-size="130" font-weight="900" fill="#00B4FF">P</text>
+
+  <!-- P247 wordmark -->
+  <text x="270" y="262" font-family="Arial,Helvetica,sans-serif" font-size="120" font-weight="900" letter-spacing="-4" fill="#ffffff">P<tspan fill="#00B4FF">247</tspan></text>
+
+  <!-- Subtitle -->
+  <text x="274" y="306" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="400" letter-spacing="7" fill="#555555">PERFORMANCE 24/7</text>
+
+  <!-- Tagline right side -->
+  <text x="800" y="210" font-family="Arial,Helvetica,sans-serif" font-size="38" font-weight="700" fill="#ffffff">Your wearable measures it.</text>
+  <text x="800" y="264" font-family="Arial,Helvetica,sans-serif" font-size="38" font-weight="700" fill="#00B4FF">We tell you what it means.</text>
+
+  <!-- Sports tags -->
+  <text x="800" y="330" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="400" letter-spacing="2" fill="#444">Hyrox  •  Ironman  •  Marathon  •  Cycling  •  Gym</text>
+
+  <!-- URL -->
+  <text x="800" y="390" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="600" fill="#FF6B00">p247.io</text>
+
+  <!-- Orange bottom accent line -->
+  <rect x="0" y="492" width="1500" height="8" fill="#FF6B00"/>
+</svg>
