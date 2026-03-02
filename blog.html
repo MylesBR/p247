@@ -3,16 +3,33 @@ layout: default
 title: Blog — P247
 ---
 
-<div style="max-width: 800px; margin: 60px auto; padding: 0 20px;">
-  <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 40px;">Blog</h1>
-  <ul style="list-style: none; padding: 0;">
-    {% for post in site.posts %}
-    <li style="margin-bottom: 40px; border-bottom: 1px solid #f0f0f0; padding-bottom: 40px;">
-      <a href="{{ post.url }}" style="font-size: 1.3rem; font-weight: 700; color: #000; text-decoration: none;">{{ post.title }}</a>
-      <p style="color: #888; font-size: 0.85rem; margin: 6px 0 10px;">{{ post.date | date: "%B %-d, %Y" }} · {{ post.author | default: "Myles Bruggeling" }}</p>
-      <p style="color: #555; font-size: 0.95rem;">{{ post.excerpt | strip_html | truncate: 200 }}</p>
-      <a href="{{ post.url }}" style="font-size: 0.9rem; color: #000; font-weight: 600;">Read more →</a>
-    </li>
-    {% endfor %}
-  </ul>
+<style>
+  .blog-header { background: #0A0F1E; color: #fff; padding: 48px 20px 40px; text-align: center; margin: -1px; }
+  .blog-header h1 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .blog-header p { color: #a0aec0; font-size: 0.95rem; }
+  .blog-list { max-width: 800px; margin: 48px auto; padding: 0 24px; }
+  .blog-list li { list-style: none; margin-bottom: 40px; border-bottom: 1px solid #f0f0f0; padding-bottom: 40px; }
+  .blog-list a.title { font-size: 1.25rem; font-weight: 700; color: #0A0F1E; text-decoration: none; }
+  .blog-list a.title:hover { color: #00B4FF; }
+  .blog-list .meta { color: #999; font-size: 0.85rem; margin: 6px 0 10px; }
+  .blog-list .meta span { color: #FF6B00; font-weight: 600; }
+  .blog-list p { color: #555; font-size: 0.93rem; margin-bottom: 10px; }
+  .blog-list a.more { font-size: 0.9rem; color: #FF6B00; font-weight: 700; text-decoration: none; }
+  .blog-list a.more:hover { color: #0A0F1E; }
+</style>
+
+<div class="blog-header">
+  <h1>Blog</h1>
+  <p>Performance intelligence — training data, recovery, and what it all means for serious athletes.</p>
 </div>
+
+<ul class="blog-list">
+  {% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}" class="title">{{ post.title }}</a>
+    <p class="meta"><span>{{ post.date | date: "%B %-d, %Y" }}</span> · {{ post.author | default: "Myles Bruggeling" }}</p>
+    <p>{{ post.excerpt | strip_html | truncate: 200 }}</p>
+    <a href="{{ post.url }}" class="more">Read more →</a>
+  </li>
+  {% endfor %}
+</ul>

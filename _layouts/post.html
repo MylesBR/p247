@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<style>
+  .post-hero { background: #0A0F1E; color: #fff; padding: 60px 20px 48px; text-align: center; margin: -1px; }
+  .post-hero h1 { font-size: 2rem; font-weight: 800; color: #fff; max-width: 760px; margin: 0 auto 16px; line-height: 1.3; }
+  .post-hero .meta { color: #a0aec0; font-size: 0.9rem; }
+  .post-hero .meta span { color: #FF6B00; font-weight: 600; }
+  .post-hero .accent { width: 48px; height: 4px; background: #FF6B00; margin: 20px auto 0; border-radius: 2px; }
+
+  .post-body { max-width: 760px; margin: 48px auto 80px; padding: 0 24px; }
+  .post-body h2 { font-size: 1.4rem; font-weight: 800; color: #0A0F1E; margin: 40px 0 16px; border-left: 4px solid #00B4FF; padding-left: 14px; }
+  .post-body h3 { font-size: 1.1rem; font-weight: 700; color: #0A0F1E; margin: 28px 0 10px; }
+  .post-body p { color: #333; font-size: 1.02rem; line-height: 1.8; margin-bottom: 20px; }
+  .post-body strong { color: #0A0F1E; }
+  .post-body em { color: #555; }
+  .post-body a { color: #FF6B00; font-weight: 600; }
+  .post-body hr { border: none; border-top: 2px solid #f0f0f0; margin: 40px 0; }
+  .post-body blockquote { border-left: 4px solid #FF6B00; padding: 12px 20px; background: #fff9f5; margin: 24px 0; border-radius: 0 8px 8px 0; }
+  .post-body blockquote p { color: #555; margin: 0; font-style: italic; }
+
+  .post-cta { background: #0A0F1E; border-radius: 12px; padding: 40px; text-align: center; margin-top: 60px; }
+  .post-cta p { color: #a0aec0; margin-bottom: 20px; font-size: 0.95rem; }
+  .post-cta a { background: #FF6B00; color: #fff; font-weight: 700; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 1rem; }
+</style>
+
+<div class="post-hero">
+  <h1>{{ page.title }}</h1>
+  <p class="meta"><span>{{ page.date | date: "%B %-d, %Y" }}</span> · {{ page.author | default: "Myles Bruggeling" }}</p>
+  <div class="accent"></div>
+</div>
+
+<div class="post-body">
+  {{ content }}
+
+  <div class="post-cta">
+    <p>P247 is building a performance analyst for serious event athletes — Hyrox, Ironman, marathon, cycling. Early access launching soon.</p>
+    <a href="/">Join the Waitlist →</a>
+  </div>
+</div>
