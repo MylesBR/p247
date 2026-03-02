@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>P247 Logo Options</title>
+<style>
+  body { font-family: -apple-system, sans-serif; background: #f5f5f5; padding: 40px; }
+  .row { display: flex; gap: 40px; flex-wrap: wrap; margin-bottom: 60px; }
+  .card { background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); text-align: center; }
+  .card.dark { background: #0A0F1E; }
+  h2 { margin-bottom: 24px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: #999; }
+</style>
+</head>
+<body>
+
+<h1 style="margin-bottom: 40px;">P247 — Logo Options</h1>
+
+<!-- OPTION 1: Clean wordmark -->
+<h2 style="color:#333; font-size:1rem; margin-bottom:16px;">Option 1 — Clean Wordmark</h2>
+<div class="row">
+  <div class="card">
+    <h2>Light background</h2>
+    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="52" font-weight="800" letter-spacing="-2" fill="#0A0F1E">P</text>
+      <text x="42" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="52" font-weight="800" letter-spacing="-2" fill="#00B4FF">247</text>
+    </svg>
+  </div>
+  <div class="card dark">
+    <h2 style="color:#555;">Dark background</h2>
+    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="52" font-weight="800" letter-spacing="-2" fill="#ffffff">P</text>
+      <text x="42" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="52" font-weight="800" letter-spacing="-2" fill="#00B4FF">247</text>
+    </svg>
+  </div>
+</div>
+
+<!-- OPTION 2: Icon mark — P in a shape + 247 -->
+<h2 style="color:#333; font-size:1rem; margin-bottom:16px;">Option 2 — Icon + Wordmark</h2>
+<div class="row">
+  <div class="card">
+    <h2>Light background</h2>
+    <svg width="240" height="60" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+      <!-- Icon: rounded square with P -->
+      <rect x="0" y="2" width="52" height="52" rx="10" ry="10" fill="#0A0F1E"/>
+      <text x="10" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="42" font-weight="800" fill="#00B4FF">P</text>
+      <!-- Wordmark -->
+      <text x="66" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="40" font-weight="800" letter-spacing="-1" fill="#0A0F1E">247</text>
+    </svg>
+  </div>
+  <div class="card dark">
+    <h2 style="color:#555;">Dark background</h2>
+    <svg width="240" height="60" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+      <!-- Icon: rounded square with P — inverted -->
+      <rect x="0" y="2" width="52" height="52" rx="10" ry="10" fill="#00B4FF"/>
+      <text x="10" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="42" font-weight="800" fill="#0A0F1E">P</text>
+      <!-- Wordmark -->
+      <text x="66" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="40" font-weight="800" letter-spacing="-1" fill="#ffffff">247</text>
+    </svg>
+  </div>
+</div>
+
+<!-- OPTION 3: Thin line style -->
+<h2 style="color:#333; font-size:1rem; margin-bottom:16px;">Option 3 — Minimal / Thin</h2>
+<div class="row">
+  <div class="card">
+    <h2>Light background</h2>
+    <svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="44" font-weight="300" letter-spacing="4" fill="#0A0F1E">P<tspan fill="#00B4FF">247</tspan></text>
+      <line x1="0" y1="52" x2="180" y2="52" stroke="#00B4FF" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="card dark">
+    <h2 style="color:#555;">Dark background</h2>
+    <svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif" font-size="44" font-weight="300" letter-spacing="4" fill="#ffffff">P<tspan fill="#00B4FF">247</tspan></text>
+      <line x1="0" y1="52" x2="180" y2="52" stroke="#00B4FF" stroke-width="2"/>
+    </svg>
+  </div>
+</div>
+
+</body>
+</html>
