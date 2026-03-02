@@ -1,3 +1,4 @@
+Performance 24/7 
 Your data is finally telling you something useful.
 
 P247 reads your Garmin, Whoop, and nutrition data overnight and sends you one clear signal each morning — what your body is actually saying, and what today should look like based on it.
