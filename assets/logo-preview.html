@@ -6,89 +6,136 @@
 <style>
   body { font-family: -apple-system, sans-serif; background: #f5f5f5; padding: 40px; }
   .row { display: flex; gap: 40px; flex-wrap: wrap; margin-bottom: 60px; }
-  .card { background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); text-align: center; min-width: 260px; }
+  .card { background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); text-align: center; min-width: 240px; }
   .card.dark { background: #0A0F1E; }
-  .label { margin-bottom: 24px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #999; }
-  h2 { color: #333; font-size: 1rem; margin: 0 0 20px; }
+  .label { margin-bottom: 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #999; }
+  h2 { color: #333; font-size: 1rem; margin: 0 0 8px; }
+  p.desc { color: #888; font-size: 0.85rem; margin: 0 0 28px; }
 </style>
 </head>
 <body>
 
 <h1 style="margin-bottom: 8px;">P247 — Logo Options</h1>
-<p style="color:#888; margin-bottom:48px;">Click through to find your favourite. Tell James which one and he'll drop it into the site.</p>
+<p style="color:#888; margin-bottom:48px;">Wordmarks and monograms. Tell James which one and it goes live.</p>
 
-<!-- OPTION A: P247 bold wordmark -->
-<h2>Option A — P247 Bold Wordmark</h2>
+<!-- WORDMARK 1: P247 bold — P dark, 247 blue -->
+<h2>Wordmark 1 — P247 bold</h2>
+<p class="desc">Clean, punchy. P in dark, 247 in blue.</p>
 <div class="row">
   <div class="card">
     <p class="label">Light</p>
     <svg width="180" height="56" viewBox="0 0 180 56" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="46" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="50" font-weight="800" letter-spacing="-2" fill="#0A0F1E">P<tspan fill="#00B4FF">247</tspan></text>
+      <text x="0" y="46" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="50" font-weight="800" letter-spacing="-2" fill="#0A0F1E">P<tspan fill="#00B4FF">247</tspan></text>
     </svg>
   </div>
   <div class="card dark">
     <p class="label">Dark</p>
     <svg width="180" height="56" viewBox="0 0 180 56" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="46" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="50" font-weight="800" letter-spacing="-2" fill="#ffffff">P<tspan fill="#00B4FF">247</tspan></text>
+      <text x="0" y="46" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="50" font-weight="800" letter-spacing="-2" fill="#ffffff">P<tspan fill="#00B4FF">247</tspan></text>
     </svg>
   </div>
 </div>
 
-<!-- OPTION B: Icon + P247 -->
-<h2>Option B — Icon + P247</h2>
-<div class="row">
-  <div class="card">
-    <p class="label">Light</p>
-    <svg width="220" height="56" viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="2" width="50" height="50" rx="10" fill="#0A0F1E"/>
-      <text x="9" y="44" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="40" font-weight="800" fill="#00B4FF">P</text>
-      <text x="62" y="44" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="38" font-weight="800" letter-spacing="-1" fill="#0A0F1E">247</text>
-    </svg>
-  </div>
-  <div class="card dark">
-    <p class="label">Dark</p>
-    <svg width="220" height="56" viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="2" width="50" height="50" rx="10" fill="#00B4FF"/>
-      <text x="9" y="44" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="40" font-weight="800" fill="#0A0F1E">P</text>
-      <text x="62" y="44" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="38" font-weight="800" letter-spacing="-1" fill="#ffffff">247</text>
-    </svg>
-  </div>
-</div>
-
-<!-- OPTION C: Performance 24/7 full wordmark -->
-<h2>Option C — "Performance 24/7" Full Wordmark</h2>
-<div class="row">
-  <div class="card" style="min-width:340px;">
-    <p class="label">Light</p>
-    <svg width="340" height="56" viewBox="0 0 340 56" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="36" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5" fill="#0A0F1E">Performance</text>
-      <text x="0" y="56" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="22" font-weight="300" letter-spacing="2" fill="#00B4FF">24/7</text>
-    </svg>
-  </div>
-  <div class="card dark" style="min-width:340px;">
-    <p class="label">Dark</p>
-    <svg width="340" height="56" viewBox="0 0 340 56" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="36" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5" fill="#ffffff">Performance</text>
-      <text x="0" y="56" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="22" font-weight="300" letter-spacing="2" fill="#00B4FF">24/7</text>
-    </svg>
-  </div>
-</div>
-
-<!-- OPTION D: P247 + tagline stacked -->
-<h2>Option D — P247 + "Performance 24/7" Stacked</h2>
+<!-- WORDMARK 2: P247 + "Performance 24/7" subtitle -->
+<h2>Wordmark 2 — P247 + subtitle</h2>
+<p class="desc">Brand mark on top, "PERFORMANCE 24/7" underneath in small caps.</p>
 <div class="row">
   <div class="card">
     <p class="label">Light</p>
     <svg width="200" height="68" viewBox="0 0 200 68" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="42" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="46" font-weight="800" letter-spacing="-2" fill="#0A0F1E">P<tspan fill="#00B4FF">247</tspan></text>
-      <text x="2" y="62" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="11" font-weight="400" letter-spacing="3" fill="#888">PERFORMANCE 24/7</text>
+      <text x="0" y="42" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="46" font-weight="800" letter-spacing="-2" fill="#0A0F1E">P<tspan fill="#00B4FF">247</tspan></text>
+      <text x="2" y="62" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="11" font-weight="400" letter-spacing="3" fill="#888">PERFORMANCE 24/7</text>
     </svg>
   </div>
   <div class="card dark">
     <p class="label">Dark</p>
     <svg width="200" height="68" viewBox="0 0 200 68" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="42" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="46" font-weight="800" letter-spacing="-2" fill="#ffffff">P<tspan fill="#00B4FF">247</tspan></text>
-      <text x="2" y="62" font-family="-apple-system, 'Helvetica Neue', sans-serif" font-size="11" font-weight="400" letter-spacing="3" fill="#555">PERFORMANCE 24/7</text>
+      <text x="0" y="42" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="46" font-weight="800" letter-spacing="-2" fill="#ffffff">P<tspan fill="#00B4FF">247</tspan></text>
+      <text x="2" y="62" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="11" font-weight="400" letter-spacing="3" fill="#555">PERFORMANCE 24/7</text>
+    </svg>
+  </div>
+</div>
+
+<!-- WORDMARK 3: "Performance 24/7" full stacked -->
+<h2>Wordmark 3 — "Performance 24/7" stacked</h2>
+<p class="desc">Full name. Performance bold on top, 24/7 light underneath.</p>
+<div class="row">
+  <div class="card" style="min-width:300px;">
+    <p class="label">Light</p>
+    <svg width="280" height="60" viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="34" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="30" font-weight="800" letter-spacing="-0.5" fill="#0A0F1E">Performance</text>
+      <text x="2" y="56" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="22" font-weight="300" letter-spacing="3" fill="#00B4FF">24/7</text>
+    </svg>
+  </div>
+  <div class="card dark" style="min-width:300px;">
+    <p class="label">Dark</p>
+    <svg width="280" height="60" viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="34" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="30" font-weight="800" letter-spacing="-0.5" fill="#ffffff">Performance</text>
+      <text x="2" y="56" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="22" font-weight="300" letter-spacing="3" fill="#00B4FF">24/7</text>
+    </svg>
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid #ddd;margin:20px 0 48px;">
+
+<!-- MONOGRAM 1: P in rounded square -->
+<h2>Monogram 1 — P in rounded square</h2>
+<p class="desc">App icon / favicon. P in blue on dark square.</p>
+<div class="row">
+  <div class="card">
+    <p class="label">Light bg</p>
+    <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="14" fill="#0A0F1E"/>
+      <text x="10" y="50" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="48" font-weight="800" fill="#00B4FF">P</text>
+    </svg>
+  </div>
+  <div class="card dark">
+    <p class="label">Dark bg</p>
+    <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="14" fill="#00B4FF"/>
+      <text x="10" y="50" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="48" font-weight="800" fill="#0A0F1E">P</text>
+    </svg>
+  </div>
+</div>
+
+<!-- MONOGRAM 2: P circle -->
+<h2>Monogram 2 — P in circle</h2>
+<p class="desc">Softer feel. Works well as a profile picture.</p>
+<div class="row">
+  <div class="card">
+    <p class="label">Light bg</p>
+    <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="32" fill="#0A0F1E"/>
+      <text x="10" y="50" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="48" font-weight="800" fill="#00B4FF">P</text>
+    </svg>
+  </div>
+  <div class="card dark">
+    <p class="label">Dark bg</p>
+    <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="32" fill="#00B4FF"/>
+      <text x="10" y="50" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="48" font-weight="800" fill="#0A0F1E">P</text>
+    </svg>
+  </div>
+</div>
+
+<!-- MONOGRAM 3: P247 compact square -->
+<h2>Monogram 3 — P247 compact</h2>
+<p class="desc">Full mark in a tight square. Good for social profile pictures.</p>
+<div class="row">
+  <div class="card">
+    <p class="label">Light bg</p>
+    <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <rect width="80" height="80" rx="16" fill="#0A0F1E"/>
+      <text x="6" y="46" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="36" font-weight="800" letter-spacing="-1" fill="#ffffff">P<tspan fill="#00B4FF">247</tspan></text>
+      <text x="8" y="66" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="9" font-weight="400" letter-spacing="1.5" fill="#555">PERFORMANCE 24/7</text>
+    </svg>
+  </div>
+  <div class="card dark">
+    <p class="label">Dark bg</p>
+    <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <rect width="80" height="80" rx="16" fill="#00B4FF"/>
+      <text x="6" y="46" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="36" font-weight="800" letter-spacing="-1" fill="#0A0F1E">P<tspan fill="#ffffff">247</tspan></text>
+      <text x="8" y="66" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="9" font-weight="400" letter-spacing="1.5" fill="#0A0F1E">PERFORMANCE 24/7</text>
     </svg>
   </div>
 </div>
