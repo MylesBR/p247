@@ -6,7 +6,7 @@ permalink: /about/
 
 P247 is a performance analyst for serious event athletes — Hyrox competitors, Ironman triathletes, marathon runners, and cyclists who train with data but don't have a coaching team behind them.
 
-Most athletes have the data. Garmin, Whoop, Strava, MyFitnessPal. What they don't have is someone to synthesise it and tell them what it actually means for today's session.
+Most athletes have the data. Garmin, Whoop, Apple Health, Strava, MyFitnessPal. What they don't have is someone to synthesise it and tell them what it actually means for today's session.
 
 P247 does that. Every morning, before your session, you receive a brief that cross-references your recovery, training load, nutrition, and adaptation trend — and tells you what your body is actually saying.
 
