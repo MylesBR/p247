@@ -85,7 +85,7 @@ title: P247 — Performance Intelligence for serious athletes
     {% for post in site.posts limit:3 %}
     <li class="blog-item">
       <a href="{{ post.url }}" class="title">{{ post.title }}</a>
-      <p class="meta">{{ post.date | date: "%B %-d, %Y" }} · {{ post.author | default: "Myles Bruggeling" }}</p>
+      <p class="meta">{{ post.date | date: "%-d %B %Y" }} · {{ post.author | default: "Myles Bruggeling" }}</p>
       <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
       <a href="{{ post.url }}" class="more">Read more →</a>
     </li>

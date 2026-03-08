@@ -27,7 +27,7 @@ title: Blog — P247
   {% for post in site.posts %}
   <li>
     <a href="{{ post.url }}" class="title">{{ post.title }}</a>
-    <p class="meta"><span>{{ post.date | date: "%B %-d, %Y" }}</span> · {{ post.author | default: "Myles Bruggeling" }}</p>
+    <p class="meta"><span>{{ post.date | date: "%-d %B %Y" }}</span> · {{ post.author | default: "Myles Bruggeling" }}</p>
     <p>{{ post.excerpt | strip_html | truncate: 200 }}</p>
     <a href="{{ post.url }}" class="more">Read more →</a>
   </li>

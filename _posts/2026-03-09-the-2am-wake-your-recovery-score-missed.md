@@ -2,7 +2,7 @@
 layout: post
 title: "The 2am Wake Your Recovery Score Didn't See"
 slug: the-2am-wake-your-recovery-score-missed
-date: 2026-03-10
+date: 2026-03-09
 categories: [sleep, recovery, whoop, garmin, wearables]
 description: "You were awake for two hours in the middle of the night. Your recovery score barely noticed. Here's why sleep averages lie."
 author: Myles Bruggeling
