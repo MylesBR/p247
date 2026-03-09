@@ -4,6 +4,7 @@ title: P247 — Performance Intelligence for serious athletes
 ---
 
 <style>
+  /* HERO */
   .hero {
     background: #0A0F1E;
     color: #fff;
@@ -12,24 +13,158 @@ title: P247 — Performance Intelligence for serious athletes
     margin: -1px;
     border-radius: 10px;
   }
-  .hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 16px; color: #fff; }
+  .hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 16px; color: #fff; line-height: 1.15; }
   .hero h1 span { color: #00B4FF; }
-  .hero p { color: #a0aec0; max-width: 600px; margin: 0 auto 20px; font-size: 1.15rem; }
-  .hero .sub { font-size: 0.95rem; color: #718096; margin-bottom: 36px; }
+  .hero .lead { color: #c0cee0; max-width: 640px; margin: 0 auto 12px; font-size: 1.2rem; line-height: 1.5; }
+  .hero .sub { font-size: 0.95rem; color: #718096; margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.5; }
   .hs-form-frame { max-width: 480px; margin: 0 auto; }
-  .waitlist-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
+  .cta-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
 
+  /* PROOF */
+  .proof-section {
+    background: #f7f9fc;
+    padding: 64px 24px;
+  }
+  .proof-section h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #0A0F1E;
+  }
+  .proof-section .proof-intro {
+    text-align: center;
+    color: #555;
+    font-size: 0.95rem;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .proof-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .proof-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .proof-card blockquote {
+    margin: 0 0 12px;
+    padding: 0;
+    border: none;
+    font-style: italic;
+    color: #333;
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+  .proof-card .attribution {
+    font-size: 0.82rem;
+    color: #999;
+  }
+
+  /* PROBLEM → SOLUTION */
+  .problem-section {
+    max-width: 720px;
+    margin: 64px auto;
+    padding: 0 24px;
+  }
+  .problem-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #0A0F1E;
+    text-align: center;
+  }
+  .problem-section p {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .problem-section .highlight {
+    color: #0A0F1E;
+    font-weight: 600;
+  }
+
+  /* BRIEF PREVIEW */
+  .brief-section {
+    background: #0A0F1E;
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .brief-section h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .brief-section .brief-intro {
+    color: #a0aec0;
+    font-size: 0.95rem;
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+  .brief-mock {
+    background: #131B2E;
+    border: 1px solid #1e2d47;
+    border-radius: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 28px 24px;
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #c0cee0;
+  }
+  .brief-mock .brief-header {
+    color: #00B4FF;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .brief-mock .metric { color: #FF6B00; font-weight: 600; }
+  .brief-mock .verdict { color: #4ADE80; font-weight: 700; margin-top: 16px; font-size: 0.95rem; }
+  .brief-mock .reasoning { color: #8896ab; font-size: 0.82rem; margin-top: 8px; }
+
+  /* FEATURES */
   .features { max-width: 860px; margin: 64px auto; padding: 0 24px; }
-  .features h2 { text-align: center; font-size: 1.7rem; font-weight: 700; margin-bottom: 40px; }
+  .features h2 { text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 40px; }
   .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
-  .feature-card { border: 1px solid #e2e8f0; border-radius: 12px !important; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .feature-card { border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
   .feature-card h3 { font-weight: 700; margin-bottom: 8px; color: #FF6B00; font-size: 1rem; }
-  .feature-card p { color: #555; font-size: 0.93rem; margin: 0; }
+  .feature-card p { color: #555; font-size: 0.93rem; margin: 0; line-height: 1.5; }
 
+  /* MID CTA */
+  .mid-cta {
+    background: #f7f9fc;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .mid-cta h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #0A0F1E;
+  }
+  .mid-cta p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+  .mid-cta .hs-form-frame { max-width: 480px; margin: 0 auto; }
+  .mid-cta .cta-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
+
+  /* BLOG */
   .blog-section { max-width: 800px; margin: 0 auto 64px; padding: 0 24px; }
-  .blog-section h2 { font-size: 1.7rem; font-weight: 700; margin-bottom: 32px; text-align: center; }
-  .blog-item { margin-bottom: 32px; border-bottom: 1px solid #f0f0f0; padding-bottom: 32px; }
-  .blog-item a.title { font-size: 1.2rem; font-weight: 700; color: #0A0F1E; text-decoration: none; }
+  .blog-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 32px; text-align: center; }
+  .blog-item { margin-bottom: 24px; border-bottom: 1px solid #f0f0f0; padding-bottom: 24px; }
+  .blog-item a.title { font-size: 1.1rem; font-weight: 700; color: #0A0F1E; text-decoration: none; }
   .blog-item a.title:hover { color: #00B4FF; }
   .blog-item .meta { color: #999; font-size: 0.85rem; margin: 4px 0 8px; }
   .blog-item p { color: #555; font-size: 0.93rem; margin-bottom: 8px; }
@@ -42,38 +177,115 @@ title: P247 — Performance Intelligence for serious athletes
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Your data, finally<br><span>telling you something useful.</span></h1>
-  <p>P247 reads your Garmin, Whoop, Apple Health, and nutrition data overnight and sends you one clear signal each morning — what your body is actually saying, and what today should look like based on it.</p>
-  <p class="sub">Not a training plan. Not a replacement for your coach. Just the daily context layer your program is missing.<br>Built for Hyrox, Ironman, marathon, cycling, and gym athletes who already train seriously.</p>
+  <h1>Your wearable measures.<br><span>P247 interprets.</span></h1>
+  <p class="lead">Every morning, before your session, P247 reads your Garmin, Whoop, Apple Health, and nutrition data and sends you one clear signal: what your body is actually ready for today.</p>
+  <p class="sub">Built for Hyrox, Ironman, marathon, cycling, and gym athletes who already train seriously and are tired of guessing.</p>
 
   <script src="https://js.hsforms.net/forms/embed/21624983.js" defer></script>
   <div class="hs-form-frame" data-region="na1" data-form-id="a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e" data-portal-id="21624983"></div>
-  <p class="waitlist-note">Early access. No spam. Unsubscribe anytime.</p>
+  <p class="cta-note">Get your first morning brief free. No spam. Unsubscribe anytime.</p>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof-section">
+  <h2>Athletes already feel the problem</h2>
+  <p class="proof-intro">These are real words from real athletes across Reddit and training communities. This is why P247 exists.</p>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <blockquote>"Last night I woke up at 3am and couldn't fall back asleep for two hours. Felt like shit. But I got a green recovery. Why? Because my HRV and RHR were better than yesterday."</blockquote>
+      <span class="attribution">r/whoop</span>
+    </div>
+    <div class="proof-card">
+      <blockquote>"I wore my Whoop for over 3 years. More negative mental impact than positive. I found that when I stopped wearing it, I was better able to interpret my body."</blockquote>
+      <span class="attribution">Ironman athlete, Facebook</span>
+    </div>
+    <div class="proof-card">
+      <blockquote>"I'm in the process of thinking about getting generic sensors to upload data to the cloud and get an LLM to crunch it for me based on my own requirements."</blockquote>
+      <span class="attribution">r/whoop, March 2026</span>
+    </div>
+    <div class="proof-card">
+      <blockquote>"I rarely rely on my actual recovery score and instead look at my RHR, HRV, and sleep stats separately. The score doesn't catch accumulated muscle damage, glycogen depletion, or psychological fatigue."</blockquote>
+      <span class="attribution">r/whoop</span>
+    </div>
+    <div class="proof-card">
+      <blockquote>"Pretty cool gadget but very useless if you are minimally outside of the algorithm. Support even offered a full refund after 2 months."</blockquote>
+      <span class="attribution">r/whoop, 2026</span>
+    </div>
+    <div class="proof-card">
+      <blockquote>"Most of the time it just confirms what I already feel. But sometimes trends catch patterns I wouldn't notice otherwise, like subtle fatigue creeping in before I feel it physically."</blockquote>
+      <span class="attribution">r/IronmanTriathlon</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM → SOLUTION -->
+<section class="problem-section">
+  <h2>The gap is not data collection. It's data interpretation.</h2>
+  <p>The average serious endurance athlete wears 1.7 devices and uses 3+ apps. Each app reports its own metrics. None of them talk to each other.</p>
+  <p>You wake up. Whoop says green. Garmin says yellow. Your legs are destroyed from yesterday's deadlifts. You have a tempo run on the plan. <span class="highlight">What do you actually do?</span></p>
+  <p>Every wearable tells you what happened. None of them tell you what it means for today. That's the gap P247 fills.</p>
+  <p><span class="highlight">Your wearable is the blood test. P247 is the doctor who reads it.</span></p>
 </section>
 
 <hr class="divider">
 
+<!-- MORNING BRIEF PREVIEW -->
+<section class="brief-section">
+  <h2>Here's what your morning looks like with P247</h2>
+  <p class="brief-intro">Delivered to your phone before your session. No app to check. No dashboard to interpret.</p>
+  <div class="brief-mock">
+    <div class="brief-header">☀️ P247 Morning Brief — Tuesday 10 March</div>
+    <div>
+      <span class="metric">HRV:</span> 48ms (↓12% from baseline)<br>
+      <span class="metric">Sleep:</span> 6h 14m, 2 disruptions (3am wake: 22min)<br>
+      <span class="metric">Resting HR:</span> 54 bpm (normal range)<br>
+      <span class="metric">Yesterday:</span> Heavy deadlifts + 30min tempo run<br>
+      <span class="metric">Nutrition:</span> 1,840 kcal (380 below target), protein 128g ✓
+    </div>
+    <div class="verdict">↓ Modify today's session</div>
+    <div class="reasoning">Your HRV dip is consistent with incomplete recovery from yesterday's compound load. The 3am wake and calorie deficit are compounding. Your Garmin says yellow, Whoop says green. Whoop is wrong here because it doesn't see the strength session. Stick to Zone 2 cardio today. Push the intervals to Thursday when your body has had 48 hours to clear the fatigue.</div>
+  </div>
+</section>
+
 <!-- FEATURES -->
 <section class="features">
-  <h2>Why P247?</h2>
+  <h2>What P247 does differently</h2>
   <div class="feature-grid">
     <div class="feature-card">
       <h3>🔍 Synthesis, not data</h3>
-      <p>HRV, sleep quality, training load, and nutrition — cross-referenced and interpreted for you. Not another dashboard.</p>
+      <p>HRV, sleep quality, training load, and nutrition cross-referenced and interpreted together. Not another dashboard with numbers you have to figure out yourself.</p>
     </div>
     <div class="feature-card">
-      <h3>📲 Proactive, not reactive</h3>
-      <p>Your daily brief arrives before your session. You don't check it — it finds you.</p>
+      <h3>📲 It finds you</h3>
+      <p>Your daily brief arrives before your session via push notification. You don't log into an app. The insight comes to you.</p>
     </div>
     <div class="feature-card">
       <h3>🎯 Analyst, not coach</h3>
-      <p>A coach builds your plan. P247 reads your body and tells you whether to execute it. You keep your program — we tell you what today's readiness actually means for it.</p>
+      <p>Your coach builds the plan. P247 reads your body and tells you whether to execute it, modify it, or back off. You keep your program.</p>
     </div>
     <div class="feature-card">
-      <h3>📈 Progress, not just today</h3>
-      <p>Your recovery score tells you about last night. P247 tracks your adaptation over weeks — so you can see your fitness actually building, not just react to each day in isolation.</p>
+      <h3>📈 Adaptation over weeks</h3>
+      <p>Your recovery score tells you about last night. P247 tracks how your body responds to the same stimulus over weeks and months. You see your fitness building, not just each day in isolation.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🧠 Transparent reasoning</h3>
+      <p>Every recommendation explains why. "Your Whoop says green but it can't see yesterday's deadlifts" is more useful than a number with no context.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🏁 Event-aware</h3>
+      <p>Training for Hyrox in July? Half-marathon in August? P247 adjusts recommendations based on proximity to your race, not just yesterday's recovery.</p>
     </div>
   </div>
+</section>
+
+<hr class="divider">
+
+<!-- MID-PAGE CTA -->
+<section class="mid-cta">
+  <h2>Your first morning brief is free</h2>
+  <p>Sign up for early access. Connect your device. Wake up to a brief that actually tells you something useful.</p>
+  <div class="hs-form-frame" data-region="na1" data-form-id="a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e" data-portal-id="21624983"></div>
+  <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
 </section>
 
 <hr class="divider">
