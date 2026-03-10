@@ -4,85 +4,50 @@ title: P247 — Performance Intelligence for serious athletes
 ---
 
 <style>
-  /* Hide HubSpot free-tier branding */
-  .hs-form-wrap .legal-consent-container,
-  .hs-form-wrap .hs-richtext,
-  .hs-form-wrap .sprocket-icon,
-  .hs-form-wrap a[href*="hubspot.com"],
-  .hs-form-wrap .hubspot-link__container,
-  .hs-form-wrap .submitted-message + div,
-  div[class*="virality"],
-  a[class*="virality"],
-  .hubspot-link-text,
-  .hubspot-link__icon {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
+  /* P247 signup form */
+  .p247-form {
+    max-width: 400px;
+    margin: 0 auto;
   }
-
-  /* HubSpot form styling on dark backgrounds */
-  .hs-form-wrap { max-width: 480px; margin: 0 auto; }
-  .hs-form-wrap label {
-    color: #c0cee0 !important;
-    font-size: 0.9rem !important;
-    font-weight: 500 !important;
-    display: block !important;
-    margin-bottom: 6px !important;
+  .p247-form input[type="text"],
+  .p247-form input[type="email"] {
+    width: 100%;
+    background: #1a2340;
+    border: 1px solid #2d3a56;
+    color: #fff;
+    border-radius: 8px;
+    padding: 13px 16px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-family: inherit;
+    -webkit-appearance: none;
   }
-  .hs-form-wrap input[type="email"],
-  .hs-form-wrap input[type="text"] {
-    width: 100% !important;
-    background: #1a2340 !important;
-    border: 1px solid #2d3a56 !important;
-    color: #fff !important;
-    border-radius: 8px !important;
-    padding: 12px 14px !important;
-    font-size: 1rem !important;
-    box-sizing: border-box !important;
-    margin-bottom: 12px !important;
-    font-family: inherit !important;
+  .p247-form input::placeholder { color: #5a6a85; }
+  .p247-form input:focus { outline: none; border-color: #00B4FF; }
+  .p247-form button {
+    width: 100%;
+    background: #FF6B00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 32px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    margin-top: 2px;
+    transition: background 0.15s;
   }
-  .hs-form-wrap input[type="email"]::placeholder,
-  .hs-form-wrap input[type="text"]::placeholder {
-    color: #5a6a85 !important;
+  .p247-form button:hover { background: #e05e00; }
+  .p247-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+  .p247-form .form-msg {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
   }
-  .hs-form-wrap input[type="email"]:focus,
-  .hs-form-wrap input[type="text"]:focus {
-    outline: none !important;
-    border-color: #00B4FF !important;
-  }
-  .hs-form-wrap input[type="submit"],
-  .hs-form-wrap .hs-button {
-    background: #FF6B00 !important;
-    color: #fff !important;
-    border: none !important;
-    border-radius: 8px !important;
-    padding: 12px 32px !important;
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    font-family: inherit !important;
-    margin-top: 4px !important;
-  }
-  .hs-form-wrap input[type="submit"]:hover,
-  .hs-form-wrap .hs-button:hover {
-    background: #e05e00 !important;
-  }
-  .hs-form-wrap .hs-error-msgs label,
-  .hs-form-wrap .hs-error-msg {
-    color: #ff6b6b !important;
-    font-size: 0.85rem !important;
-  }
-  .hs-form-wrap .hs-form-required { color: #FF6B00 !important; }
-  .hs-form-wrap .hs-form-field { margin-bottom: 8px !important; }
-  .hs-form-wrap .submitted-message {
-    color: #4ADE80 !important;
-    font-size: 1rem !important;
-    font-weight: 600 !important;
-  }
+  .p247-form .form-msg.success { color: #4ADE80; }
+  .p247-form .form-msg.error { color: #ff6b6b; }
 
   .hero {
     background: #0A0F1E;
@@ -178,18 +143,12 @@ title: P247 — Performance Intelligence for serious athletes
   <h1>Your wearable measures.<br><span>P247 interprets.</span></h1>
   <p class="lead">One morning brief. Every signal your wearable misses. Before your session, not after.</p>
 
-  <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-  <div id="hs-form-hero" class="hs-form-wrap"></div>
-  <script>
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "21624983",
-      formId: "a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e",
-      target: "#hs-form-hero",
-      cssRequired: "",
-      css: ""
-    });
-  </script>
+  <form id="p247-form-hero" class="p247-form" onsubmit="return submitP247Form(event, this)">
+    <input type="text" name="firstname" placeholder="First name" required>
+    <input type="email" name="email" placeholder="Email address" required>
+    <button type="submit">Get early access</button>
+    <p class="form-msg" style="display:none;"></p>
+  </form>
   <p class="cta-note">Get your first morning brief free. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -218,17 +177,12 @@ title: P247 — Performance Intelligence for serious athletes
 <section class="bottom-cta">
   <h2>We're building the interpretation layer your wearable is missing.</h2>
   <p>Early access is opening soon.</p>
-  <div id="hs-form-bottom" class="hs-form-wrap"></div>
-  <script>
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "21624983",
-      formId: "a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e",
-      target: "#hs-form-bottom",
-      cssRequired: "",
-      css: ""
-    });
-  </script>
+  <form id="p247-form-bottom" class="p247-form" onsubmit="return submitP247Form(event, this)">
+    <input type="text" name="firstname" placeholder="First name" required>
+    <input type="email" name="email" placeholder="Email address" required>
+    <button type="submit">Get early access</button>
+    <p class="form-msg" style="display:none;"></p>
+  </form>
   <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -249,3 +203,53 @@ title: P247 — Performance Intelligence for serious athletes
   </ul>
   <div class="view-all"><a href="/blog">View all posts →</a></div>
 </section>
+
+<script>
+function submitP247Form(e, form) {
+  e.preventDefault();
+  var btn = form.querySelector('button');
+  var msg = form.querySelector('.form-msg');
+  var firstname = form.querySelector('input[name="firstname"]').value.trim();
+  var email = form.querySelector('input[name="email"]').value.trim();
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  msg.style.display = 'none';
+
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fields: [
+        { name: 'firstname', value: firstname },
+        { name: 'email', value: email }
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title
+      }
+    })
+  })
+  .then(function(res) {
+    if (res.ok || res.status === 200) {
+      form.querySelector('input[name="firstname"]').style.display = 'none';
+      form.querySelector('input[name="email"]').style.display = 'none';
+      btn.style.display = 'none';
+      msg.textContent = "You're on the list. We'll be in touch before launch.";
+      msg.className = 'form-msg success';
+      msg.style.display = 'block';
+    } else {
+      throw new Error('Submission failed');
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Get early access';
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.className = 'form-msg error';
+    msg.style.display = 'block';
+  });
+
+  return false;
+}
+</script>
