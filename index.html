@@ -5,45 +5,57 @@ title: P247 — Performance Intelligence for serious athletes
 
 <style>
   /* Hide HubSpot free-tier branding */
-  .hs-form__virality-link,
-  .sprocket-icon,
-  .hs-form__virality-link-container,
-  [data-hs-cf-bound] .hs-form__virality-link,
-  .hs_cos_wrapper_type_form .hs-form__virality-link {
+  .hs-form-wrap .legal-consent-container,
+  .hs-form-wrap .hs-richtext,
+  .hs-form-wrap .sprocket-icon,
+  .hs-form-wrap a[href*="hubspot.com"],
+  .hs-form-wrap .hubspot-link__container,
+  .hs-form-wrap .submitted-message + div,
+  div[class*="virality"],
+  a[class*="virality"],
+  .hubspot-link-text,
+  .hubspot-link__icon {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
     overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   /* HubSpot form styling on dark backgrounds */
-  .hs-form-frame label,
-  .hs-form__label,
-  .hs_email label,
-  .hs_firstname label,
-  .hs-form-private label {
+  .hs-form-wrap { max-width: 480px; margin: 0 auto; }
+  .hs-form-wrap label {
     color: #c0cee0 !important;
     font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    display: block !important;
+    margin-bottom: 6px !important;
   }
-  .hs-form-frame input[type="email"],
-  .hs-form-frame input[type="text"],
-  .hs-form__input,
-  .hs-input {
+  .hs-form-wrap input[type="email"],
+  .hs-form-wrap input[type="text"] {
+    width: 100% !important;
     background: #1a2340 !important;
     border: 1px solid #2d3a56 !important;
     color: #fff !important;
     border-radius: 8px !important;
-    padding: 12px !important;
+    padding: 12px 14px !important;
     font-size: 1rem !important;
+    box-sizing: border-box !important;
+    margin-bottom: 12px !important;
+    font-family: inherit !important;
   }
-  .hs-form-frame input::placeholder,
-  .hs-form__input::placeholder,
-  .hs-input::placeholder {
+  .hs-form-wrap input[type="email"]::placeholder,
+  .hs-form-wrap input[type="text"]::placeholder {
     color: #5a6a85 !important;
   }
-  .hs-form-frame input[type="submit"],
-  .hs-form__actions input,
-  .hs-button {
+  .hs-form-wrap input[type="email"]:focus,
+  .hs-form-wrap input[type="text"]:focus {
+    outline: none !important;
+    border-color: #00B4FF !important;
+  }
+  .hs-form-wrap input[type="submit"],
+  .hs-form-wrap .hs-button {
     background: #FF6B00 !important;
     color: #fff !important;
     border: none !important;
@@ -52,17 +64,25 @@ title: P247 — Performance Intelligence for serious athletes
     font-size: 1rem !important;
     font-weight: 700 !important;
     cursor: pointer !important;
+    font-family: inherit !important;
+    margin-top: 4px !important;
   }
-  .hs-form-frame input[type="submit"]:hover,
-  .hs-button:hover {
+  .hs-form-wrap input[type="submit"]:hover,
+  .hs-form-wrap .hs-button:hover {
     background: #e05e00 !important;
   }
-  .hs-form-frame .hs-error-msgs label,
-  .hs-error-msg {
+  .hs-form-wrap .hs-error-msgs label,
+  .hs-form-wrap .hs-error-msg {
     color: #ff6b6b !important;
+    font-size: 0.85rem !important;
   }
-  /* Required asterisk */
-  .hs-form-required { color: #FF6B00 !important; }
+  .hs-form-wrap .hs-form-required { color: #FF6B00 !important; }
+  .hs-form-wrap .hs-form-field { margin-bottom: 8px !important; }
+  .hs-form-wrap .submitted-message {
+    color: #4ADE80 !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+  }
 
   .hero {
     background: #0A0F1E;
@@ -159,13 +179,15 @@ title: P247 — Performance Intelligence for serious athletes
   <p class="lead">One morning brief. Every signal your wearable misses. Before your session, not after.</p>
 
   <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-  <div id="hs-form-hero"></div>
+  <div id="hs-form-hero" class="hs-form-wrap"></div>
   <script>
     hbspt.forms.create({
       region: "na1",
       portalId: "21624983",
       formId: "a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e",
-      target: "#hs-form-hero"
+      target: "#hs-form-hero",
+      cssRequired: "",
+      css: ""
     });
   </script>
   <p class="cta-note">Get your first morning brief free. No spam. Unsubscribe anytime.</p>
@@ -196,13 +218,15 @@ title: P247 — Performance Intelligence for serious athletes
 <section class="bottom-cta">
   <h2>We're building the interpretation layer your wearable is missing.</h2>
   <p>Early access is opening soon.</p>
-  <div id="hs-form-bottom"></div>
+  <div id="hs-form-bottom" class="hs-form-wrap"></div>
   <script>
     hbspt.forms.create({
       region: "na1",
       portalId: "21624983",
       formId: "a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e",
-      target: "#hs-form-bottom"
+      target: "#hs-form-bottom",
+      cssRequired: "",
+      css: ""
     });
   </script>
   <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
