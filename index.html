@@ -5,8 +5,64 @@ title: P247 — Performance Intelligence for serious athletes
 
 <style>
   /* Hide HubSpot free-tier branding */
-  .hs-form__virality-link { display: none !important; }
-  .sprocket-icon { display: none !important; }
+  .hs-form__virality-link,
+  .sprocket-icon,
+  .hs-form__virality-link-container,
+  [data-hs-cf-bound] .hs-form__virality-link,
+  .hs_cos_wrapper_type_form .hs-form__virality-link {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* HubSpot form styling on dark backgrounds */
+  .hs-form-frame label,
+  .hs-form__label,
+  .hs_email label,
+  .hs_firstname label,
+  .hs-form-private label {
+    color: #c0cee0 !important;
+    font-size: 0.9rem !important;
+  }
+  .hs-form-frame input[type="email"],
+  .hs-form-frame input[type="text"],
+  .hs-form__input,
+  .hs-input {
+    background: #1a2340 !important;
+    border: 1px solid #2d3a56 !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    font-size: 1rem !important;
+  }
+  .hs-form-frame input::placeholder,
+  .hs-form__input::placeholder,
+  .hs-input::placeholder {
+    color: #5a6a85 !important;
+  }
+  .hs-form-frame input[type="submit"],
+  .hs-form__actions input,
+  .hs-button {
+    background: #FF6B00 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 12px 32px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+  }
+  .hs-form-frame input[type="submit"]:hover,
+  .hs-button:hover {
+    background: #e05e00 !important;
+  }
+  .hs-form-frame .hs-error-msgs label,
+  .hs-error-msg {
+    color: #ff6b6b !important;
+  }
+  /* Required asterisk */
+  .hs-form-required { color: #FF6B00 !important; }
 
   .hero {
     background: #0A0F1E;
