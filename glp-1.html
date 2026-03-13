@@ -1,10 +1,10 @@
 ---
 layout: default
-title: P247 — Performance Intelligence for serious athletes
+title: P247 for GLP-1 — Know what you're actually losing
+description: Your wearable can't tell you if you're losing muscle or fat on semaglutide. P247 connects your data so you stop guessing between scans.
 ---
 
 <style>
-  /* P247 signup form */
   .p247-form {
     max-width: 400px;
     margin: 0 auto;
@@ -49,7 +49,7 @@ title: P247 — Performance Intelligence for serious athletes
   .p247-form .form-msg.success { color: #4ADE80; }
   .p247-form .form-msg.error { color: #ff6b6b; }
 
-  .hero {
+  .hero-glp1 {
     background: #0A0F1E;
     color: #fff;
     padding: 80px 20px 64px;
@@ -57,15 +57,79 @@ title: P247 — Performance Intelligence for serious athletes
     margin: -1px;
     border-radius: 10px;
   }
-  .hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 16px; color: #fff; line-height: 1.15; }
-  .hero h1 span { color: #00B4FF; }
-  .hero .lead { color: #c0cee0; max-width: 560px; margin: 0 auto 32px; font-size: 1.15rem; line-height: 1.55; }
-  .hs-form-frame { max-width: 480px; margin: 0 auto; }
+  .hero-glp1 h1 { font-size: 2.6rem; font-weight: 700; margin-bottom: 16px; color: #fff; line-height: 1.15; }
+  .hero-glp1 h1 span { color: #00B4FF; }
+  .hero-glp1 .lead { color: #c0cee0; max-width: 580px; margin: 0 auto 32px; font-size: 1.15rem; line-height: 1.55; }
   .cta-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
+
+  .problem-section {
+    max-width: 700px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+  }
+  .problem-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0A0F1E;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .problem-section p {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .problem-section .stat {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0A0F1E;
+    text-align: center;
+    padding: 24px;
+    background: #f0f6ff;
+    border-radius: 10px;
+    margin: 28px 0;
+  }
+  .problem-section .stat span { color: #FF6B00; font-size: 1.4rem; }
+
+  .data-section {
+    max-width: 700px;
+    margin: 48px auto 0;
+    padding: 0 24px;
+  }
+  .data-section h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0A0F1E;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 500px) { .data-grid { grid-template-columns: 1fr; } }
+  .data-item {
+    background: #f7f9fc;
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 0.93rem;
+    color: #333;
+  }
+  .data-item strong { color: #0A0F1E; display: block; margin-bottom: 4px; }
+  .data-kicker {
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+    margin-top: 8px;
+    font-weight: 600;
+  }
 
   .proof-section {
     max-width: 720px;
-    margin: 56px auto 0;
+    margin: 48px auto 0;
     padding: 0 24px 48px;
   }
   .proof-section h2 {
@@ -122,26 +186,15 @@ title: P247 — Performance Intelligence for serious athletes
     font-size: 0.95rem;
     margin-bottom: 24px;
   }
-  .bottom-cta .hs-form-frame { max-width: 480px; margin: 0 auto; }
   .bottom-cta .cta-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
 
-  .blog-section { max-width: 800px; margin: 48px auto 64px; padding: 0 24px; }
-  .blog-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 32px; text-align: center; }
-  .blog-item { margin-bottom: 24px; border-bottom: 1px solid #f0f0f0; padding-bottom: 24px; }
-  .blog-item a.title { font-size: 1.1rem; font-weight: 700; color: #0A0F1E; text-decoration: none; }
-  .blog-item a.title:hover { color: #00B4FF; }
-  .blog-item .meta { color: #999; font-size: 0.85rem; margin: 4px 0 8px; }
-  .blog-item p { color: #555; font-size: 0.93rem; margin-bottom: 8px; }
-  .blog-item a.more { font-size: 0.9rem; color: #FF6B00; font-weight: 600; text-decoration: none; }
   .divider { border: none; border-top: 1px solid #eee; margin: 0 40px; }
-  .view-all { text-align: center; margin-top: 16px; }
-  .view-all a { font-size: 0.95rem; color: #0A0F1E; font-weight: 600; }
 </style>
 
 <!-- HERO -->
-<section class="hero">
-  <h1>Your wearable measures.<br><span>P247 interprets.</span></h1>
-  <p class="lead">One morning brief. Every signal your wearable misses. Before your session, not after.</p>
+<section class="hero-glp1">
+  <h1>Your Whoop says you're recovering great.<br><span>Your DEXA says you lost muscle.</span></h1>
+  <p class="lead">GLP-1 medications work. But your wearable can't tell you what you're actually losing. P247 connects your data so you know before your next scan.</p>
 
   <form id="p247-form-hero" class="p247-form" onsubmit="return submitP247Form(event, this)">
     <input type="text" name="firstname" placeholder="First name" required>
@@ -149,32 +202,59 @@ title: P247 — Performance Intelligence for serious athletes
     <button type="submit">Get early access</button>
     <p class="form-msg" style="display:none;"></p>
   </form>
-  <p class="cta-note">Get your first morning brief free. No spam. Unsubscribe anytime.</p>
+  <p class="cta-note">Free. No spam. Unsubscribe anytime.</p>
 </section>
+
+<!-- THE PROBLEM -->
+<section class="problem-section">
+  <h2>The weight is dropping. But what kind of weight?</h2>
+  <p>Semaglutide, tirzepatide, and other GLP-1 medications are effective at weight loss. That part works. The problem is what comes with it.</p>
+  <div class="stat"><span>Up to 39%</span> of weight lost on GLP-1 medications can be lean mass, not fat.</div>
+  <p>Your wearable has no idea this is happening. HRV improves because you're eating less. Resting heart rate drops. Sleep scores go up. Everything looks green. But "recovering well" and "preserving muscle" are two completely different questions, and your Whoop, Garmin, or Oura can only answer the first one.</p>
+  <p>You find out the real answer 8 to 12 weeks later when you pay for another DEXA or InBody scan. By then, the damage is done.</p>
+</section>
+
+<!-- THE DATA YOU ALREADY HAVE -->
+<section class="data-section">
+  <h2>You're already tracking everything. Nothing connects it.</h2>
+  <div class="data-grid">
+    <div class="data-item">
+      <strong>Wearable</strong>
+      Whoop, Garmin, or Oura tracking sleep, HRV, resting heart rate, strain. Daily.
+    </div>
+    <div class="data-item">
+      <strong>Nutrition</strong>
+      MyFitnessPal or Cronometer logging calories and protein. Most GLP-1 users track this religiously.
+    </div>
+    <div class="data-item">
+      <strong>Body Composition</strong>
+      DEXA or InBody every 8 to 12 weeks. The only way to see what you're actually losing.
+    </div>
+    <div class="data-item">
+      <strong>Training</strong>
+      Resistance sessions logged in your watch or Strava. The key lever for preserving lean mass.
+    </div>
+  </div>
+  <p class="data-kicker">Four data streams. Four apps. Zero synthesis.</p>
+</section>
+
+<hr class="divider">
 
 <!-- PROOF -->
 <section class="proof-section">
-  <h2>Sound familiar?</h2>
+  <h2>People are already trying to solve this manually</h2>
   <div class="proof-grid">
-    <div class="proof-card">
-      <blockquote>"I woke up at 3am and couldn't fall back asleep for two hours. Felt like shit. But I got a green recovery. Why? Because my HRV was better than yesterday."</blockquote>
-      <span class="attribution">r/whoop</span>
-    </div>
-    <div class="proof-card">
-      <blockquote>"I wore my Whoop for over 3 years. More negative mental impact than positive. When I stopped wearing it, I was better able to interpret my body."</blockquote>
-      <span class="attribution">Ironman athlete</span>
-    </div>
     <div class="proof-card">
       <blockquote>"I'm thinking about getting generic sensors to upload data to the cloud and get an LLM to crunch it based on my own requirements."</blockquote>
       <span class="attribution">r/whoop, March 2026</span>
     </div>
     <div class="proof-card">
-      <blockquote>"I have five different apps telling me five different things. None of them talk to each other. I just want one place that tells me if I'm actually recovering or not."</blockquote>
-      <span class="attribution">r/GarminWatches</span>
+      <blockquote>"5 months on Mounjaro. Down 18kg. Whoop recovery has been the best it's ever been. Got a DEXA scan last week and found out about 4kg of that 18 was lean mass."</blockquote>
+      <span class="attribution">r/Mounjaro</span>
     </div>
     <div class="proof-card">
-      <blockquote>"Started exporting my data into ChatGPT to get actual insights. It's insane that I have to do this manually when I'm paying for three subscriptions."</blockquote>
-      <span class="attribution">r/whoop</span>
+      <blockquote>"I track protein pretty carefully and I lift 3x a week. But I have no way to see whether those efforts are actually working to preserve lean mass between scans."</blockquote>
+      <span class="attribution">r/glp1</span>
     </div>
   </div>
 </section>
@@ -183,8 +263,8 @@ title: P247 — Performance Intelligence for serious athletes
 
 <!-- BOTTOM CTA -->
 <section class="bottom-cta">
-  <h2>We're building the interpretation layer your wearable is missing.</h2>
-  <p>Early access is opening soon.</p>
+  <h2>Stop guessing between scans.</h2>
+  <p>P247 connects your wearable, nutrition, and body comp data into one morning brief. You'll know whether your current approach is preserving lean mass, not 12 weeks from now, but today.</p>
   <form id="p247-form-bottom" class="p247-form" onsubmit="return submitP247Form(event, this)">
     <input type="text" name="firstname" placeholder="First name" required>
     <input type="email" name="email" placeholder="Email address" required>
@@ -192,24 +272,6 @@ title: P247 — Performance Intelligence for serious athletes
     <p class="form-msg" style="display:none;"></p>
   </form>
   <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
-</section>
-
-<hr class="divider">
-
-<!-- BLOG -->
-<section class="blog-section">
-  <h2>Latest from the Blog</h2>
-  <ul style="list-style:none; padding:0;">
-    {% for post in site.posts limit:3 %}
-    <li class="blog-item">
-      <a href="{{ post.url }}" class="title">{{ post.title }}</a>
-      <p class="meta">{{ post.date | date: "%-d %B %Y" }} · {{ post.author | default: "Myles Bruggeling" }}</p>
-      <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-      <a href="{{ post.url }}" class="more">Read more →</a>
-    </li>
-    {% endfor %}
-  </ul>
-  <div class="view-all"><a href="/blog">View all posts →</a></div>
 </section>
 
 <script>
@@ -234,7 +296,7 @@ function submitP247Form(e, form) {
       ],
       context: {
         pageUri: window.location.href,
-        pageName: document.title
+        pageName: 'P247 for GLP-1'
       }
     })
   })
