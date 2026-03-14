@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Wearable Thinks You're Healthy: What GLP-1 Users Need to Track That Devices Miss | P247</title>
+<style>
+  /* Reset & Base */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a0a1a;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+    --text: #1a1a2e;
+    --text-light: #64748b;
+    --bg: #ffffff;
+    --bg-soft: #f8fafc;
+    --border: #e2e8f0;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.7;
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Page structure */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page + .page { margin-top: 2rem; }
+
+  /* Cover page */
+  .cover {
+    background: var(--navy);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 50px;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    color: var(--accent-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 48px;
+  }
+
+  .cover h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    max-width: 600px;
+    margin-bottom: 28px;
+  }
+
+  .cover h1 span {
+    color: var(--accent-light);
+  }
+
+  .cover .subtitle {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .cover-footer .brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+
+  .cover-footer .brand span { color: var(--accent-light); }
+
+  .cover-footer .tagline {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 4px;
+  }
+
+  .cover-footer .url {
+    font-size: 0.85rem;
+    color: var(--accent-light);
+    font-weight: 500;
+  }
+
+  /* Content pages */
+  .content-page {
+    padding: 50px 55px 60px;
+  }
+
+  .content-page .page-header {
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .content-page .page-header .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .content-page .page-header h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+  }
+
+  .content-page p {
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .content-page p.lead {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  /* Callout box */
+  .callout {
+    background: var(--bg-soft);
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    margin: 24px 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .callout p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  .callout.warning {
+    border-left-color: #f59e0b;
+    background: #fffbeb;
+  }
+
+  .callout.stat {
+    border-left-color: var(--accent);
+    background: #eef2ff;
+  }
+
+  /* Disclaimer callout */
+  .callout.disclaimer {
+    border-left: 4px solid var(--accent);
+    background: #eef2ff;
+    padding: 20px 24px;
+    margin: 24px 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .callout.disclaimer p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  /* Quick wins box */
+  .quick-wins {
+    background: #eef2ff;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    padding: 24px;
+    margin: 24px 0;
+    border-radius: 8px;
+  }
+
+  .quick-wins h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .quick-wins ol {
+    margin-bottom: 0;
+    padding-left: 20px;
+  }
+
+  .quick-wins li {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .quick-wins li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Reality check box */
+  .reality-check {
+    background: #fef2f2;
+    border-left: 4px solid #dc2626;
+    padding: 18px 22px;
+    margin: 20px 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .reality-check p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #7f1d1d;
+    line-height: 1.6;
+  }
+
+  /* Visual box */
+  .visual-box {
+    background: #f0f4ff;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    padding: 24px;
+    margin: 24px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.8;
+  }
+
+  .visual-box strong {
+    color: var(--accent);
+    font-size: 1.05rem;
+  }
+
+  /* Timeline progression box */
+  .timeline-box {
+    background: #f0f4ff;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    padding: 24px;
+    margin: 24px 0;
+    border-radius: 8px;
+  }
+
+  .timeline-item {
+    margin-bottom: 20px;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-item h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .timeline-item p {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  /* Stat highlight */
+  .stat-highlight {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .stat-highlight .number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .stat-highlight .label {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* Section number */
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+
+  /* Action list */
+  .action-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: action;
+  }
+
+  .action-list li {
+    counter-increment: action;
+    padding: 18px 20px 18px 60px;
+    position: relative;
+    margin-bottom: 12px;
+    background: var(--bg-soft);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .action-list li::before {
+    content: counter(action);
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .action-list li strong {
+    color: var(--navy);
+  }
+
+  /* Dark section (for vision/CTA pages) */
+  .dark-section {
+    background: var(--navy);
+    color: #ffffff;
+    padding: 50px 55px 60px;
+  }
+
+  .dark-section .page-header {
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .dark-section .page-header .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 8px;
+  }
+
+  .dark-section .page-header h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+  }
+
+  .dark-section p {
+    color: #cbd5e1;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .dark-section .feature-item {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .dark-section .feature-item:last-child { border-bottom: none; }
+
+  .dark-section .feature-item h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-bottom: 6px;
+  }
+
+  .dark-section .feature-item p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+
+  .dark-section .cta-box {
+    margin-top: 36px;
+    padding: 28px 32px;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .dark-section .cta-box h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-bottom: 14px;
+  }
+
+  .dark-section .cta-box .cta-feature {
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .dark-section .cta-box .cta-feature::before {
+    content: "✓";
+    color: var(--accent-light);
+    font-weight: bold;
+  }
+
+  .dark-section .cta-box .cta-url {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-top: 16px;
+  }
+
+  .dark-section .social-proof {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .dark-section .social-proof strong {
+    color: #e2e8f0;
+  }
+
+  /* Back cover */
+  .back-cover {
+    background: var(--navy);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 50px;
+  }
+
+  .back-cover .brand-large {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .back-cover .brand-large span { color: var(--accent-light); }
+
+  .back-cover .tagline {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 40px;
+  }
+
+  .back-cover .url {
+    font-size: 1.2rem;
+    color: var(--accent-light);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .back-cover .social {
+    font-size: 0.9rem;
+    color: #64748b;
+  }
+
+  .back-cover .legal {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    right: 50px;
+    font-size: 0.7rem;
+    color: #475569;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Divider line */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+
+  /* Page footer */
+  .page-foot {
+    position: absolute;
+    bottom: 30px;
+    left: 55px;
+    right: 55px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--text-light);
+  }
+
+  .page-foot .brand-foot { font-weight: 600; color: var(--accent); }
+
+  /* Print styles */
+  @media print {
+    body { background: #fff; }
+
+    .page {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
+
+    .page:last-child { page-break-after: auto; }
+
+    .page + .page { margin-top: 0; }
+
+    .cover, .back-cover, .dark-section {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color-adjust: exact;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  }
+
+  /* Screen-only separator */
+  @media screen {
+    .page {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.06);
+      border-radius: 4px;
+      margin-bottom: 40px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="cover-badge">Free Guide</div>
+  <h1>Your Wearable Thinks You're Healthy:<br><span>What GLP-1 Users Need to Track That Devices Miss</span></h1>
+  <p class="subtitle">The data your Whoop, Garmin, or Oura Ring isn't showing you while you're on semaglutide, tirzepatide, or similar medications.</p>
+  <div class="cover-footer">
+    <div class="brand">P<span>247</span></div>
+    <div class="tagline">A free guide from P247</div>
+    <div class="url">p247.io</div>
+  </div>
+</div>
+
+<!-- PAGE 2: INTRODUCTION -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="section-label">Introduction</div>
+    <h2>The problem nobody is talking about</h2>
+  </div>
+
+  <p class="lead">GLP-1 medications work. Semaglutide, tirzepatide, and their branded counterparts (Ozempic, Wegovy, Mounjaro, Zepbound) have changed millions of lives. The weight comes off. The bloodwork improves. People feel better than they have in years.</p>
+
+  <div class="callout disclaimer">
+    <p><strong>This guide is not anti-medication.</strong> It's about tracking the right data while using GLP-1 therapy so you get the best possible outcome.</p>
+  </div>
+
+  <p>And if you wear a Whoop, Garmin, or Oura Ring, the data looks incredible. Recovery scores are green. Resting heart rate drops. HRV improves. Sleep gets better. Every metric your wearable tracks tells the same story: you're winning.</p>
+
+  <p>But there's a gap between what your wearable can measure and what's actually happening inside your body. A gap that matters more the longer you're on GLP-1 medication.</p>
+
+  <div class="callout stat">
+    <p>Research shows that 15 to 39% of weight lost on GLP-1 medications is lean mass, not fat. Your wearable has no way to detect this.</p>
+  </div>
+
+  <p>That statistic is not a reason to stop your medication. It's a reason to pay closer attention to what you're losing, not just how much.</p>
+
+  <div class="quick-wins">
+    <h3>Your 5 quick wins (details inside):</h3>
+    <ol>
+      <li>Get a DEXA scan this week</li>
+      <li>Hit 1.4–1.6g protein per kg daily</li>
+      <li>Get fibre to 25g/day minimum</li>
+      <li>Resistance train 3x per week</li>
+      <li>Never trust a green score without context</li>
+    </ol>
+  </div>
+
+  <p>This guide is for anyone taking semaglutide, tirzepatide, or similar GLP-1 receptor agonists who also wears a fitness wearable. It covers five blind spots in your current tracking setup and a practical framework for addressing each one.</p>
+
+  <div class="page-foot">
+    <span class="brand-foot">P247</span>
+    <span>p247.io</span>
+  </div>
+</div>
+
+<!-- PAGE 3: SECTION 1 -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="section-label">Blind Spot 1 of 5</div>
+    <h2>Your recovery score looks great because you're eating less</h2>
+  </div>
+
+  <div class="section-number">1</div>
+
+  <p>One of the first things GLP-1 users notice is that their wearable recovery scores go up. Whoop shows green. Garmin's Body Battery charges faster. Oura gives you a "You're ready" morning summary.</p>
+
+  <p>This feels like confirmation that everything is working. And in one narrow sense, it is. But the mechanism behind those green scores isn't what you think.</p>
+
+  <div class="visual-box">
+    <strong>Why your recovery score improves on GLP-1:</strong><br><br>
+    Not because you're recovering better.<br>
+    Because you're eating less.<br><br>
+    Less digestion overnight →<br>
+    Lower heart rate →<br>
+    Higher HRV →<br>
+    Green recovery score<br><br>
+    Your wearable thinks you're recovering.<br>
+    <strong>It's actually seeing reduced metabolic activity.</strong>
+  </div>
+
+  <p><strong>Your wearable can't see what you ate.</strong> That's the insight hiding in the data. A green recovery score after 900 calories and no training doesn't mean the same thing as a green score after a full training day with adequate nutrition.</p>
+
+  <div class="reality-check">
+    <p>Reality check: Green recovery + 900 calories + No training = Your wearable is celebrating starvation</p>
+  </div>
+
+  <p>This distinction matters because it changes how you interpret the data. Your wearable can't tell the difference. You need to.</p>
+
+  <div class="page-foot">
+    <span class="brand-foot">P247</span>
+    <span>p247.io</span>
+  </div>
+</div>
+
+<!-- PAGE 4: SECTION 2 -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="section-label">Blind Spot 2 of 5</div>
+    <h2>You're losing muscle and no wearable can tell you</h2>
+  </div>
+
+  <div class="section-number">2</div>
+
+  <p>This is the central issue. Multiple clinical studies have demonstrated that GLP-1 receptor agonists cause significant lean mass loss alongside fat loss. The numbers vary by study, medication, dosage, and whether participants exercised, but the range is consistent: 15 to 39% of total weight lost is lean mass.</p>
+
+  <div class="visual-box">
+    <strong>Weight loss on GLP-1:</strong><br><br>
+    60–85% fat ✓<br>
+    15–39% lean mass ✗<br><br>
+    <strong>Your wearable can't tell which is which.</strong>
+  </div>
+
+  <p>Wearables measure autonomic nervous system state. Heart rate, HRV, skin temperature, blood oxygen, movement. None of these metrics reflect body composition. Your Whoop cannot distinguish between losing 5kg of fat and losing 5kg of muscle. Both show up as weight loss. Both correlate with improved autonomic metrics. Both look like progress.</p>
+
+  <p>But they are fundamentally different outcomes.</p>
+
+  <p>Muscle is metabolically active tissue. Every kilogram of lean mass you carry burns calories at rest. Lose muscle and your basal metabolic rate drops. You burn fewer calories doing nothing. You burn fewer calories exercising. The caloric math that was working in month one starts working against you by month four.</p>
+
+  <p>The scale goes down. The recovery score stays green. But the composition of what you're losing determines whether this medication is setting you up for long-term success or a metabolic stall.</p>
+
+  <div class="callout warning">
+    <p>Only body composition scans (DEXA or InBody) every 8 to 12 weeks can reveal lean mass trends. That's a 3-month feedback loop on the single most important metric for GLP-1 users. Most people never get a single scan.</p>
+  </div>
+
+  <div class="page-foot">
+    <span class="brand-foot">P247</span>
+    <span>p247.io</span>
+  </div>
+</div>
+
+<!-- PAGE 5: SECTION 3 -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="section-label">Blind Spot 3 of 5</div>
+    <h2>The metabolic cliff nobody warns you about</h2>
+  </div>
+
+  <div class="section-number">3</div>
+
+  <p>Here's a pattern that plays out repeatedly in the GLP-1 community, and it catches people off guard because all their data looks perfect right up until the moment it stops working.</p>
+
+  <div class="timeline-box">
+    <div class="timeline-item">
+      <h4>Months 1 to 3: The Honeymoon</h4>
+      <p>Weight drops steadily. Appetite is suppressed. Recovery scores are green. Energy is good. Everything feels like it's working because it is.</p>
+    </div>
+    <div class="timeline-item">
+      <h4>Month 4 to 5: Peak Performance</h4>
+      <p>You're down 12 to 15kg. You feel great. You look different. Your wearable data has never been better. Friends are asking what you're doing.</p>
+    </div>
+    <div class="timeline-item">
+      <h4>Month 5 to 6: The Cliff</h4>
+      <p>Weight loss slows. Then stalls. You haven't changed anything. Same medication. Same dose. Same caloric intake. But the scale stops moving.</p>
+    </div>
+  </div>
+
+  <p>What happened? You lost muscle along with fat. Your basal metabolic rate dropped. The caloric deficit that was producing results in month two is now your maintenance level. Your body adapted, and it adapted partly because it had less metabolically active tissue to fuel.</p>
+
+  <div class="callout">
+    <p>The "great recovery" your wearable was reporting for months was partly a symptom of losing active tissue, not a sign that everything was going well. By the time the stall hits, you're weeks past the point where course correction would have been simple.</p>
+  </div>
+
+  <p>This isn't a medication failure. It's an information failure. The data to predict this outcome existed in the gap between your wearable, your nutrition log, and a body composition scan. Nobody connected those dots because no tool does.</p>
+
+  <p>Catching lean mass loss at week six is straightforward: adjust protein, add resistance training, modify dose timing. Catching it at month five means rebuilding muscle from a lower metabolic baseline while trying to maintain the progress you've made. It's solvable, but it's harder than it needed to be.</p>
+
+  <div class="page-foot">
+    <span class="brand-foot">P247</span>
+    <span>p247.io</span>
+  </div>
+</div>
+
+<!-- PAGE 6: SECTION 4 -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="section-label">Blind Spot 4 of 5</div>
+    <h2>Five data streams, zero synthesis</h2>
+  </div>
+
+  <div class="section-number">4</div>
+
+  <p>GLP-1 users tend to be data-rich. In many cases, they're tracking more health data than competitive athletes. Consider what a typical user has access to:</p>
+
+  <p><strong>Wearable data</strong> (Whoop, Garmin, Oura): heart rate, HRV, sleep stages, recovery scores, strain, SpO2, skin temperature.</p>
+
+  <p><strong>Nutrition tracking</strong> (MyFitnessPal, Cronometer, Lose It): calories, macros, protein intake, meal timing.</p>
+
+  <p><strong>Body composition</strong> (DEXA, InBody, smart scales): lean mass, fat mass, visceral fat, bone density.</p>
+
+  <p><strong>Blood panels</strong> (quarterly or bi-annual): metabolic markers, thyroid function, vitamin levels, inflammatory markers.</p>
+
+  <p><strong>Training data</strong> (Apple Watch, Strava, gym apps): workout frequency, volume, intensity, progression.</p>
+
+  <div class="divider"></div>
+
+  <p>Five rich data streams. Five separate apps. Five separate dashboards. Zero integration between them.</p>
+
+  <p>Nobody is connecting protein intake to lean mass trends. Nobody is cross-referencing recovery scores with training volume and caloric intake. Nobody is flagging that your HRV improved while your training frequency dropped (which means deconditioning, not recovery).</p>
+
+  <div class="callout stat">
+    <p>The question that actually matters: "Given my current protein intake, training load, sleep quality, and recovery trend, am I on track to retain lean mass?" No existing tool can answer this.</p>
+  </div>
+
+  <p>Each app does its job well in isolation. But the insight that prevents the metabolic cliff lives in the connections between these data sources, not within any single one of them.</p>
+
+  <div class="page-foot">
+    <span class="brand-foot">P247</span>
+    <span>p247.io</span>
+  </div>
+</div>
+
+<!-- PAGE 7: SECTION 5 -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="section-label">Blind Spot 5 of 5</div>
+    <h2>Protein tracking alone won't save your muscle mass</h2>
+  </div>
+
+  <div class="section-number">5</div>
+
+  <p>If you've spent any time in GLP-1 communities online, you've heard the advice: "Make sure you're getting enough protein." It's correct advice, as far as it goes. Current evidence supports 1.2 to 1.6 grams of protein per kilogram of body weight per day for people on GLP-1 medications who want to preserve lean mass.</p>
+
+  <p>But protein intake is one variable in a three-variable equation. Treating it as the whole answer is like filling your car with fuel and expecting it to drive itself.</p>
+
+  <p><strong>Protein without resistance training is insufficient.</strong> Your body needs a stimulus to maintain or build muscle tissue. Dietary protein provides the raw material, but without the signal that says "we need this muscle," your body will still catabolize lean mass during a caloric deficit. Especially the aggressive deficit that GLP-1 medications create.</p>
+
+  <p><strong>Resistance training without adequate protein is also insufficient.</strong> You can train three to four times per week, but if your protein intake is 0.6g/kg because the medication has suppressed your appetite to the point where eating feels like a chore, you're training without the building blocks for recovery and adaptation.</p>
+
+  <div class="reality-check">
+    <p>Reality check: Hitting protein targets + Zero resistance training = Expensive urine</p>
+  </div>
+
+  <p><strong>And then there's fibre, the macro nobody talks about.</strong> When appetite tanks on GLP-1 medication, people gravitate toward calorie-dense, easy-to-eat foods. Protein shakes. Greek yoghurt. Chicken breast. The whole foods that carry fibre (vegetables, legumes, whole grains, fruit) get pushed aside because they're bulky, filling, and hard to eat when you already feel full.</p>
+
+  <p>This matters more than most people realise. GLP-1 medications already slow gastric emptying. Drop your fibre intake on top of that and you're looking at constipation, disrupted gut motility, and a microbiome that's getting starved of the fuel it needs. Gut bacteria ferment fibre into short-chain fatty acids that support immune function, reduce inflammation, and regulate blood sugar. Without adequate fibre, that entire system underperforms.</p>
+
+  <p>The research is clear: adults need 25 to 30 grams of fibre per day. Most Australians get about 20g on a normal diet. On a GLP-1 suppressed appetite where total food volume drops by 30 to 50%, fibre intake can easily fall to 10 to 12 grams. That's a level where gut health visibly deteriorates within weeks.</p>
+
+  <p>Your wearable won't flag this. Your recovery score won't dip. But your digestion, your energy stability between meals, and your long-term metabolic health all depend on it.</p>
+
+  <div class="callout">
+    <p>Lean mass preservation on GLP-1 requires the interaction of four variables: adequate protein, sufficient fibre, consistent resistance training, and proper recovery. Optimising one or two while neglecting the others produces results that look good on paper and fall apart over time.</p>
+  </div>
+
+  <p>The challenge is that these variables interact across different time scales and different apps. Protein and fibre are tracked daily in a nutrition app. Training is logged per-session in a fitness app. Recovery is measured overnight by a wearable. Body composition changes over weeks and is measured quarterly at best.</p>
+
+  <p>No current tool connects these variables for you. So the most common outcome is that people optimize one (usually protein), neglect others (usually fibre and resistance training consistency), and never see the interaction effects until a body comp scan or a GP visit reveals the damage months later.</p>
+
+  <div class="page-foot">
+    <span class="brand-foot">P247</span>
+    <span>p247.io</span>
+  </div>
+</div>
+
+<!-- PAGE 8: ACTION FRAMEWORK -->
+<div class="page content-page">
+  <div class="page-header">
+    <div class="section-label">What to Do About It</div>
+    <h2>The Action Framework</h2>
+  </div>
+
+  <p>You don't need to wait for better tools to act on this information. Here are five concrete steps you can take right now, ranked by impact.</p>
+
+  <ol class="action-list">
+    <li>
+      <strong>Get a body composition scan now.</strong> Not next month. Not "when I've lost more weight." Now. A DEXA scan or InBody assessment gives you a lean mass baseline that makes every future measurement meaningful. Without a starting point, you're guessing. Most major cities have clinics offering DEXA scans for $50 to $100. InBody scans are available at many gyms and physiotherapy clinics. Book one this week and schedule a follow-up for 8 to 12 weeks from now.
+    </li>
+    <li>
+      <strong>Track protein seriously.</strong> Aim for 1.4 to 1.6 grams per kilogram of body weight per day. This is harder than it sounds when GLP-1 medications suppress your appetite. Prioritize protein at every meal. Consider protein supplements if whole food intake is difficult. Use a tracking app (Cronometer is excellent for macros) and actually log your intake daily, not just when you remember.
+    </li>
+    <li>
+      <strong>Get your fibre to 25g per day minimum.</strong> This is the macro that disappears when appetite drops. Track it alongside protein. Prioritise whole food sources: vegetables, legumes, oats, berries, chia seeds, lentils. If you're relying heavily on protein shakes and supplements, you're almost certainly under on fibre. A simple rule: every meal should include something that grew in the ground. Your gut motility, blood sugar stability, and microbiome health depend on it.
+    </li>
+    <li>
+      <strong>Resistance train at least 3 times per week.</strong> This is non-negotiable for lean mass preservation on GLP-1 medications. It doesn't need to be complex. Compound movements (squat, hinge, push, pull) with progressive overload. If you don't have a program, get one. A qualified trainer who understands pharmacologically-assisted weight loss is worth the investment.
+    </li>
+    <li>
+      <strong>Stop taking green recovery scores at face value.</strong> Cross-reference your recovery score with three questions: What did I eat yesterday? Did I train? How do I actually feel? <strong>Green doesn't mean go. It means your nervous system is calm. That's one input, not the answer.</strong>
+    </li>
+    <li>
+      <strong>Get blood work quarterly.</strong> If you've been on GLP-1 medication for three or more months, regular blood panels become important. Thyroid function, vitamin D, B12, iron studies, and metabolic markers can reveal issues that no wearable and no body comp scan will catch. Talk to your prescribing doctor about a monitoring schedule.
+    </li>
+  </ol>
+
+  <div class="page-foot">
+    <span class="brand-foot">P247</span>
+    <span>p247.io</span>
+  </div>
+</div>
+
+<!-- PAGE 9: WHAT WOULD BETTER LOOK LIKE -->
+<div class="page dark-section">
+  <div class="page-header">
+    <div class="section-label">The Future</div>
+    <h2>What would better look like?</h2>
+  </div>
+
+  <p>The action framework on the previous page works. But it requires you to be the integration layer. You have to manually cross-reference recovery scores with nutrition logs with training data with body comp trends. Every day. Across five apps.</p>
+
+  <p>That's not a sustainable system. It's a workaround for the fact that no tool currently does what GLP-1 users actually need: connect the dots across their existing data and surface the insights that matter.</p>
+
+  <p>Better doesn't mean another tracking app. Better means an interpretation layer that sits on top of what you already use.</p>
+
+  <div class="feature-item">
+    <h3>Correlate protein intake with lean mass trends over time</h3>
+    <p>See whether your daily protein target is actually translating into lean mass preservation between body comp scans, not just hitting a macro number in isolation.</p>
+  </div>
+
+  <div class="feature-item">
+    <h3>Flag false-positive recovery signals</h3>
+    <p>Detect when recovery scores improve while training volume drops. That's deconditioning, not recovery. It's the wearable equivalent of your car's fuel efficiency improving because you stopped driving it.</p>
+  </div>
+
+  <div class="feature-item">
+    <h3>Connect resistance training frequency to body composition outcomes</h3>
+    <p>Track whether your training consistency between scans predicts lean mass changes, and alert you when you're trending in the wrong direction before the next scan confirms it.</p>
+  </div>
+
+  <div class="feature-item">
+    <h3>Answer the question that matters</h3>
+    <p>"Am I on track to retain lean mass given everything I'm doing right now?" Not a guess. An answer grounded in your actual data across all five streams.</p>
+  </div>
+
+  <div class="cta-box">
+    <h3>Join P247 Early Access</h3>
+    <div class="cta-feature">Connect your wearable data</div>
+    <div class="cta-feature">Weekly body comp insights</div>
+    <div class="cta-feature">Protein and fibre tracking integration</div>
+    <div class="cta-feature">Free during beta</div>
+    <div class="cta-url">→ p247.io</div>
+    <div class="social-proof"><strong>Trusted by GLP-1 users tracking with:</strong> Whoop | Garmin | Oura | Apple Watch</div>
+  </div>
+
+  <div class="page-foot" style="color: #475569;">
+    <span style="color: var(--accent-light); font-weight: 600;">P247</span>
+    <span>p247.io</span>
+  </div>
+</div>
+
+<!-- PAGE 10: BACK COVER -->
+<div class="page back-cover">
+  <div class="brand-large">P<span>247</span></div>
+  <p class="tagline">Your data. Connected. Interpreted.</p>
+  <p class="url">p247.io</p>
+  <p class="social">Follow us: @p247io</p>
+  <div class="legal">
+    &copy; 2026 P247. This guide is provided for informational purposes only and does not constitute medical advice.<br>
+    Always consult your healthcare provider regarding GLP-1 medications and any changes to your health regimen.
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Your Recovery Score Doesn't Tell You | P247</title>
+<style>
+  /* Reset & Base */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a0a1a;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+    --white: #ffffff;
+    --off-white: #f8f9fa;
+    --text: #1a1a2e;
+    --text-secondary: #4a4a6a;
+    --border: #e2e4e9;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.65;
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Page structure */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page + .page { margin-top: 2rem; }
+
+  /* Cover Page */
+  .cover {
+    background: var(--navy);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60mm 25mm;
+  }
+
+  .cover-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 2rem;
+  }
+
+  .cover h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.15;
+    max-width: 520px;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  .cover h1 span {
+    color: var(--accent-light);
+  }
+
+  .cover-subtitle {
+    font-size: 1.15rem;
+    color: #a0a0c0;
+    max-width: 420px;
+    line-height: 1.5;
+    margin-bottom: 3rem;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+
+  .cover-brand {
+    font-size: 0.85rem;
+    color: #7a7a9a;
+  }
+
+  .cover-brand strong {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .cover-url {
+    font-size: 0.8rem;
+    color: var(--accent-light);
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  /* Content Pages */
+  .content-page {
+    padding: 20mm 25mm 25mm 25mm;
+  }
+
+  .content-page h2 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+  }
+
+  .content-page h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 1.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .content-page p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .content-page p.secondary {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  /* Section header bar */
+  .section-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 14mm 25mm 12mm 25mm;
+    margin-bottom: 0;
+  }
+
+  .section-header .section-number {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 0;
+    max-width: 480px;
+  }
+
+  .section-body {
+    padding: 8mm 25mm 25mm 25mm;
+  }
+
+  .section-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-body h3:first-child {
+    margin-top: 0;
+  }
+
+  .section-body p {
+    margin-bottom: 0.9rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  /* Callout box */
+  .callout {
+    background: #f0f0ff;
+    border-left: 4px solid var(--accent);
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .callout p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .callout strong {
+    color: var(--navy);
+  }
+
+  /* Signal box - shows what is and isn't measured */
+  .signal-box {
+    background: #f8f8ff;
+    border: 1px solid #e0e0f0;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 0.9rem;
+  }
+
+  .signal-box h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .signal-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+
+  .signal-box li {
+    padding: 0.35rem 0 0.35rem 1.5rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .signal-box li.yes::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #16a34a;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .signal-box li.no::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: #dc2626;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  /* Reality check box */
+  .reality-check {
+    background: #fff9f0;
+    border: 2px solid #f59e0b;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 0.9rem;
+  }
+
+  .reality-check h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #b45309;
+    margin-bottom: 0.5rem;
+  }
+
+  .reality-check p {
+    margin-bottom: 0;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Summary highlight box */
+  .summary-box {
+    background: linear-gradient(135deg, #f0f4ff 0%, #f8f9ff 100%);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 1.5rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .summary-box h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  .summary-box ol {
+    list-style: decimal;
+    list-style-position: inside;
+    padding: 0;
+    margin: 0;
+  }
+
+  .summary-box li {
+    padding: 0.4rem 0;
+    color: var(--text);
+    font-size: 0.92rem;
+  }
+
+  /* Reference tag */
+  .ref {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  /* Intro page */
+  .intro-lead {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .audience-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .audience-list li {
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    position: relative;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+
+  .audience-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Framework table */
+  .framework-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.88rem;
+  }
+
+  .framework-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+
+  .framework-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .framework-table tr:nth-child(even) td {
+    background: var(--off-white);
+  }
+
+  .signal-green { color: #16a34a; font-weight: 700; }
+  .signal-yellow { color: #ca8a04; font-weight: 700; }
+  .signal-red { color: #dc2626; font-weight: 700; }
+  .signal-any { color: var(--text-secondary); font-weight: 700; }
+
+  /* Social proof section */
+  .social-proof {
+    background: var(--off-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 0.92rem;
+  }
+
+  .social-proof p {
+    margin-bottom: 0;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  /* CTA section */
+  .cta-box {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a1a3e 100%);
+    color: var(--white);
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .cta-box h3 {
+    color: var(--white);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  .cta-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .cta-box li {
+    padding: 0.5rem 0 0.5rem 1.75rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: #c0c0e0;
+    line-height: 1.5;
+  }
+
+  .cta-box li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-light);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .cta-box .cta-arrow {
+    display: block;
+    font-size: 1.3rem;
+    color: var(--accent-light);
+    margin: 1rem 0 0.5rem 0;
+    font-weight: 700;
+  }
+
+  .cta-link {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.65rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* Back cover */
+  .back-cover {
+    background: var(--navy);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60mm 25mm;
+  }
+
+  .back-cover .logo-text {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+  }
+
+  .back-cover .logo-text span {
+    color: var(--accent-light);
+  }
+
+  .back-cover .tagline {
+    font-size: 1rem;
+    color: #8888aa;
+    margin-bottom: 2.5rem;
+  }
+
+  .back-cover .url {
+    font-size: 1.1rem;
+    color: var(--accent-light);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .back-cover .social {
+    font-size: 0.85rem;
+    color: #6a6a8a;
+  }
+
+  /* Page number footer */
+  .page-footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 25mm;
+    right: 25mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #aaa;
+  }
+
+  /* Print Styles */
+  @media print {
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: white;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 0;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      page-break-after: always;
+      page-break-inside: avoid;
+      overflow: visible;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    .cover, .back-cover {
+      min-height: 100vh;
+      padding-top: 35vh;
+    }
+
+    .section-header + .section-body {
+      page-break-before: avoid;
+    }
+
+    .callout {
+      break-inside: avoid;
+    }
+
+    .page-footer {
+      position: fixed;
+    }
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="cover-eyebrow">A Free Guide from P247</div>
+  <h1>What Your Recovery Score <span>Doesn't</span> Tell You</h1>
+  <p class="cover-subtitle">A data-driven athlete's guide to the blind spots your wearable won't show you.</p>
+  <div class="cover-divider"></div>
+  <p class="cover-brand"><strong>P247</strong></p>
+  <p class="cover-url">p247.io</p>
+</div>
+
+<!-- PAGE 2: INTRODUCTION -->
+<div class="page content-page">
+  <h2>You Track Everything. You Understand Less Than You Think.</h2>
+
+  <p class="intro-lead">You own the ring, the strap, the watch. Maybe all three. You check your recovery score before your first coffee. Green means go. Red means rest. Simple.</p>
+
+  <p>Except it's not simple. And the confidence these scores give you is quietly dangerous.</p>
+
+  <p>Your wearable is measuring a narrow slice of your physiology and presenting it as the whole picture. HRV, resting heart rate, skin temperature, sleep staging. These are real signals. But they're not the only signals that matter, and they miss entire categories of stress that directly affect your performance and injury risk.</p>
+
+  <p>This guide breaks down six specific blind spots that exist across every major wearable on the market. Not vague criticisms. Specific, research-backed gaps that affect how you train, recover, and perform.</p>
+
+  <div class="summary-box">
+    <h3>The 6 Signals Every Wearable Misses</h3>
+    <ol>
+      <li>Muscle damage</li>
+      <li>Fuel availability</li>
+      <li>Training monotony</li>
+      <li>Psychological fatigue</li>
+      <li>Injury compensation</li>
+      <li>Data fragmentation</li>
+    </ol>
+  </div>
+
+  <h3>Who This Guide Is For</h3>
+
+  <p>You take your training seriously without it being your job. You're the kind of athlete who tracks data because you want to get better, not because someone told you to.</p>
+
+  <ul class="audience-list">
+    <li>Hyrox competitors balancing strength and endurance</li>
+    <li>Triathletes managing three disciplines and the transitions between them</li>
+    <li>Marathon and half-marathon runners chasing PBs</li>
+    <li>Cyclists and gravel riders pushing volume</li>
+    <li>Hybrid athletes doing CrossFit, running, and strength in the same week</li>
+    <li>Anyone wearing an Oura, Whoop, Garmin, Apple Watch, or COROS and wondering why the numbers don't always match how they feel</li>
+  </ul>
+
+  <p>If you've ever had a green recovery score and felt like garbage, or trained hard on a red day and felt fine, this guide will explain why.</p>
+
+  <p><strong>On page 9, you'll find the decision framework that ties all six blind spots into a single morning check.</strong></p>
+
+  <div class="page-footer">
+    <span>P247 | p247.io</span>
+    <span>2</span>
+  </div>
+</div>
+
+<!-- PAGE 3: BLIND SPOT 1 -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">Blind Spot 01</div>
+    <h2>Your recovery score measures your nervous system, not your muscles</h2>
+  </div>
+  <div class="section-body">
+    <p>HRV tracks autonomic nervous system status. That's your parasympathetic vs sympathetic balance. It tells you how well your central nervous system has recovered. What it cannot tell you is what's happening in your muscles.</p>
+
+    <div class="signal-box">
+      <h4>What HRV actually measures:</h4>
+      <ul>
+        <li class="yes">Nervous system stress</li>
+        <li class="yes">Sleep recovery</li>
+        <li class="yes">Autonomic balance</li>
+      </ul>
+      <h4 style="margin-top: 0.75rem;">What it does NOT measure:</h4>
+      <ul>
+        <li class="no">Muscle damage</li>
+        <li class="no">Glycogen depletion</li>
+        <li class="no">Tendon strain</li>
+      </ul>
+    </div>
+
+    <h3>Central vs Peripheral Fatigue</h3>
+    <p>These are two different systems with different recovery timelines. Your HRV can bounce back within 24 hours after a hard session. Your muscles need 48 to 96 hours to repair, depending on the type and intensity of the work. A wearable that only reads HRV will show "recovered" while your quads are still rebuilding from Tuesday's session.</p>
+
+    <h3>The Eccentric Damage Problem</h3>
+    <p>Eccentric contractions (the lowering phase of a squat, downhill running, box jump landings) cause significantly more muscle damage than concentric work. This damage produces delayed onset muscle soreness, inflammation, and reduced force production for days. None of this shows up in your HRV reading. Your nervous system can be calm while your muscle fibres are still repairing micro-tears.</p>
+
+    <h3>The Hybrid Athlete Trap</h3>
+    <p>This is where it gets dangerous for Hyrox and hybrid athletes. You do a heavy strength session on Monday. Tuesday morning your Whoop says you're in the green. So you go run 10k. Your nervous system was ready. Your legs were not. Stack enough of these misreads and you're looking at overuse injuries, tendinopathy, or worse.</p>
+
+    <div class="callout">
+      <p><strong>The gap:</strong> Wearables measure central recovery. Peripheral muscle recovery is invisible to every device on the market. Green score plus destroyed legs equals injury risk.</p>
+    </div>
+
+    <p class="ref">References: Twist &amp; Highton, 2012 (neuromuscular fatigue monitoring); Bartolomei et al., 2017 (recovery of neuromuscular vs autonomic function)</p>
+  </div>
+  <div class="page-footer">
+    <span>P247 | p247.io</span>
+    <span>3</span>
+  </div>
+</div>
+
+<!-- PAGE 4: BLIND SPOT 2 -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">Blind Spot 02</div>
+    <h2>Your wearable can't see what you ate. That matters more than your HRV.</h2>
+  </div>
+  <div class="section-body">
+    <p>You finish a hard evening session. You're wrecked. You shower, skip dinner because you're not hungry, and go to bed. Your wearable tracks a solid 7.5 hours of sleep, good HRV, low resting heart rate. Morning recovery score: green.</p>
+
+    <p>Except you just missed the most critical recovery window of the day.</p>
+
+    <div class="reality-check">
+      <h4>Reality check:</h4>
+      <p>Green recovery score + Skipped dinner + Heavy leg day yesterday = NOT recovered</p>
+    </div>
+
+    <h3>What Skipped Fuel Actually Costs You</h3>
+    <p>Post-training nutrition isn't optional for recovery. When you skip it, several things happen that your wearable will never detect:</p>
+
+    <p><strong>Glycogen stays depleted.</strong> Your muscles use glycogen as their primary fuel source during moderate-to-high intensity work. Without carbohydrates after training, those stores stay low. Your next session will feel harder than it should, and you'll fatigue earlier. Your wearable won't know why.</p>
+
+    <p><strong>Muscle protein synthesis gets blunted.</strong> The post-exercise window is when your body repairs and builds muscle tissue. Without adequate protein intake, this process stalls. You did the work but you're not getting the adaptation.</p>
+
+    <p><strong>Cortisol stays elevated.</strong> Training raises cortisol. Food helps bring it back down. Without it, cortisol stays high for longer, impairing sleep quality in ways that might not show up clearly in your sleep score.</p>
+
+    <h3>The Slow Burn: RED-S</h3>
+    <p>Relative Energy Deficiency in Sport builds over weeks and months, not days. It's the cumulative effect of consistently under-fuelling relative to training load. Hormonal disruption, bone density loss, immune suppression, performance decline. By the time you notice the symptoms, you're deep in it. No wearable on the market tracks energy availability.</p>
+
+    <div class="callout">
+      <p><strong>The gap:</strong> Your wearable has zero visibility into what you ate, when you ate, or whether your energy intake matches your training load. It will show you green while you under-fuel your way into a performance plateau.</p>
+    </div>
+
+    <p class="ref">References: Kerksick et al., 2013 (nutrient timing position stand); Mountjoy et al., 2018 (IOC consensus on RED-S)</p>
+  </div>
+  <div class="page-footer">
+    <span>P247 | p247.io</span>
+    <span>4</span>
+  </div>
+</div>
+
+<!-- PAGE 5: BLIND SPOT 3 -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">Blind Spot 03</div>
+    <h2>Training monotony will break you before your HRV dips</h2>
+  </div>
+  <div class="section-body">
+    <p>You find a routine that works. Same session structure, same intensity, same days. Your body adapts. Your HRV stays stable. Your recovery scores stay green. Everything looks fine.</p>
+
+    <p>Until it doesn't. And the collapse comes fast.</p>
+
+    <h3>Foster's Monotony Model</h3>
+    <p>Carl Foster's research from 1998 introduced a simple but powerful concept: training monotony. It's calculated as the mean daily training load divided by the standard deviation of that load across a week. High monotony means every day looks the same. Low variation. No easy days balancing hard days.</p>
+
+    <p>When monotony is high and total strain is also high, the product of those two numbers (what Foster called "training strain") predicts illness and overtraining with uncomfortable accuracy.</p>
+
+    <h3>Why Wearables Miss This</h3>
+    <p>Your wearable tracks daily strain. Some do weekly summaries. But none of them calculate monotony. They don't flag that your last three weeks have had near-identical daily loads with no meaningful variation. They don't distinguish between 500 weekly strain points spread evenly across 7 days versus the same 500 points distributed with proper hard/easy periodisation.</p>
+
+    <p>The athlete doing 70 units every single day and the athlete alternating between 100 and 40 might show identical weekly totals and similar recovery scores. But one of them is heading for a breakdown and the other isn't.</p>
+
+    <div class="callout">
+      <p><strong>The gap:</strong> Wearables track load. They don't track monotony. The pattern of your training matters as much as the volume, and no device on your wrist is watching the pattern.</p>
+    </div>
+
+    <p class="ref">Reference: Foster, 1998 (monitoring training in athletes with reference to overtraining syndrome)</p>
+  </div>
+  <div class="page-footer">
+    <span>P247 | p247.io</span>
+    <span>5</span>
+  </div>
+</div>
+
+<!-- PAGE 6: BLIND SPOT 4 -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">Blind Spot 04</div>
+    <h2>Three devices, three answers, zero synthesis</h2>
+  </div>
+  <div class="section-body">
+    <p>You wear an Oura ring to bed. A Whoop strap during training. You check your Garmin for GPS and training load. Each one gives you a recovery score. Each one is different. Sometimes wildly different.</p>
+
+    <p>This isn't a bug. It's a feature of how each device is designed.</p>
+
+    <h3>Different Devices, Different Philosophies</h3>
+    <p><strong>Oura</strong> is a sleep-first device. Its readiness score weighs sleep quality, HRV during sleep, body temperature, and resting heart rate. It's measuring how well you rested.</p>
+
+    <p><strong>Whoop</strong> is a strain-first device. Recovery is calculated primarily from HRV and resting heart rate, but it's contextualised against your recent strain. It's measuring how well you've absorbed recent training stress.</p>
+
+    <p><strong>Garmin</strong> is a stress-first device. Body Battery uses heart rate variability, stress, and activity to model your energy reserves throughout the day. It's measuring your current capacity.</p>
+
+    <p>Three different questions. Three different answers. All branded as "recovery."</p>
+
+    <h3>The Calibration Problem</h3>
+    <p>Each device also maintains its own rolling baseline. Oura recalibrates over weeks. Whoop adjusts to your recent 30-day trends. Garmin uses its own algorithms. When your fitness changes, each device adjusts at a different rate, creating periods where they actively disagree about your status.</p>
+
+    <p>None of them talk to each other. You're left to eyeball three dashboards and make your own call. Most athletes just default to whichever score tells them what they want to hear.</p>
+
+    <div class="callout">
+      <p><strong>The gap:</strong> No device synthesises data across platforms. You get three partial pictures and no composite view. The athlete becomes the integration layer, and that's a job humans do poorly.</p>
+    </div>
+
+    <p class="ref">References: Plews et al., 2013 (HRV training guidance in athletes); Halson, 2014 (monitoring training load and athlete wellbeing)</p>
+  </div>
+  <div class="page-footer">
+    <span>P247 | p247.io</span>
+    <span>6</span>
+  </div>
+</div>
+
+<!-- PAGE 7: BLIND SPOT 5 -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">Blind Spot 05</div>
+    <h2>Psychological fatigue degrades performance with identical HRV</h2>
+  </div>
+  <div class="section-body">
+    <p>You slept well. Your HRV is solid. Recovery score is green. But you just came off a brutal week at work, your kids are sick, and you've been running on stress and caffeine for days.</p>
+
+    <p>Your wearable says go. Your brain says no. Your brain is right.</p>
+
+    <h3>Mental Fatigue Is Real Fatigue</h3>
+    <p>Samuele Marcora's research demonstrated something that most athletes intuitively know but rarely act on: mental fatigue reduces endurance performance by roughly 15%, even when all cardiovascular and metabolic markers remain identical. Same heart rate. Same VO2. Same lactate. But perceived effort goes up and time to exhaustion goes down.</p>
+
+    <p>Your muscles and your cardiovascular system are fine. Your brain's ability to tolerate discomfort and sustain effort has been depleted by non-physical stress.</p>
+
+    <h3>What This Means for Training</h3>
+    <p>A mentally fatigued athlete training at their normal intensity is effectively training harder than intended. The physiological cost is the same, but the psychological cost is higher. This leads to accelerated burnout, reduced motivation, and poor decision-making during sessions (cutting corners on form, pushing through pain signals that should be respected).</p>
+
+    <p>Work deadlines, relationship stress, financial pressure, disrupted routines, poor commutes, screen overload. None of these register on your wearable. All of them affect your ability to train and recover.</p>
+
+    <h3>The Missing Input</h3>
+    <p>Some coaches use simple subjective wellness questionnaires: "Rate your mood, stress, sleep quality, motivation, and muscle soreness on a 1-5 scale." Five questions, thirty seconds. Research consistently shows these simple self-reports predict injury and illness risk better than any single wearable metric. Yet no major wearable platform integrates them into their recovery algorithms in a meaningful way.</p>
+
+    <div class="callout">
+      <p><strong>The gap:</strong> Your wearable reads your body. It cannot read your mind. And when your mind is cooked, your body's numbers are misleading.</p>
+    </div>
+
+    <div class="reality-check">
+      <h4>Reality Check</h4>
+      <p>Green recovery + 60hr work week + sick kids + 3 nights of broken sleep<br>
+      <strong style="color: #f87171; font-size: 1rem;">= 15% performance drop (same heart rate, same VO2)</strong></p>
+    </div>
+
+    <p class="ref">Reference: Marcora et al., 2009 (mental fatigue impairs physical performance in humans)</p>
+  </div>
+  <div class="page-footer">
+    <span>P247 | p247.io</span>
+    <span>7</span>
+  </div>
+</div>
+
+<!-- PAGE 8: BLIND SPOT 6 -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-number">Blind Spot 06</div>
+    <h2>Injuries change everything about your data and your wearable has no idea</h2>
+  </div>
+  <div class="section-body">
+    <p>You roll your ankle on a trail run. It's not serious enough to stop training entirely, so you modify. You shift to upper body work, maybe some cycling, maybe you just push through with a compression sleeve and pretend it's fine.</p>
+
+    <p>Your wearable keeps scoring your recovery as if nothing happened. Because as far as it can tell, nothing did.</p>
+
+    <h3>The Compensation Cascade</h3>
+    <p>When something hurts, you move differently. This is automatic. You don't decide to shift load off your injured ankle. Your nervous system does it for you. Suddenly your opposite hip is absorbing force it wasn't designed to handle at that volume. Your gait shortens. Your cadence changes. You're loading tissues asymmetrically without realising it.</p>
+
+    <p>This is how a minor injury becomes a second injury. A rolled ankle becomes a sore knee on the other leg three weeks later. A stiff shoulder from sleeping wrong becomes a tricep strain because you changed your pressing mechanics. Wearables track heart rate and movement quantity. They have zero visibility into movement quality or asymmetry.</p>
+
+    <h3>Tissue Healing vs Recovery Scores</h3>
+    <p>Your HRV bounces back in 24 to 48 hours. A grade 1 muscle strain takes 2 to 4 weeks to heal. Tendon injuries take months. Stress fractures take 6 to 12 weeks. These timelines don't care about your recovery score.</p>
+
+    <p>An athlete with a mild hamstring strain will see green recovery scores within days. Their hamstring is still repairing. If they trust the green light and sprint, they're likely to re-injure the same tissue at a worse grade. The wearable saw calm autonomic function and called it recovered. The tissue told a completely different story.</p>
+
+    <h3>Training Around Injury Looks Like Recovery</h3>
+    <p>When you're injured and drop intensity, your wearable interprets the reduced strain as easy training. Recovery scores go up. Strain comes down. Everything looks healthy. But the reason for the reduced output is damage, not fitness. Your device can't tell the difference between "I went easy because it's a deload week" and "I went easy because my knee won't let me squat."</p>
+
+    <p>This creates a false confidence loop. You see green scores, feel like you should be doing more, push back into full training too early, and re-injure. Athletes who self-coach using wearable data are particularly vulnerable to this pattern because there's no external check on the decision.</p>
+
+    <div class="callout">
+      <p><strong>The gap:</strong> Your wearable cannot detect injury, track tissue healing, identify compensation patterns, or distinguish between intentional deload and pain-limited output. It will show you green while you train yourself into a worse injury.</p>
+    </div>
+
+    <p class="ref">References: Heiderscheit et al., 2010 (hamstring strain injury rehabilitation and prevention); Hewett et al., 2005 (biomechanical measures of neuromuscular control and ACL injury risk)</p>
+  </div>
+  <div class="page-footer">
+    <span>P247 | p247.io</span>
+    <span>8</span>
+  </div>
+</div>
+
+<!-- PAGE 9: THE FRAMEWORK -->
+<div class="page content-page">
+  <h2>The Framework: When Green Means Go (and When It Doesn't)</h2>
+
+  <p>Knowing the blind spots is useful. Having a decision framework is better. Here's a simple model you can use tomorrow morning when you check your score and decide what to do with your session.</p>
+
+  <p>This isn't complicated. It combines your wearable data (which is still useful, just incomplete) with three things your device can't measure: how you actually feel, what's going on in your life, and whether you're carrying an injury.</p>
+
+  <table class="framework-table">
+    <thead>
+      <tr>
+        <th>Wearable Signal</th>
+        <th>How You Feel</th>
+        <th>Decision</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="signal-green">Green</span></td>
+        <td>Great. Motivated. Muscles feel ready.</td>
+        <td><strong>Train as planned.</strong> Everything aligns. Execute the session.</td>
+      </tr>
+      <tr>
+        <td><span class="signal-green">Green</span></td>
+        <td>Something feels off. Legs heavy. Low motivation. Stressed.</td>
+        <td><strong>Drop intensity by 20%.</strong> Your nervous system recovered. Something else didn't. Respect the mismatch.</td>
+      </tr>
+      <tr>
+        <td><span class="signal-yellow">Yellow</span> / <span class="signal-red">Red</span></td>
+        <td>Actually feel fine. Muscles good. Head clear.</td>
+        <td><strong>Check the trend.</strong> One bad reading isn't a pattern. Warm up, assess after 10 minutes, and decide then. If the trend has been declining for 3+ days, back off regardless.</td>
+      </tr>
+      <tr>
+        <td><span class="signal-any">Any colour</span></td>
+        <td>Mentally cooked. Exhausted. Can't face it.</td>
+        <td><strong>Rest day.</strong> No negotiation. Psychological fatigue is real fatigue. Your wearable doesn't see it. You do. Trust yourself over the number.</td>
+      </tr>
+      <tr>
+        <td><span class="signal-any">Any colour</span></td>
+        <td>Carrying an injury. Modified training. Something still hurts.</td>
+        <td><strong>Ignore the score entirely.</strong> Follow tissue healing timelines and pain signals, not recovery metrics. Your wearable doesn't know you're injured. Don't let a green light override what your body is telling you.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>The Principle Behind the Framework</h3>
+  <p>Your wearable score is one input, not the decision. It tells you about your autonomic nervous system recovery. You need to layer in: how your muscles feel (peripheral fatigue), whether you fuelled properly (nutrition), what your training pattern looks like (monotony), where your head is at (psychological readiness), and whether you're carrying an injury that your device can't see.</p>
+
+  <p>When the score and your subjective feel agree, act with confidence. When they disagree, always err on the side of the more conservative signal. The cost of one missed session is zero. The cost of an injury from ignoring warning signs is weeks or months.</p>
+
+  <h3>A Note on Honesty</h3>
+  <p>This framework only works if you're honest with yourself. "Something feels off" is not the same as "I don't feel like training today." Learn to tell the difference. The first is your body sending a signal. The second is your brain negotiating. Both are valid, but they require different responses.</p>
+
+  <div class="page-footer">
+    <span>P247 | p247.io</span>
+    <span>9</span>
+  </div>
+</div>
+
+<!-- PAGE 10: WHAT WOULD BETTER LOOK LIKE -->
+<div class="page content-page">
+  <h2>What Would Better Look Like?</h2>
+
+  <p>You don't need another device. You have enough hardware. What's missing is an interpretation layer that takes everything you're already collecting and makes sense of it together.</p>
+
+  <p>Imagine a system that knows your Oura sleep score was 82 but also knows you skipped dinner after a hard session. That sees your Whoop recovery is green but flags that your training monotony has been climbing for two weeks. That combines your Garmin training load with a 30-second subjective check-in and tells you that today's green light is actually amber.</p>
+
+  <p>That's not science fiction. It's just data integration with the right context.</p>
+
+  <h3>What the Right System Would Do</h3>
+  <p>It would pull your wearable data from whatever devices you use. It would combine that with your training plan, your nutrition habits, and a quick daily check-in on how you actually feel. Then it would give you a single, contextualised recommendation that accounts for all six blind spots, not just the autonomic nervous system slice your wearable sees.</p>
+
+  <p>It wouldn't replace your coach. It would give your coach (or you, if you self-coach) the full picture instead of a partial one.</p>
+
+  <div class="social-proof">
+    <p>Built for athletes from: Hyrox | CrossFit | Ironman | Marathon training</p>
+  </div>
+
+  <div class="cta-box">
+    <h3>Join the P247 Early Athlete Program</h3>
+    <ul>
+      <li>Early access to the platform</li>
+      <li>Data insights like this every week</li>
+      <li>Free beta access</li>
+      <li>Training intelligence tools</li>
+    </ul>
+    <span class="cta-arrow">→</span>
+    <a href="https://p247.io" class="cta-link">p247.io</a>
+  </div>
+
+  <p class="secondary" style="text-align: center; margin-top: 2rem;">We're building this for athletes who want more than a green light.</p>
+
+  <div class="page-footer">
+    <span>P247 | p247.io</span>
+    <span>10</span>
+  </div>
+</div>
+
+<!-- PAGE 11: BACK COVER -->
+<div class="page back-cover">
+  <div class="logo-text">P<span>247</span></div>
+  <p class="tagline">Performance intelligence for serious athletes.</p>
+  <div class="cover-divider" style="margin: 0 auto 2rem auto;"></div>
+  <p class="url">p247.io</p>
+  <p class="social">Follow us for more: @p247io</p>
+</div>
+
+</body>
+</html>
