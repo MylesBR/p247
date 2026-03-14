@@ -37,6 +37,8 @@
     padding: 0;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .page + .page { margin-top: 2rem; }
@@ -112,6 +114,9 @@
   /* Content Pages */
   .content-page {
     padding: 20mm 25mm 25mm 25mm;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .content-page h2 {
@@ -170,6 +175,9 @@
 
   .section-body {
     padding: 8mm 25mm 25mm 25mm;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .section-body h3 {
@@ -505,10 +513,8 @@
 
   /* Page number footer */
   .page-footer {
-    position: absolute;
-    bottom: 10mm;
-    left: 25mm;
-    right: 25mm;
+    margin-top: auto;
+    padding: 10mm 0 0 0;
     display: flex;
     justify-content: space-between;
     font-size: 0.7rem;
@@ -552,7 +558,7 @@
     }
 
     .page-footer {
-      position: fixed;
+      display: none;
     }
   }
 
@@ -764,8 +770,13 @@
 
     <p>None of them talk to each other. You're left to eyeball three dashboards and make your own call. Most athletes just default to whichever score tells them what they want to hear.</p>
 
+    <h3>What This Means in Practice</h3>
+    <p>The athlete who wears two devices and gets conflicting scores has to decide: do I trust the Oura or the Whoop today? Without understanding the philosophy behind each score, that decision is basically a coin flip coloured by motivation. And the one who only wears one device has the opposite problem: total confidence in a single partial measurement.</p>
+
+    <p>Coaches who work with wearable data see this constantly. The data is useful. The isolation of each data stream is the problem. When you add nutrition, training load, and subjective feel to the picture, disagreements between devices often resolve themselves because you can see which one's score better reflects reality that day.</p>
+
     <div class="callout">
-      <p><strong>The gap:</strong> No device synthesises data across platforms. You get three partial pictures and no composite view. The athlete becomes the integration layer, and that's a job humans do poorly.</p>
+      <p><strong>The gap:</strong> Each device answers a different question about your readiness. Without understanding which question each one is asking, you're reading three reports and guessing which one applies today.</p>
     </div>
 
     <p class="ref">References: Plews et al., 2013 (HRV training guidance in athletes); Halson, 2014 (monitoring training load and athlete wellbeing)</p>
@@ -935,15 +946,14 @@
   </div>
 
   <div class="cta-box">
-    <h3>Join the P247 Early Athlete Program</h3>
+    <h3>Join the P247 Beta (Limited to First 200 Athletes)</h3>
     <ul>
       <li>Early access to the platform</li>
-      <li>Data insights like this every week</li>
-      <li>Free beta access</li>
-      <li>Training intelligence tools</li>
+      <li>Weekly data insights delivered to your inbox</li>
+      <li>Free for beta participants</li>
+      <li>Shape the product before public launch</li>
     </ul>
-    <span class="cta-arrow">→</span>
-    <a href="https://p247.io" class="cta-link">p247.io</a>
+    <a href="https://p247.io" class="cta-link">Claim your spot → p247.io</a>
   </div>
 
   <p class="secondary" style="text-align: center; margin-top: 2rem;">We're building this for athletes who want more than a green light.</p>

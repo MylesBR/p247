@@ -37,6 +37,8 @@
     padding: 0;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .page + .page { margin-top: 2rem; }
@@ -120,6 +122,9 @@
   /* Content pages */
   .content-page {
     padding: 50px 55px 60px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .content-page .page-header {
@@ -540,10 +545,8 @@
 
   /* Page footer */
   .page-foot {
-    position: absolute;
-    bottom: 30px;
-    left: 55px;
-    right: 55px;
+    margin-top: auto;
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
     font-size: 0.7rem;
@@ -577,6 +580,10 @@
     @page {
       size: A4;
       margin: 0;
+    }
+
+    .page-foot {
+      display: none;
     }
   }
 
@@ -613,10 +620,6 @@
 
   <p class="lead">GLP-1 medications work. Semaglutide, tirzepatide, and their branded counterparts (Ozempic, Wegovy, Mounjaro, Zepbound) have changed millions of lives. The weight comes off. The bloodwork improves. People feel better than they have in years.</p>
 
-  <div class="callout disclaimer">
-    <p><strong>This guide is not anti-medication.</strong> It's about tracking the right data while using GLP-1 therapy so you get the best possible outcome.</p>
-  </div>
-
   <p>And if you wear a Whoop, Garmin, or Oura Ring, the data looks incredible. Recovery scores are green. Resting heart rate drops. HRV improves. Sleep gets better. Every metric your wearable tracks tells the same story: you're winning.</p>
 
   <p>But there's a gap between what your wearable can measure and what's actually happening inside your body. A gap that matters more the longer you're on GLP-1 medication.</p>
@@ -625,7 +628,7 @@
     <p>Research shows that 15 to 39% of weight lost on GLP-1 medications is lean mass, not fat. Your wearable has no way to detect this.</p>
   </div>
 
-  <p>That statistic is not a reason to stop your medication. It's a reason to pay closer attention to what you're losing, not just how much.</p>
+  <p>That statistic is not a reason to stop your medication. It's a reason to pay closer attention to what you're losing, not just how much. GLP-1 medications are genuinely effective. This guide is about making them work better by tracking what matters.</p>
 
   <div class="quick-wins">
     <h3>Your 5 quick wins (details inside):</h3>
@@ -753,7 +756,7 @@
     <p>The "great recovery" your wearable was reporting for months was partly a symptom of losing active tissue, not a sign that everything was going well. By the time the stall hits, you're weeks past the point where course correction would have been simple.</p>
   </div>
 
-  <p>This isn't a medication failure. It's an information failure. The data to predict this outcome existed in the gap between your wearable, your nutrition log, and a body composition scan. Nobody connected those dots because no tool does.</p>
+  <p>This isn't a medication failure. It's a timing failure. The warning signs were there in the first 6 weeks. They just weren't visible in any single metric.</p>
 
   <p>Catching lean mass loss at week six is straightforward: adjust protein, add resistance training, modify dose timing. Catching it at month five means rebuilding muscle from a lower metabolic baseline while trying to maintain the progress you've made. It's solvable, but it's harder than it needed to be.</p>
 
@@ -767,12 +770,12 @@
 <div class="page content-page">
   <div class="page-header">
     <div class="section-label">Blind Spot 4 of 5</div>
-    <h2>Five data streams, zero synthesis</h2>
+    <h2>Your apps are lying by omission</h2>
   </div>
 
   <div class="section-number">4</div>
 
-  <p>GLP-1 users tend to be data-rich. In many cases, they're tracking more health data than competitive athletes. Consider what a typical user has access to:</p>
+  <p>Each app you use tells you a true story. But it only tells you its story. And the gaps between those stories are where the real problems hide. Consider what a typical GLP-1 user has access to:</p>
 
   <p><strong>Wearable data</strong> (Whoop, Garmin, Oura): heart rate, HRV, sleep stages, recovery scores, strain, SpO2, skin temperature.</p>
 
@@ -788,7 +791,7 @@
 
   <p>Five rich data streams. Five separate apps. Five separate dashboards. Zero integration between them.</p>
 
-  <p>Nobody is connecting protein intake to lean mass trends. Nobody is cross-referencing recovery scores with training volume and caloric intake. Nobody is flagging that your HRV improved while your training frequency dropped (which means deconditioning, not recovery).</p>
+  <p>Here's a real example: your HRV improves while your training frequency drops. Your wearable calls that recovery. But it's actually deconditioning. You stopped exercising, so your nervous system calmed down. The wearable can't tell the difference because it doesn't see your training log. Your training app can't flag it because it doesn't see your HRV. Both apps are correct. Both are misleading.</p>
 
   <div class="callout stat">
     <p>The question that actually matters: "Given my current protein intake, training load, sleep quality, and recovery trend, am I on track to retain lean mass?" No existing tool can answer this.</p>
