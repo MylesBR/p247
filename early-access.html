@@ -1,0 +1,422 @@
+---
+layout: landing
+title: "Early Access — P247"
+description: "Connect your wearable, nutrition, and body comp data. See what's actually happening to your muscle mass. Not in 12 weeks. Now."
+permalink: /early-access/
+---
+
+<style>
+  .ea-header {
+    text-align: center;
+    padding: 20px 24px 0;
+  }
+  .ea-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .ea-logo:hover { opacity: 1; }
+
+  .ea-hero {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 60px 24px 0;
+    text-align: center;
+  }
+  .ea-hero h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.12;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .ea-hero h1 .accent { color: #00B4FF; }
+  .ea-hero .sub {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #a0b4cc;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+
+  /* Form */
+  .ea-form {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .ea-form .fields {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .ea-form input {
+    flex: 1;
+    background: #1a2540;
+    border: 1px solid #2d3f5e;
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    -webkit-appearance: none;
+    transition: border-color 0.15s;
+  }
+  .ea-form input::placeholder { color: #5a6f8a; }
+  .ea-form input:focus { outline: none; border-color: #00B4FF; }
+  .ea-form button {
+    width: 100%;
+    background: #FF6B00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .ea-form button:hover { background: #e05e00; transform: translateY(-1px); }
+  .ea-form button:active { transform: translateY(0); }
+  .ea-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .ea-form .form-msg {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+  }
+  .ea-form .form-msg.success { color: #4ADE80; }
+  .ea-form .form-msg.error { color: #ff6b6b; }
+  .ea-note {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #4a5568;
+    margin-top: 14px;
+  }
+
+  /* Problem section */
+  .ea-problem {
+    max-width: 600px;
+    margin: 72px auto 0;
+    padding: 0 24px;
+  }
+  .ea-problem h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+    color: #e2e8f0;
+  }
+  .ea-problem-grid {
+    display: grid;
+    gap: 16px;
+  }
+  .ea-problem-card {
+    background: #111827;
+    border: 1px solid #1e2d45;
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .ea-problem-card .icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .ea-problem-card .text {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #c0cee0;
+  }
+  .ea-problem-card .text strong { color: #fff; font-weight: 600; }
+
+  /* Voices section */
+  .ea-voices {
+    max-width: 600px;
+    margin: 64px auto 0;
+    padding: 0 24px;
+  }
+  .ea-voices h2 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .ea-voice {
+    border-left: 3px solid #00B4FF;
+    padding: 14px 20px;
+    margin-bottom: 14px;
+    background: rgba(0, 180, 255, 0.04);
+    border-radius: 0 8px 8px 0;
+  }
+  .ea-voice q {
+    font-style: italic;
+    color: #c0cee0;
+    font-size: 0.93rem;
+    line-height: 1.55;
+    quotes: none;
+  }
+  .ea-voice .src {
+    font-size: 0.78rem;
+    color: #4a5568;
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* What you get */
+  .ea-what {
+    max-width: 600px;
+    margin: 64px auto 0;
+    padding: 0 24px;
+  }
+  .ea-what h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 28px;
+    color: #e2e8f0;
+  }
+  .ea-what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .ea-what-item {
+    text-align: center;
+    padding: 24px 16px;
+    background: #111827;
+    border: 1px solid #1e2d45;
+    border-radius: 10px;
+  }
+  .ea-what-item .wi-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .ea-what-item .wi-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: #fff; }
+  .ea-what-item .wi-desc { font-size: 0.82rem; color: #7a8ba5; line-height: 1.5; }
+
+  /* Bottom CTA */
+  .ea-bottom {
+    max-width: 520px;
+    margin: 72px auto 0;
+    padding: 0 24px 80px;
+    text-align: center;
+  }
+  .ea-bottom h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .ea-bottom p {
+    color: #718096;
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+
+  /* Footer */
+  .ea-footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.78rem;
+    color: #2d3f5e;
+    border-top: 1px solid #1a2540;
+  }
+  .ea-footer a { color: #4a5568; text-decoration: none; margin: 0 8px; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .ea-hero h1 { font-size: 1.9rem; }
+    .ea-hero { padding-top: 40px; }
+    .ea-form .fields { flex-direction: column; }
+    .ea-what-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- Logo -->
+<div class="ea-header">
+  <a href="/" class="ea-logo">
+    <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="14" fill="#0A0F1E"/>
+      <text x="10" y="50" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="48" font-weight="800" fill="#00B4FF">P</text>
+    </svg>
+    <svg width="90" height="34" viewBox="0 0 200 68" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="42" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="46" font-weight="800" letter-spacing="-2" fill="#fff">P<tspan fill="#00B4FF">247</tspan></text>
+    </svg>
+  </a>
+</div>
+
+<!-- Hero -->
+<section class="ea-hero">
+  <h1>Stop flying blind<br>between <span class="accent">body comp scans</span></h1>
+  <p class="sub">We connect your wearable, nutrition, and body composition data so you can see what's actually happening to your muscle mass. Not in 12 weeks. Now.</p>
+
+  <form id="ea-form-top" class="ea-form" onsubmit="return submitEAForm(event, this)">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Get early access</button>
+    <p class="form-msg"></p>
+  </form>
+  <p class="ea-note">Free to join. No card required. No spam.</p>
+</section>
+
+<!-- Problem cards -->
+<section class="ea-problem">
+  <h2>The problem with wearable data</h2>
+  <div class="ea-problem-grid">
+    <div class="ea-problem-card">
+      <span class="icon">📊</span>
+      <div class="text"><strong>Five apps, zero answers.</strong> Your watch, scale, food tracker, and recovery app all measure something. None of them talk to each other.</div>
+    </div>
+    <div class="ea-problem-card">
+      <span class="icon">🟢</span>
+      <div class="text"><strong>Green score, bad session.</strong> You got a 90% recovery. But you slept four hours and skipped dinner. The number lied because it can't see the full picture.</div>
+    </div>
+    <div class="ea-problem-card">
+      <span class="icon">💪</span>
+      <div class="text"><strong>Losing muscle, gaining weight.</strong> On a GLP-1? Your scale says progress. But without body comp context, you could be losing the wrong kind of weight.</div>
+    </div>
+    <div class="ea-problem-card">
+      <span class="icon">🤖</span>
+      <div class="text"><strong>Manual data exports.</strong> You're copying CSVs into ChatGPT just to get an insight your $30/month wearable should already give you.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Community voices -->
+<section class="ea-voices">
+  <h2>People already doing this manually</h2>
+  <div class="ea-voice">
+    <q>I woke up at 3am and couldn't fall back asleep for two hours. Felt like shit. But I got a green recovery. Why?</q>
+    <span class="src">r/whoop</span>
+  </div>
+  <div class="ea-voice">
+    <q>Started exporting my data into ChatGPT to get actual insights. It's insane that I have to do this manually when I'm paying for three subscriptions.</q>
+    <span class="src">r/whoop</span>
+  </div>
+  <div class="ea-voice">
+    <q>I'm thinking about getting generic sensors to upload data to the cloud and get an LLM to crunch it based on my own requirements.</q>
+    <span class="src">r/whoop, March 2026</span>
+  </div>
+  <div class="ea-voice">
+    <q>I have five different apps telling me five different things. None of them talk to each other.</q>
+    <span class="src">r/GarminWatches</span>
+  </div>
+</section>
+
+<!-- What you get -->
+<section class="ea-what">
+  <h2>What early access gets you</h2>
+  <div class="ea-what-grid">
+    <div class="ea-what-item">
+      <div class="wi-icon">☀️</div>
+      <div class="wi-title">Morning brief</div>
+      <div class="wi-desc">One message before your session. Every signal your wearable missed, explained in plain English.</div>
+    </div>
+    <div class="ea-what-item">
+      <div class="wi-icon">🔗</div>
+      <div class="wi-title">Connected data</div>
+      <div class="wi-desc">Wearable + nutrition + body comp in one place. No more copy-pasting CSVs.</div>
+    </div>
+    <div class="ea-what-item">
+      <div class="wi-icon">📈</div>
+      <div class="wi-title">Trend tracking</div>
+      <div class="wi-desc">See if your training is building muscle or just burning you out. Week over week, not guess over guess.</div>
+    </div>
+    <div class="ea-what-item">
+      <div class="wi-icon">🎯</div>
+      <div class="wi-title">First in line</div>
+      <div class="wi-desc">Early access members shape the product. Your feedback decides what gets built next.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<section class="ea-bottom">
+  <h2>We're building the interpretation layer<br>your wearable is missing.</h2>
+  <p>Join the waitlist. Be first to know when we launch.</p>
+
+  <form id="ea-form-bottom" class="ea-form" onsubmit="return submitEAForm(event, this)">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Get early access</button>
+    <p class="form-msg"></p>
+  </form>
+  <p class="ea-note">No card required. No spam. Unsubscribe anytime.</p>
+</section>
+
+<!-- Footer -->
+<footer class="ea-footer">
+  <a href="https://x.com/p247ai">X / Twitter</a>
+  <a href="https://instagram.com/p247ai">Instagram</a>
+  <a href="/">p247.io</a>
+  <br><br>
+  © {{ 'now' | date: "%Y" }} P247. All rights reserved.
+</footer>
+
+<script>
+function submitEAForm(e, form) {
+  e.preventDefault();
+  var btn = form.querySelector('button');
+  var msg = form.querySelector('.form-msg');
+  var firstname = form.querySelector('input[name="firstname"]').value.trim();
+  var email = form.querySelector('input[name="email"]').value.trim();
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  msg.style.display = 'none';
+
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fields: [
+        { name: 'firstname', value: firstname },
+        { name: 'email', value: email }
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: 'P247 Early Access'
+      }
+    })
+  })
+  .then(function(res) {
+    if (res.ok || res.status === 200) {
+      form.querySelector('.fields').style.display = 'none';
+      btn.style.display = 'none';
+      msg.textContent = "You're in. We'll reach out before launch.";
+      msg.className = 'form-msg success';
+      msg.style.display = 'block';
+
+      // GA4 event
+      if (typeof gtag === 'function') {
+        gtag('event', 'sign_up', {
+          method: 'early_access',
+          page_location: window.location.href
+        });
+      }
+    } else {
+      throw new Error('Submission failed');
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Get early access';
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.className = 'form-msg error';
+    msg.style.display = 'block';
+  });
+
+  return false;
+}
+</script>
