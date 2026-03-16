@@ -1,0 +1,414 @@
+---
+layout: landing
+title: "What Your Wearable Isn't Telling You | P247"
+description: "A data-driven guide to the blind spots in recovery scores, HRV, and training load. Free download."
+permalink: /guide/
+---
+
+<style>
+  .g-header {
+    text-align: center;
+    padding: 20px 24px 0;
+  }
+  .g-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .g-logo:hover { opacity: 1; }
+
+  /* Hero */
+  .g-hero {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 60px 24px 0;
+    text-align: center;
+  }
+  .g-hero h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.12;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+  .g-hero h1 .accent { color: #00B4FF; }
+  .g-hero .sub {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #a0b4cc;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+
+  /* Form */
+  .g-form {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .g-form .fields {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .g-form input {
+    flex: 1;
+    background: #1a2540;
+    border: 1px solid #2d3f5e;
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    -webkit-appearance: none;
+    transition: border-color 0.15s;
+  }
+  .g-form input::placeholder { color: #5a6f8a; }
+  .g-form input:focus { outline: none; border-color: #00B4FF; }
+  .g-form button {
+    width: 100%;
+    background: #FF6B00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .g-form button:hover { background: #e05e00; transform: translateY(-1px); }
+  .g-form button:active { transform: translateY(0); }
+  .g-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .g-form .form-msg {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+  }
+  .g-form .form-msg.success { color: #4ADE80; }
+  .g-form .form-msg.error { color: #ff6b6b; }
+  .g-note {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #4a5568;
+    margin-top: 14px;
+  }
+  .g-social-proof {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #00B4FF;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  /* Hook */
+  .g-hook {
+    max-width: 600px;
+    margin: 72px auto 0;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .g-hook p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #c0cee0;
+  }
+  .g-hook p strong { color: #fff; }
+
+  /* Blind spots list */
+  .g-spots {
+    max-width: 600px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+  }
+  .g-spots h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+    color: #e2e8f0;
+  }
+  .g-spots-grid {
+    display: grid;
+    gap: 14px;
+  }
+  .g-spot-card {
+    background: #111827;
+    border: 1px solid #1e2d45;
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .g-spot-card .num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 180, 255, 0.12);
+    color: #00B4FF;
+    font-weight: 800;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .g-spot-card .text {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #c0cee0;
+  }
+  .g-spot-card .text strong { color: #fff; font-weight: 600; }
+
+  /* Who it's for */
+  .g-audience {
+    max-width: 600px;
+    margin: 64px auto 0;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .g-audience h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+    color: #e2e8f0;
+  }
+  .g-audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .g-audience-item {
+    background: #111827;
+    border: 1px solid #1e2d45;
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .g-audience-item .ai-icon { font-size: 1.4rem; margin-bottom: 8px; }
+  .g-audience-item .ai-label { font-weight: 600; font-size: 0.9rem; color: #fff; }
+  .g-audience-item.wide {
+    grid-column: 1 / -1;
+    max-width: 260px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Bottom CTA */
+  .g-bottom {
+    max-width: 520px;
+    margin: 72px auto 0;
+    padding: 0 24px 80px;
+    text-align: center;
+  }
+  .g-bottom h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .g-bottom p {
+    color: #718096;
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+
+  /* Footer */
+  .g-footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.78rem;
+    color: #2d3f5e;
+    border-top: 1px solid #1a2540;
+  }
+  .g-footer a { color: #4a5568; text-decoration: none; margin: 0 8px; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .g-hero h1 { font-size: 1.9rem; }
+    .g-hero { padding-top: 40px; }
+    .g-form .fields { flex-direction: column; }
+    .g-audience-grid { grid-template-columns: 1fr; }
+    .g-audience-item.wide { max-width: 100%; }
+  }
+</style>
+
+<!-- Logo -->
+<div class="g-header">
+  <a href="/" class="g-logo">
+    <svg width="110" height="40" viewBox="0 0 200 68" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="48" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="52" font-weight="800" letter-spacing="-2" fill="#fff">P<tspan fill="#00B4FF">247</tspan></text>
+    </svg>
+  </a>
+</div>
+
+<!-- Hero -->
+<section class="g-hero">
+  <h1>What Your Wearable<br><span class="accent">Isn't Telling You</span></h1>
+  <p class="sub">A data-driven guide to the blind spots in recovery scores, HRV, and training load.</p>
+
+  <form id="g-form-top" class="g-form" onsubmit="return submitGuideForm(event, this)">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Download the guide</button>
+    <p style="font-size: 0.78rem; color: #4a5568; margin-top: 6px; text-align: center;">Instant download</p>
+    <p class="form-msg"></p>
+  </form>
+  <p class="g-social-proof">Join 1,200+ athletes learning to interpret their data better</p>
+</section>
+
+<!-- Hook -->
+<section class="g-hook">
+  <p>You track everything. HRV. Sleep. Recovery scores. Training load.<br><br><strong>But the most important signals for performance aren't tracked by any wearable.</strong></p>
+</section>
+
+<!-- The 6 Blind Spots -->
+<section class="g-spots">
+  <h2>The 6 blind spots in your data</h2>
+  <div class="g-spots-grid">
+    <div class="g-spot-card">
+      <div class="num">1</div>
+      <div class="text"><strong>Muscle damage vs nervous system recovery.</strong> HRV bounces back in 24 hours. Muscle tissue takes 48 to 96. Your green score doesn't mean your legs are ready for heavy squats.</div>
+    </div>
+    <div class="g-spot-card">
+      <div class="num">2</div>
+      <div class="text"><strong>Nutrition and glycogen depletion.</strong> Your wearable has no idea what you ate. Calorie deficit and low glycogen tank performance regardless of recovery score.</div>
+    </div>
+    <div class="g-spot-card">
+      <div class="num">3</div>
+      <div class="text"><strong>Training monotony and overtraining risk.</strong> Same intensity every day. Your watch sees volume but not variety. High monotony with high load is the fastest path to breakdown.</div>
+    </div>
+    <div class="g-spot-card">
+      <div class="num">4</div>
+      <div class="text"><strong>Psychological fatigue.</strong> Work stress triggers the same cortisol response as a hard session. Your recovery score can't tell the difference between a bad week at work and overtraining.</div>
+    </div>
+    <div class="g-spot-card">
+      <div class="num">5</div>
+      <div class="text"><strong>Injury compensation patterns.</strong> Favouring one side. Altered gait. Subtle movement changes. Your wearable tracks output but not quality of movement.</div>
+    </div>
+    <div class="g-spot-card">
+      <div class="num">6</div>
+      <div class="text"><strong>Fragmented athlete data.</strong> Five apps, zero synthesis. The biggest blind spot is that nothing connects your wearable, nutrition, and body comp data together.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Who this is for -->
+<section class="g-audience">
+  <h2>Who this guide is for</h2>
+  <div class="g-audience-grid">
+    <div class="g-audience-item">
+      <div class="ai-icon">🏋️</div>
+      <div class="ai-label">Hybrid athletes</div>
+    </div>
+    <div class="g-audience-item">
+      <div class="ai-icon">🏃</div>
+      <div class="ai-label">Hyrox competitors</div>
+    </div>
+    <div class="g-audience-item">
+      <div class="ai-icon">🚴</div>
+      <div class="ai-label">Endurance athletes</div>
+    </div>
+    <div class="g-audience-item">
+      <div class="ai-icon">⌚</div>
+      <div class="ai-label">Wearable data users</div>
+    </div>
+    <div class="g-audience-item wide">
+      <div class="ai-icon">📋</div>
+      <div class="ai-label">Self-coached athletes</div>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<section class="g-bottom">
+  <h2>Stop making decisions with half the data.</h2>
+  <p>Free. No spam. Just useful data insights.</p>
+
+  <form id="g-form-bottom" class="g-form" onsubmit="return submitGuideForm(event, this)">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Download the guide</button>
+    <p style="font-size: 0.78rem; color: #4a5568; margin-top: 6px; text-align: center;">Instant download</p>
+    <p class="form-msg"></p>
+  </form>
+  <p class="g-social-proof">Join 1,200+ athletes learning to interpret their data better</p>
+</section>
+
+<!-- Footer -->
+<footer class="g-footer">
+  <a href="https://x.com/p247ai">X / Twitter</a>
+  <a href="https://instagram.com/p247ai">Instagram</a>
+  <a href="/">p247.io</a>
+  <br><br>
+  © {{ 'now' | date: "%Y" }} P247. All rights reserved.
+</footer>
+
+<script>
+function submitGuideForm(e, form) {
+  e.preventDefault();
+  var btn = form.querySelector('button');
+  var msg = form.querySelector('.form-msg');
+  var firstname = form.querySelector('input[name="firstname"]').value.trim();
+  var email = form.querySelector('input[name="email"]').value.trim();
+
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  msg.style.display = 'none';
+
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fields: [
+        { name: 'firstname', value: firstname },
+        { name: 'email', value: email }
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: 'P247 Guide Download'
+      }
+    })
+  })
+  .then(function(res) {
+    if (res.ok || res.status === 200) {
+      form.querySelector('.fields').style.display = 'none';
+      btn.style.display = 'none';
+      msg.innerHTML = "Check your inbox. The guide is on its way. ✅";
+      msg.className = 'form-msg success';
+      msg.style.display = 'block';
+
+      // GA4 event
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          method: 'guide_download',
+          page_location: window.location.href
+        });
+      }
+    } else {
+      throw new Error('Submission failed');
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Download the guide';
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.className = 'form-msg error';
+    msg.style.display = 'block';
+  });
+
+  return false;
+}
+</script>
