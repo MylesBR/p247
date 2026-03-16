@@ -4,6 +4,56 @@ title: P247 — Performance Intelligence for serious athletes
 ---
 
 <style>
+  /* EA form */
+  .ea-form {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .ea-form .fields {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .ea-form input {
+    flex: 1;
+    background: #1a2540;
+    border: 1px solid #2d3f5e;
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    -webkit-appearance: none;
+    transition: border-color 0.15s;
+  }
+  .ea-form input::placeholder { color: #5a6f8a; }
+  .ea-form input:focus { outline: none; border-color: #00B4FF; }
+  .ea-form button {
+    width: 100%;
+    background: #FF6B00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .ea-form button:hover { background: #e05e00; transform: translateY(-1px); }
+  .ea-form button:active { transform: translateY(0); }
+  .ea-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .ea-form .form-msg {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+  }
+  .ea-form .form-msg.success { color: #4ADE80; }
+  .ea-form .form-msg.error { color: #ff6b6b; }
+
   /* P247 signup form */
   .p247-form {
     max-width: 400px;
@@ -143,7 +193,14 @@ title: P247 — Performance Intelligence for serious athletes
   <h1>Your wearable measures.<br><span>P247 interprets.</span></h1>
   <p class="lead">One morning brief. Every signal your wearable misses. Before your session, not after.</p>
 
-  <div id="hp-form-top"></div>
+  <form class="ea-form" onsubmit="return submitForm(event, this, 'a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e')">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Get early access</button>
+    <p class="form-msg"></p>
+  </form>
   <p class="cta-note">Get your first morning brief free. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -180,7 +237,14 @@ title: P247 — Performance Intelligence for serious athletes
 <section class="bottom-cta">
   <h2>We're building the interpretation layer your wearable is missing.</h2>
   <p>Early access is opening soon.</p>
-  <div id="hp-form-bottom"></div>
+  <form class="ea-form" onsubmit="return submitForm(event, this, 'a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e')">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Get early access</button>
+    <p class="form-msg"></p>
+  </form>
   <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -203,26 +267,45 @@ title: P247 — Performance Intelligence for serious athletes
 </section>
 
 <script>
-// Legacy form JS removed - now using HubSpot embedded forms
-
+function submitForm(e, form, formId) {
+  e.preventDefault();
+  var btn = form.querySelector('button');
+  var msg = form.querySelector('.form-msg');
+  var firstname = form.querySelector('input[name="firstname"]').value.trim();
+  var email = form.querySelector('input[name="email"]').value.trim();
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  msg.style.display = 'none';
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/' + formId, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fields: [
+        { name: 'firstname', value: firstname },
+        { name: 'email', value: email }
+      ],
+      context: { pageUri: window.location.href, pageName: document.title }
+    })
+  })
+  .then(function(res) {
+    if (res.ok || res.status === 200) {
+      form.querySelector('.fields').style.display = 'none';
+      btn.style.display = 'none';
+      msg.textContent = "You're on the list. We'll be in touch before launch.";
+      msg.className = 'form-msg success';
+      msg.style.display = 'block';
+      if (typeof gtag === 'function') {
+        gtag('event', 'sign_up', { method: 'early_access', page_location: window.location.href });
+      }
+    } else { throw new Error('fail'); }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Get early access';
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.className = 'form-msg error';
+    msg.style.display = 'block';
+  });
   return false;
 }
-</script>
-
-
-<script>
-  window.addEventListener('load', function() {
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "21624983",
-      formId: "a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e",
-      target: "#hp-form-top"
-    });
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "21624983",
-      formId: "a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e",
-      target: "#hp-form-bottom"
-    });
-  });
 </script>

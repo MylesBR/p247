@@ -285,7 +285,14 @@ permalink: /early-access/
   <h1>You track everything.<br><span class="accent">Nothing connects it.</span></h1>
   <p class="sub">Five apps. Zero synthesis. P247 connects your wearable, nutrition, and body comp data so you know if you're losing fat or muscle. Not in 12 weeks. Now.</p>
 
-  <div id="ea-form-top"></div>
+  <form class="ea-form" onsubmit="return submitForm(event, this, 'c628d30d-de8c-40e3-be5e-d6893c36db0f')">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Get early access</button>
+    <p class="form-msg"></p>
+  </form>
   <p class="ea-note">Free to join. No card required. No spam.</p>
 </section>
 
@@ -365,7 +372,14 @@ permalink: /early-access/
   <h2>Stop flying blind between scans.</h2>
   <p>Join the waitlist. Be first to know when we launch.</p>
 
-  <div id="ea-form-bottom"></div>
+  <form class="ea-form" onsubmit="return submitForm(event, this, 'c628d30d-de8c-40e3-be5e-d6893c36db0f')">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Get early access</button>
+    <p class="form-msg"></p>
+  </form>
   <p class="ea-note">No card required. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -379,20 +393,45 @@ permalink: /early-access/
 </footer>
 
 <script>
-  window.addEventListener('load', function() {
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "21624983",
-      formId: "c628d30d-de8c-40e3-be5e-d6893c36db0f",
-      target: "#ea-form-top"
-    });
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "21624983",
-      formId: "c628d30d-de8c-40e3-be5e-d6893c36db0f",
-      target: "#ea-form-bottom"
-    });
+function submitForm(e, form, formId) {
+  e.preventDefault();
+  var btn = form.querySelector('button');
+  var msg = form.querySelector('.form-msg');
+  var firstname = form.querySelector('input[name="firstname"]').value.trim();
+  var email = form.querySelector('input[name="email"]').value.trim();
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  msg.style.display = 'none';
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/' + formId, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fields: [
+        { name: 'firstname', value: firstname },
+        { name: 'email', value: email }
+      ],
+      context: { pageUri: window.location.href, pageName: document.title }
+    })
+  })
+  .then(function(res) {
+    if (res.ok || res.status === 200) {
+      form.querySelector('.fields').style.display = 'none';
+      btn.style.display = 'none';
+      msg.textContent = "You're in. We'll reach out before launch.";
+      msg.className = 'form-msg success';
+      msg.style.display = 'block';
+      if (typeof gtag === 'function') {
+        gtag('event', 'sign_up', { method: 'early_access', page_location: window.location.href });
+      }
+    } else { throw new Error('fail'); }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Get early access';
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.className = 'form-msg error';
+    msg.style.display = 'block';
   });
+  return false;
+}
 </script>
-
-
