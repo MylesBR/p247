@@ -1,64 +1,25 @@
 ---
 layout: default
-title: "What Your Wearable Isn't Telling You | P247"
-description: "A data-driven guide to the blind spots in recovery scores, HRV, and training load. Free download."
+title: "6 Blind Spots Your Wearable Has | P247"
+description: "A free guide to the data gaps in recovery scores, HRV, and training load that every serious athlete should know about."
 permalink: /athletes/
 ---
 
 <style>
-  .g-header {
-    text-align: center;
-    padding: 20px 24px 0;
-  }
-  .g-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-  }
-  .g-logo:hover { opacity: 1; }
-
-  /* Hero */
-  .g-hero {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 60px 24px 0;
-    text-align: center;
-  }
-  .g-hero h1 {
-    font-size: 2.6rem;
-    font-weight: 800;
-    line-height: 1.12;
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
-    color: #fff;
-  }
-  .g-hero h1 .accent { color: #00B4FF; }
-  .g-hero .sub {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: #a0b4cc;
-    max-width: 520px;
-    margin: 0 auto 36px;
-  }
-
-  /* Form */
-  .g-form {
+  .ea-form {
     max-width: 420px;
     margin: 0 auto;
   }
-  .g-form .fields {
+  .ea-form .fields {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
   }
-  .g-form input {
+  .ea-form input {
     flex: 1;
-    background: #f7f9fc;
-    border: 1px solid #d0d5dd;
-    color: #333;
+    background: #1a2540;
+    border: 1px solid #2d3f5e;
+    color: #fff;
     border-radius: 8px;
     padding: 14px 16px;
     font-size: 1rem;
@@ -66,9 +27,9 @@ permalink: /athletes/
     -webkit-appearance: none;
     transition: border-color 0.15s;
   }
-  .g-form input::placeholder { color: #999; }
-  .g-form input:focus { outline: none; border-color: #00B4FF; }
-  .g-form button {
+  .ea-form input::placeholder { color: #5a6f8a; }
+  .ea-form input:focus { outline: none; border-color: #00B4FF; }
+  .ea-form button {
     width: 100%;
     background: #FF6B00;
     color: #fff;
@@ -81,273 +42,332 @@ permalink: /athletes/
     font-family: inherit;
     transition: background 0.15s, transform 0.1s;
   }
-  .g-form button:hover { background: #e05e00; transform: translateY(-1px); }
-  .g-form button:active { transform: translateY(0); }
-  .g-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-  .g-form .form-msg {
+  .ea-form button:hover { background: #e05e00; transform: translateY(-1px); }
+  .ea-form button:active { transform: translateY(0); }
+  .ea-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .ea-form .form-msg {
     margin-top: 14px;
     font-size: 0.95rem;
     font-weight: 600;
     text-align: center;
     display: none;
   }
-  .g-form .form-msg.success { color: #4ADE80; }
-  .g-form .form-msg.error { color: #ff6b6b; }
-  .g-note {
-    text-align: center;
-    font-size: 0.82rem;
-    color: #4a5568;
-    margin-top: 14px;
-  }
-  .g-social-proof {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #00B4FF;
-    margin-top: 10px;
-    font-weight: 500;
-  }
+  .ea-form .form-msg.success { color: #4ADE80; }
+  .ea-form .form-msg.error { color: #ff6b6b; }
 
-  /* Hook */
-  .g-hook {
-    max-width: 600px;
-    margin: 72px auto 0;
-    padding: 0 24px;
+  .hero-athlete {
+    background: #0A0F1E;
+    color: #fff;
+    padding: 80px 20px 64px;
     text-align: center;
+    margin: -1px;
+    border-radius: 10px;
   }
-  .g-hook p {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: #c0cee0;
-  }
-  .g-hook p strong { color: #0A0F1E; }
+  .hero-athlete h1 { font-size: 2.6rem; font-weight: 700; margin-bottom: 16px; color: #fff; line-height: 1.15; }
+  .hero-athlete h1 span { color: #00B4FF; }
+  .hero-athlete .lead { color: #c0cee0; max-width: 580px; margin: 0 auto 32px; font-size: 1.15rem; line-height: 1.55; }
+  .cta-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
 
-  /* Blind spots list */
-  .g-spots {
-    max-width: 600px;
+  .problem-section {
+    max-width: 700px;
     margin: 56px auto 0;
     padding: 0 24px;
   }
-  .g-spots h2 {
+  .problem-section h2 {
     font-size: 1.5rem;
     font-weight: 700;
+    color: #0A0F1E;
+    margin-bottom: 20px;
     text-align: center;
-    margin-bottom: 32px;
-    color: #e2e8f0;
   }
-  .g-spots-grid {
+  .problem-section p {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .problem-section .stat {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0A0F1E;
+    text-align: center;
+    padding: 24px;
+    background: #f0f6ff;
+    border-radius: 10px;
+    margin: 28px 0;
+  }
+  .problem-section .stat span { color: #FF6B00; font-size: 1.4rem; }
+
+  .data-section {
+    max-width: 700px;
+    margin: 48px auto 0;
+    padding: 0 24px;
+  }
+  .data-section h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0A0F1E;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .data-grid {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 500px) { .data-grid { grid-template-columns: 1fr; } }
+  .data-item {
+    background: #f7f9fc;
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 0.93rem;
+    color: #333;
+  }
+  .data-item strong { color: #0A0F1E; display: block; margin-bottom: 4px; }
+  .data-kicker {
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  .spots-section {
+    max-width: 700px;
+    margin: 48px auto 0;
+    padding: 0 24px;
+  }
+  .spots-section h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0A0F1E;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .spots-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 14px;
   }
-  .g-spot-card {
-    background: #111827;
-    border: 1px solid #1e2d45;
+  @media (max-width: 600px) { .spots-grid { grid-template-columns: 1fr; } }
+  .spot-card {
+    background: #f7f9fc;
+    border: 1px solid #e2e8f0;
     border-radius: 10px;
-    padding: 20px 24px;
+    padding: 20px 22px;
     display: flex;
     gap: 14px;
     align-items: flex-start;
   }
-  .g-spot-card .num {
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    background: rgba(0, 180, 255, 0.12);
-    color: #00B4FF;
-    font-weight: 800;
-    font-size: 0.9rem;
-    border-radius: 8px;
+  .spot-card .num {
+    background: #FF6B00;
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
   }
-  .g-spot-card .text {
-    font-size: 0.95rem;
+  .spot-card .text {
+    font-size: 0.93rem;
     line-height: 1.55;
-    color: #c0cee0;
+    color: #555;
   }
-  .g-spot-card .text strong { color: #0A0F1E; font-weight: 600; }
+  .spot-card .text strong { color: #0A0F1E; font-weight: 600; }
 
-  /* Who it's for */
-  .g-audience {
-    max-width: 600px;
-    margin: 64px auto 0;
-    padding: 0 24px;
-    text-align: center;
+  .proof-section {
+    max-width: 720px;
+    margin: 48px auto 0;
+    padding: 0 24px 48px;
   }
-  .g-audience h2 {
+  .proof-section h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #718096;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .proof-card {
+    border-left: 3px solid #00B4FF;
+    padding: 12px 20px;
+    background: #f7f9fc;
+    border-radius: 0 8px 8px 0;
+  }
+  .proof-card blockquote {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-style: italic;
+    color: #333;
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+  .proof-card .attribution {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 6px;
+    display: block;
+  }
+
+  .bottom-cta {
+    background: #0A0F1E;
+    padding: 48px 24px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0 -1px -1px;
+  }
+  .bottom-cta h2 {
+    color: #fff;
     font-size: 1.4rem;
     font-weight: 700;
-    margin-bottom: 28px;
-    color: #e2e8f0;
+    margin-bottom: 8px;
   }
-  .g-audience-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .g-audience-item {
-    background: #111827;
-    border: 1px solid #1e2d45;
-    border-radius: 10px;
-    padding: 18px 16px;
-    text-align: center;
-  }
-  .g-audience-item .ai-icon { font-size: 1.4rem; margin-bottom: 8px; }
-  .g-audience-item .ai-label { font-weight: 600; font-size: 0.9rem; color: #0A0F1E; }
-  .g-audience-item.wide {
-    grid-column: 1 / -1;
-    max-width: 260px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  /* Bottom CTA */
-  .g-bottom {
-    max-width: 520px;
-    margin: 72px auto 0;
-    padding: 0 24px 80px;
-    text-align: center;
-  }
-  .g-bottom h2 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-    color: #fff;
-  }
-  .g-bottom p {
-    color: #718096;
+  .bottom-cta p {
+    color: #a0aec0;
     font-size: 0.95rem;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
+  .bottom-cta .cta-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
 
-  /* Footer */
-  .g-footer {
-    text-align: center;
-    padding: 24px;
-    font-size: 0.78rem;
-    color: #2d3f5e;
-    border-top: 1px solid #1a2540;
-  }
-  .g-footer a { color: #4a5568; text-decoration: none; margin: 0 8px; }
+  .divider { border: none; border-top: 1px solid #eee; margin: 0 40px; }
 
-  /* Mobile */
   @media (max-width: 600px) {
-    .g-hero h1 { font-size: 1.9rem; }
-    .g-hero { padding-top: 40px; }
-    .g-form .fields { flex-direction: column; }
-    .g-audience-grid { grid-template-columns: 1fr; }
-    .g-audience-item.wide { max-width: 100%; }
+    .hero-athlete h1 { font-size: 1.8rem; }
+    .hero-athlete { padding: 48px 16px; }
+    .ea-form .fields { flex-direction: column; }
   }
 </style>
 
-<!-- Logo -->
-<div class="g-header">
-  <a href="/" class="g-logo">
-    <svg width="110" height="40" viewBox="0 0 200 68" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="48" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="52" font-weight="800" letter-spacing="-2" fill="#fff">P<tspan fill="#00B4FF">247</tspan></text>
-    </svg>
-  </a>
-</div>
+<!-- HERO -->
+<section class="hero-athlete">
+  <h1>Green score. Destroyed legs.<br><span>Here's why.</span></h1>
+  <p class="lead">Your recovery score said go. Your body said stop. There are 6 blind spots in your wearable data. We wrote a free guide covering every one of them.</p>
 
-<!-- Hero -->
-<section class="g-hero">
-  <h1>Green score. Destroyed legs.<br><span class="accent">Here's why.</span></h1>
-  <p class="sub">A free guide to the 6 things your wearable misses that actually determine whether you should train hard, back off, or rest.</p>
-
-  <form class="g-form" onsubmit="return submitForm(event, this, '5427ec1f-c4c3-4bce-a0d2-079874d6d005')">
+  <form class="ea-form" onsubmit="return submitForm(event, this, '5427ec1f-c4c3-4bce-a0d2-079874d6d005')">
     <div class="fields">
       <input type="text" name="firstname" placeholder="First name" required>
       <input type="email" name="email" placeholder="Email" required>
     </div>
-    <button type="submit">Download the guide</button>
+    <button type="submit">Download the free guide</button>
     <p class="form-msg"></p>
   </form>
-  <p class="g-social-proof">Be the first to get the guide</p>
+  <p class="cta-note">Free. No spam. Unsubscribe anytime.</p>
 </section>
 
-<!-- Hook -->
-<section class="g-hook">
-  <p>You track everything. HRV. Sleep. Recovery scores. Training load.<br><br><strong>But the most important signals for performance aren't tracked by any wearable.</strong></p>
+<!-- THE PROBLEM -->
+<section class="problem-section">
+  <h2>Your wearable tracks recovery. It doesn't track readiness.</h2>
+  <p>HRV bounces back in 24 hours. Muscle damage takes 48 to 96. Your watch measures nervous system recovery and reports it as a single score. That score has no idea what your legs, shoulders, or lower back went through yesterday.</p>
+  <div class="stat"><span>Green recovery</span> + severe muscle damage = the injury pattern nobody sees coming</div>
+  <p>This is why experienced athletes who track everything still overtrain, still get injured, and still blow up three weeks before their A race. The data isn't wrong. It's incomplete.</p>
 </section>
 
-<!-- The 6 Blind Spots -->
-<section class="g-spots">
-  <h2>The 6 blind spots in your data</h2>
-  <div class="g-spots-grid">
-    <div class="g-spot-card">
-      <div class="num">1</div>
-      <div class="text"><strong>Muscle damage vs nervous system recovery.</strong> HRV bounces back in 24 hours. Muscle tissue takes 48 to 96. Your green score doesn't mean your legs are ready for heavy squats.</div>
+<!-- THE DATA YOU ALREADY HAVE -->
+<section class="data-section">
+  <h2>You're tracking everything. Nothing connects it.</h2>
+  <div class="data-grid">
+    <div class="data-item">
+      <strong>Wearable</strong>
+      Whoop, Garmin, or Oura tracking sleep, HRV, resting heart rate, strain. Daily.
     </div>
-    <div class="g-spot-card">
+    <div class="data-item">
+      <strong>Training Load</strong>
+      Strava, TrainingPeaks, or your gym app logging volume, intensity, and progression.
+    </div>
+    <div class="data-item">
+      <strong>Nutrition</strong>
+      MyFitnessPal or Cronometer logging calories and macros. Maybe protein. Probably not fibre.
+    </div>
+    <div class="data-item">
+      <strong>Body Composition</strong>
+      DEXA or InBody every few months. The only way to see if your training is actually building muscle.
+    </div>
+  </div>
+  <p class="data-kicker">Four data streams. Four apps. Zero synthesis.</p>
+</section>
+
+<hr class="divider">
+
+<!-- 6 BLIND SPOTS -->
+<section class="spots-section">
+  <h2>The 6 blind spots in your wearable data</h2>
+  <div class="spots-grid">
+    <div class="spot-card">
+      <div class="num">1</div>
+      <div class="text"><strong>Muscle damage vs nervous system recovery.</strong> HRV bounces back in 24 hours. Muscle tissue takes 48 to 96. Your green score doesn't mean your legs are ready.</div>
+    </div>
+    <div class="spot-card">
       <div class="num">2</div>
       <div class="text"><strong>Nutrition and glycogen depletion.</strong> Your wearable has no idea what you ate. Calorie deficit and low glycogen tank your performance regardless of recovery score.</div>
     </div>
-    <div class="g-spot-card">
+    <div class="spot-card">
       <div class="num">3</div>
-      <div class="text"><strong>Training monotony and overtraining risk.</strong> Same intensity every day. Your watch sees volume but not variety. High monotony with high load is the fastest path to breakdown.</div>
+      <div class="text"><strong>Training monotony.</strong> Same intensity every day. Your watch sees volume but not variety. High monotony with high load is the fastest path to breakdown.</div>
     </div>
-    <div class="g-spot-card">
+    <div class="spot-card">
       <div class="num">4</div>
-      <div class="text"><strong>Psychological fatigue.</strong> Work stress triggers the same cortisol response as a hard session. Your recovery score can't tell the difference between a bad week at work and overtraining.</div>
+      <div class="text"><strong>Psychological fatigue.</strong> Work stress triggers the same cortisol response as a hard session. Your recovery score can't tell the difference.</div>
     </div>
-    <div class="g-spot-card">
+    <div class="spot-card">
       <div class="num">5</div>
-      <div class="text"><strong>Injury compensation patterns.</strong> Favouring one side. Altered gait. Subtle movement changes. Your wearable tracks output but not quality of movement.</div>
+      <div class="text"><strong>Injury compensation.</strong> Favouring one side. Altered gait. Subtle movement changes. Your wearable tracks output but not quality of movement.</div>
     </div>
-    <div class="g-spot-card">
+    <div class="spot-card">
       <div class="num">6</div>
-      <div class="text"><strong>Fragmented athlete data.</strong> Five apps, zero synthesis. The biggest blind spot is that nothing connects your wearable, nutrition, and body comp data together.</div>
+      <div class="text"><strong>Fragmented data.</strong> Five apps, zero synthesis. The biggest blind spot is that nothing connects your wearable, nutrition, and training data together.</div>
     </div>
   </div>
 </section>
 
-<!-- Who this is for -->
-<section class="g-audience">
-  <h2>Who this guide is for</h2>
-  <div class="g-audience-grid">
-    <div class="g-audience-item">
-      <div class="ai-label">Hybrid athletes</div>
+<hr class="divider">
+
+<!-- PROOF -->
+<section class="proof-section">
+  <h2>Athletes already doing this manually</h2>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <blockquote>"I woke up at 3am and couldn't fall back asleep for two hours. Felt like shit. But I got a green recovery. Why?"</blockquote>
+      <span class="attribution">r/whoop</span>
     </div>
-    <div class="g-audience-item">
-      <div class="ai-label">Hyrox competitors</div>
+    <div class="proof-card">
+      <blockquote>"I'm thinking about getting generic sensors to upload data to the cloud and get an LLM to crunch it based on my own requirements."</blockquote>
+      <span class="attribution">r/whoop, March 2026</span>
     </div>
-    <div class="g-audience-item">
-      <div class="ai-label">Endurance athletes</div>
-    </div>
-    <div class="g-audience-item">
-      <div class="ai-label">Wearable data users</div>
-    </div>
-    <div class="g-audience-item wide">
-      <div class="ai-label">Self-coached athletes</div>
+    <div class="proof-card">
+      <blockquote>"I wore my Whoop for over 3 years. More negative mental impact than positive. When I stopped wearing it, I was better able to interpret my body."</blockquote>
+      <span class="attribution">Ironman athlete</span>
     </div>
   </div>
 </section>
 
-<!-- Bottom CTA -->
-<section class="g-bottom">
+<hr class="divider">
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
   <h2>Stop making decisions with half the data.</h2>
-  <p>Free. No spam. Just useful data insights.</p>
-
-  <form class="g-form" onsubmit="return submitForm(event, this, '5427ec1f-c4c3-4bce-a0d2-079874d6d005')">
+  <p>The guide covers all 6 blind spots with practical advice for each one. Free. Takes 10 minutes to read. Could save you months of wasted training.</p>
+  <form class="ea-form" onsubmit="return submitForm(event, this, '5427ec1f-c4c3-4bce-a0d2-079874d6d005')">
     <div class="fields">
       <input type="text" name="firstname" placeholder="First name" required>
       <input type="email" name="email" placeholder="Email" required>
     </div>
-    <button type="submit">Download the guide</button>
+    <button type="submit">Download the free guide</button>
     <p class="form-msg"></p>
   </form>
-  <p class="g-social-proof">Be the first to get the guide</p>
+  <p class="cta-note">Free to join. No card required. No spam.</p>
 </section>
-
-<!-- Footer -->
-<footer class="g-footer">
-  <a href="https://x.com/p247ai">X / Twitter</a>
-  <a href="https://instagram.com/p247ai">Instagram</a>
-  <a href="/">p247.io</a>
-  <br><br>
-  © {{ 'now' | date: "%Y" }} P247. All rights reserved.
-</footer>
 
 <script>
 function submitForm(e, form, formId) {
@@ -374,16 +394,9 @@ function submitForm(e, form, formId) {
     if (res.ok || res.status === 200) {
       form.querySelector('.fields').style.display = 'none';
       btn.style.display = 'none';
-      msg.innerHTML = 'Your guide is downloading now. Check your inbox too. ✅';
+      msg.textContent = "Check your inbox. The guide is on its way.";
       msg.className = 'form-msg success';
       msg.style.display = 'block';
-      // Trigger PDF download
-      var dl = document.createElement('a');
-      dl.href = '/guides/athlete-guide.pdf';
-      dl.download = 'P247-Athlete-Guide.pdf';
-      document.body.appendChild(dl);
-      dl.click();
-      document.body.removeChild(dl);
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', { method: 'athlete_guide_download', page_location: window.location.href });
       }
@@ -391,7 +404,7 @@ function submitForm(e, form, formId) {
   })
   .catch(function() {
     btn.disabled = false;
-    btn.textContent = 'Download the guide';
+    btn.textContent = 'Download the free guide';
     msg.textContent = 'Something went wrong. Try again.';
     msg.className = 'form-msg error';
     msg.style.display = 'block';
