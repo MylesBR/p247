@@ -2,7 +2,7 @@
 layout: post
 title: "Your Whoop Can't Tell You If You're Losing Muscle or Fat on GLP-1"
 slug: whoop-cant-tell-muscle-fat-glp1
-date: 2026-03-16
+date: 2026-03-17
 categories: [glp1, wearables, body-composition, recovery, semaglutide]
 description: "GLP-1 users track more health data than most athletes. But no tool connects the dots between wearable data, nutrition, body comp scans, and training. Here's why that matters."
 author: Myles Bruggeling
