@@ -22,6 +22,31 @@
 
   <!-- HubSpot Forms -->
   <script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/embed/v2.js"></script>
+  <style>
+    .hs-form-private { max-width: 420px; margin: 0 auto; }
+    .hs-form-private .hs-input {
+      background: #1a2540 !important;
+      border: 1px solid #2d3f5e !important;
+      color: #fff !important;
+      border-radius: 8px !important;
+      padding: 13px 16px !important;
+      font-size: 1rem !important;
+      width: 100% !important;
+    }
+    .hs-form-private .hs-input:focus { outline: none !important; border-color: #00B4FF !important; }
+    .hs-form-private .hs-input::placeholder { color: #5a6f8a !important; }
+    .hs-form-private label { color: #a0b4cc !important; font-size: 0.9rem !important; }
+    .hs-form-private .hs-error-msgs label { color: #ff6b6b !important; }
+    .hs-form-private .hs-submit .actions { text-align: center !important; }
+    .hs-form-private .hs-button {
+      background: #FF6B00 !important; color: #fff !important; border: none !important;
+      border-radius: 8px !important; padding: 14px 32px !important; font-size: 1.05rem !important;
+      font-weight: 700 !important; cursor: pointer !important; width: 100% !important;
+    }
+    .hs-form-private .hs-button:hover { background: #e05e00 !important; }
+    .hs-form-private .submitted-message { color: #4ADE80 !important; font-weight: 600 !important; text-align: center !important; }
+    .hubspot-link__container, .hbspt-form + div[style], .hbspt-form ~ div a[href*="hubspot"] { display: none !important; }
+  </style>
 
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
