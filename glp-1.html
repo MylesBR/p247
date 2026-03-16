@@ -197,14 +197,6 @@ description: Your wearable can't tell you if you're losing muscle or fat on sema
   <p class="lead">GLP-1 medications work. But your wearable can't tell you what you're actually losing. P247 connects your data so you know before your next scan.</p>
 
   <div id="glp1-form-top"></div>
-  <script>
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "21624983",
-      formId: "0ab03f4a-2a64-44e1-8858-9fd51c6e1abd",
-      target: "#glp1-form-top"
-    });
-  </script>
   <p class="cta-note">Free. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -269,13 +261,23 @@ description: Your wearable can't tell you if you're losing muscle or fat on sema
   <h2>Stop guessing between scans.</h2>
   <p>P247 connects your wearable, nutrition, and body comp data into one morning brief. You'll know whether your current approach is preserving lean mass, not 12 weeks from now, but today.</p>
   <div id="glp1-form-bottom"></div>
-  <script>
+  <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
+</section>
+
+
+<script>
+  window.addEventListener('load', function() {
+    hbspt.forms.create({
+      region: "na1",
+      portalId: "21624983",
+      formId: "0ab03f4a-2a64-44e1-8858-9fd51c6e1abd",
+      target: "#glp1-form-top"
+    });
     hbspt.forms.create({
       region: "na1",
       portalId: "21624983",
       formId: "0ab03f4a-2a64-44e1-8858-9fd51c6e1abd",
       target: "#glp1-form-bottom"
     });
-  </script>
-  <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
-</section>
+  });
+</script>

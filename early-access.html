@@ -286,14 +286,6 @@ permalink: /early-access/
   <p class="sub">Five apps. Zero synthesis. P247 connects your wearable, nutrition, and body comp data so you know if you're losing fat or muscle. Not in 12 weeks. Now.</p>
 
   <div id="ea-form-top"></div>
-  <script>
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "21624983",
-      formId: "c628d30d-de8c-40e3-be5e-d6893c36db0f",
-      target: "#ea-form-top"
-    });
-  </script>
   <p class="ea-note">Free to join. No card required. No spam.</p>
 </section>
 
@@ -374,14 +366,6 @@ permalink: /early-access/
   <p>Join the waitlist. Be first to know when we launch.</p>
 
   <div id="ea-form-bottom"></div>
-  <script>
-    hbspt.forms.create({
-      region: "na1",
-      portalId: "21624983",
-      formId: "c628d30d-de8c-40e3-be5e-d6893c36db0f",
-      target: "#ea-form-bottom"
-    });
-  </script>
   <p class="ea-note">No card required. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -393,5 +377,22 @@ permalink: /early-access/
   <br><br>
   © {{ 'now' | date: "%Y" }} P247. All rights reserved.
 </footer>
+
+<script>
+  window.addEventListener('load', function() {
+    hbspt.forms.create({
+      region: "na1",
+      portalId: "21624983",
+      formId: "c628d30d-de8c-40e3-be5e-d6893c36db0f",
+      target: "#ea-form-top"
+    });
+    hbspt.forms.create({
+      region: "na1",
+      portalId: "21624983",
+      formId: "c628d30d-de8c-40e3-be5e-d6893c36db0f",
+      target: "#ea-form-bottom"
+    });
+  });
+</script>
 
 
