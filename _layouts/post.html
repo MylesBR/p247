@@ -35,7 +35,12 @@ layout: default
   {{ content }}
 
   <div class="post-cta">
-    <p>You track everything. Nothing connects it. P247 sits across your wearable, nutrition, and body comp data so you stop flying blind between scans.</p>
-    <a href="/early-access/">Get Early Access</a>
+    {% if page.categories contains 'glp1' or page.categories contains 'semaglutide' %}
+    <p>GLP-1 medications work. But your wearable can't tell you what you're actually losing. P247 connects your data so you stop guessing between scans.</p>
+    <a href="/glp-1/">Download the Free GLP-1 Guide</a>
+    {% else %}
+    <p>Green score. Destroyed legs. There are 6 blind spots in your wearable data. We wrote a free guide covering every one of them.</p>
+    <a href="/athletes/">Download the Free Guide</a>
+    {% endif %}
   </div>
 </div>
