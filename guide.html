@@ -255,15 +255,16 @@ permalink: /guide/
   <h1>What Your Wearable<br><span class="accent">Isn't Telling You</span></h1>
   <p class="sub">A data-driven guide to the blind spots in recovery scores, HRV, and training load.</p>
 
-  <form id="g-form-top" class="g-form" onsubmit="return submitGuideForm(event, this)">
-    <div class="fields">
-      <input type="text" name="firstname" placeholder="First name" required>
-      <input type="email" name="email" placeholder="Email" required>
-    </div>
-    <button type="submit">Download the guide</button>
-    <p style="font-size: 0.78rem; color: #4a5568; margin-top: 6px; text-align: center;">Instant download</p>
-    <p class="form-msg"></p>
-  </form>
+  <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+  <div id="guide-form-top"></div>
+  <script>
+    hbspt.forms.create({
+      region: "na1",
+      portalId: "21624983",
+      formId: "5427ec1f-c4c3-4bce-a0d2-079874d6d005",
+      target: "#guide-form-top"
+    });
+  </script>
   <p class="g-social-proof">Join 1,200+ athletes learning to interpret their data better</p>
 </section>
 
@@ -335,15 +336,15 @@ permalink: /guide/
   <h2>Stop making decisions with half the data.</h2>
   <p>Free. No spam. Just useful data insights.</p>
 
-  <form id="g-form-bottom" class="g-form" onsubmit="return submitGuideForm(event, this)">
-    <div class="fields">
-      <input type="text" name="firstname" placeholder="First name" required>
-      <input type="email" name="email" placeholder="Email" required>
-    </div>
-    <button type="submit">Download the guide</button>
-    <p style="font-size: 0.78rem; color: #4a5568; margin-top: 6px; text-align: center;">Instant download</p>
-    <p class="form-msg"></p>
-  </form>
+  <div id="guide-form-bottom"></div>
+  <script>
+    hbspt.forms.create({
+      region: "na1",
+      portalId: "21624983",
+      formId: "5427ec1f-c4c3-4bce-a0d2-079874d6d005",
+      target: "#guide-form-bottom"
+    });
+  </script>
   <p class="g-social-proof">Join 1,200+ athletes learning to interpret their data better</p>
 </section>
 
@@ -355,60 +356,3 @@ permalink: /guide/
   <br><br>
   © {{ 'now' | date: "%Y" }} P247. All rights reserved.
 </footer>
-
-<script>
-function submitGuideForm(e, form) {
-  e.preventDefault();
-  var btn = form.querySelector('button');
-  var msg = form.querySelector('.form-msg');
-  var firstname = form.querySelector('input[name="firstname"]').value.trim();
-  var email = form.querySelector('input[name="email"]').value.trim();
-
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-  msg.style.display = 'none';
-
-  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/5427ec1f-c4c3-4bce-a0d2-079874d6d005', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      fields: [
-        { name: 'firstname', value: firstname },
-        { name: 'email', value: email }
-      ],
-      context: {
-        pageUri: window.location.href,
-        pageName: 'P247 Guide Download'
-      }
-    })
-  })
-  .then(function(res) {
-    if (res.ok || res.status === 200) {
-      form.querySelector('.fields').style.display = 'none';
-      btn.style.display = 'none';
-      msg.innerHTML = "Check your inbox. The guide is on its way. ✅";
-      msg.className = 'form-msg success';
-      msg.style.display = 'block';
-
-      // GA4 event
-      if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', {
-          method: 'guide_download',
-          page_location: window.location.href
-        });
-      }
-    } else {
-      throw new Error('Submission failed');
-    }
-  })
-  .catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Download the guide';
-    msg.textContent = 'Something went wrong. Try again.';
-    msg.className = 'form-msg error';
-    msg.style.display = 'block';
-  });
-
-  return false;
-}
-</script>
