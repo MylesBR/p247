@@ -230,12 +230,43 @@ permalink: /early-access/
   }
   .ea-footer a { color: #4a5568; text-decoration: none; margin: 0 8px; }
 
+  /* Tablet */
+  @media (max-width: 768px) {
+    .ea-hero h1 { font-size: 2.1rem; }
+    .ea-what-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  }
+
   /* Mobile */
   @media (max-width: 600px) {
-    .ea-hero h1 { font-size: 1.9rem; }
-    .ea-hero { padding-top: 40px; }
-    .ea-form .fields { flex-direction: column; }
-    .ea-what-grid { grid-template-columns: 1fr; }
+    .ea-header { padding: 16px 16px 0; }
+    .ea-hero { padding: 32px 16px 0; }
+    .ea-hero h1 { font-size: 1.65rem; letter-spacing: -0.3px; line-height: 1.2; margin-bottom: 16px; }
+    .ea-hero .sub { font-size: 1rem; margin-bottom: 28px; }
+    .ea-form { max-width: 100%; }
+    .ea-form .fields { flex-direction: column; gap: 8px; }
+    .ea-form input { padding: 12px 14px; font-size: 0.95rem; }
+    .ea-form button { padding: 14px 24px; font-size: 1rem; }
+    .ea-problem { margin-top: 48px; padding: 0 16px; }
+    .ea-problem h2 { font-size: 1.25rem; margin-bottom: 20px; }
+    .ea-problem-card { padding: 16px 18px; gap: 12px; }
+    .ea-problem-card .text { font-size: 0.9rem; }
+    .ea-voices { margin-top: 48px; padding: 0 16px; }
+    .ea-voice { padding: 12px 16px; margin-bottom: 12px; }
+    .ea-voice q { font-size: 0.88rem; }
+    .ea-what { margin-top: 48px; padding: 0 16px; }
+    .ea-what h2 { font-size: 1.2rem; margin-bottom: 20px; }
+    .ea-what-grid { grid-template-columns: 1fr; gap: 12px; }
+    .ea-what-item { padding: 20px 16px; }
+    .ea-bottom { margin-top: 48px; padding: 0 16px 60px; }
+    .ea-bottom h2 { font-size: 1.3rem; }
+    .ea-footer { padding: 20px 16px; }
+  }
+
+  /* Small mobile */
+  @media (max-width: 380px) {
+    .ea-hero h1 { font-size: 1.4rem; }
+    .ea-hero .sub { font-size: 0.92rem; }
+    .ea-problem-card .icon { font-size: 1.2rem; }
   }
 </style>
 
