@@ -6,170 +6,336 @@ permalink: /early-access/
 ---
 
 <style>
-  .ea-header {
-    text-align: center;
-    padding: 20px 24px 0;
+  .ea-form {
+    max-width: 420px;
+    margin: 0 auto;
   }
-  .ea-logo {
-    display: inline-flex;
-    align-items: center;
+  .ea-form .fields {
+    display: flex;
     gap: 10px;
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+    margin-bottom: 10px;
   }
-  .ea-logo:hover { opacity: 1; }
+  .ea-form input {
+    flex: 1;
+    background: #1a2540;
+    border: 1px solid #2d3f5e;
+    color: #fff;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    -webkit-appearance: none;
+    transition: border-color 0.15s;
+  }
+  .ea-form input::placeholder { color: #5a6f8a; }
+  .ea-form input:focus { outline: none; border-color: #00B4FF; }
+  .ea-form button {
+    width: 100%;
+    background: #FF6B00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .ea-form button:hover { background: #e05e00; transform: translateY(-1px); }
+  .ea-form button:active { transform: translateY(0); }
+  .ea-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .ea-form .form-msg {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+  }
+  .ea-form .form-msg.success { color: #4ADE80; }
+  .ea-form .form-msg.error { color: #ff6b6b; }
 
-  .ea-hero {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 60px 24px 0;
+  .hero-ea {
+    background: #0A0F1E;
+    color: #fff;
+    padding: 80px 20px 64px;
+    text-align: center;
+    margin: -1px;
+    border-radius: 10px;
+  }
+  .hero-ea h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 16px; color: #fff; line-height: 1.15; }
+  .hero-ea h1 span { color: #00B4FF; }
+  .hero-ea .lead { color: #c0cee0; max-width: 580px; margin: 0 auto 32px; font-size: 1.15rem; line-height: 1.55; }
+  .cta-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
+
+  .problem-section {
+    max-width: 700px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+  }
+  .problem-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0A0F1E;
+    margin-bottom: 20px;
     text-align: center;
   }
-  .ea-hero h1 {
-    font-size: 2.6rem;
-    font-weight: 800;
-    line-height: 1.12;
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
-    color: #0A0F1E;
-  }
-  .ea-hero h1 .accent { color: #00B4FF; }
-  .ea-hero .sub {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: #555;
-    max-width: 520px;
-    margin: 0 auto 48px;
+  .problem-section p {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
   }
 
-  /* Split cards */
-  .ea-split {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 24px;
+  .problem-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 14px;
+    margin: 28px 0;
   }
-  .ea-card {
+  @media (max-width: 600px) { .problem-grid { grid-template-columns: 1fr; } }
+  .problem-card {
     background: #f7f9fc;
     border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 36px 28px;
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .problem-card strong { color: #0A0F1E; display: block; margin-bottom: 6px; }
+  .problem-card p { color: #555; font-size: 0.93rem; line-height: 1.55; margin: 0; }
+
+  .guides-section {
+    max-width: 700px;
+    margin: 48px auto 0;
+    padding: 0 24px;
+  }
+  .guides-section h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0A0F1E;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .guides-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 600px) { .guides-grid { grid-template-columns: 1fr; } }
+  .guide-card {
+    background: #f7f9fc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 32px 24px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  .ea-card .card-icon {
-    font-size: 2.4rem;
-    margin-bottom: 16px;
-  }
-  .ea-card h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #0A0F1E;
-    margin-bottom: 12px;
-    line-height: 1.3;
-  }
-  .ea-card p {
-    font-size: 0.93rem;
-    color: #555;
-    line-height: 1.55;
-    margin-bottom: 24px;
-    flex-grow: 1;
-  }
-  .ea-card .card-btn {
+  .guide-card .card-icon { font-size: 2.4rem; margin-bottom: 16px; }
+  .guide-card h3 { font-size: 1.2rem; font-weight: 700; color: #0A0F1E; margin-bottom: 10px; }
+  .guide-card p { font-size: 0.93rem; color: #555; line-height: 1.55; margin-bottom: 20px; flex-grow: 1; }
+  .guide-card .card-btn {
     display: inline-block;
     background: #FF6B00;
     color: #fff;
     text-decoration: none;
     border-radius: 8px;
-    padding: 14px 28px;
-    font-size: 1rem;
+    padding: 12px 24px;
+    font-size: 0.95rem;
     font-weight: 700;
     transition: background 0.15s, transform 0.1s;
   }
-  .ea-card .card-btn:hover { background: #e05e00; transform: translateY(-1px); }
-  .ea-card .card-btn:active { transform: translateY(0); }
+  .guide-card .card-btn:hover { background: #e05e00; transform: translateY(-1px); }
 
-  /* Bottom section */
-  .ea-bottom {
-    max-width: 520px;
-    margin: 72px auto 0;
-    padding: 0 24px 80px;
+  .proof-section {
+    max-width: 720px;
+    margin: 48px auto 0;
+    padding: 0 24px 48px;
+  }
+  .proof-section h2 {
     text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #718096;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
-  .ea-bottom p {
-    color: #999;
-    font-size: 0.9rem;
-    line-height: 1.6;
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
+  .proof-card {
+    border-left: 3px solid #00B4FF;
+    padding: 12px 20px;
+    background: #f7f9fc;
+    border-radius: 0 8px 8px 0;
+  }
+  .proof-card blockquote {
+    margin: 0; padding: 0; border: none;
+    font-style: italic; color: #333; font-size: 0.93rem; line-height: 1.55;
+  }
+  .proof-card .attribution { font-size: 0.8rem; color: #999; margin-top: 6px; display: block; }
 
-  /* Footer */
-  .ea-footer {
+  .bottom-cta {
+    background: #0A0F1E;
+    padding: 48px 24px;
     text-align: center;
-    padding: 24px;
-    font-size: 0.78rem;
-    color: #999;
-    border-top: 1px solid #eee;
+    border-radius: 10px;
+    margin: 0 -1px -1px;
   }
-  .ea-footer a { color: #999; text-decoration: none; margin: 0 8px; }
+  .bottom-cta h2 { color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+  .bottom-cta p { color: #a0aec0; font-size: 0.95rem; margin-bottom: 24px; }
+  .bottom-cta .cta-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
+
+  .divider { border: none; border-top: 1px solid #eee; margin: 0 40px; }
 
   @media (max-width: 600px) {
-    .ea-hero h1 { font-size: 1.8rem; }
-    .ea-hero { padding-top: 40px; }
-    .ea-split { grid-template-columns: 1fr; gap: 16px; }
-    .ea-card { padding: 28px 24px; }
+    .hero-ea h1 { font-size: 1.8rem; }
+    .hero-ea { padding: 48px 16px; }
+    .ea-form .fields { flex-direction: column; }
   }
 </style>
 
-<!-- Logo -->
-<div class="ea-header">
-  <a href="/" class="ea-logo">
-    <svg width="110" height="40" viewBox="0 0 200 68" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="48" font-family="-apple-system,'Helvetica Neue',sans-serif" font-size="52" font-weight="800" letter-spacing="-2" fill="#fff">P<tspan fill="#00B4FF">247</tspan></text>
-    </svg>
-  </a>
-</div>
+<!-- HERO -->
+<section class="hero-ea">
+  <h1>You track everything.<br><span>Nothing connects it.</span></h1>
+  <p class="lead">Five apps. Zero synthesis. P247 connects your wearable, nutrition, and body comp data so you know what's actually happening. Not in 12 weeks. Now.</p>
 
-<!-- Hero -->
-<section class="ea-hero">
-  <h1>You track everything.<br><span class="accent">Nothing connects it.</span></h1>
-  <p class="sub">P247 connects your wearable, nutrition, and body comp data so you see the full picture. Pick the guide that fits you.</p>
+  <form class="ea-form" onsubmit="return submitForm(event, this, 'c628d30d-de8c-40e3-be5e-d6893c36db0f')">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Get early access</button>
+    <p class="form-msg"></p>
+  </form>
+  <p class="cta-note">Free to join. No card required. No spam.</p>
 </section>
 
-<!-- Split paths -->
-<section class="ea-split">
-  <div class="ea-card">
-    <div>
+<!-- THE PROBLEM -->
+<section class="problem-section">
+  <h2>The problem with wearable data</h2>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <strong>Five apps, zero answers.</strong>
+      <p>Your watch, scale, food tracker, and recovery app all measure something. None of them talk to each other.</p>
+    </div>
+    <div class="problem-card">
+      <strong>Green score, bad session.</strong>
+      <p>You got a 90% recovery. But you slept four hours and skipped dinner. The number lied because it can't see the full picture.</p>
+    </div>
+    <div class="problem-card">
+      <strong>Losing muscle, gaining confidence.</strong>
+      <p>On a GLP-1? Your scale says progress. But without body comp context, you could be losing the wrong kind of weight.</p>
+    </div>
+    <div class="problem-card">
+      <strong>Manual data exports.</strong>
+      <p>You're copying CSVs into ChatGPT just to get an insight your $30/month wearable should already give you.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FREE GUIDES -->
+<section class="guides-section">
+  <h2>Start with a free guide</h2>
+  <div class="guides-grid">
+    <div class="guide-card">
       <div class="card-icon">🏋️</div>
-      <h2>For athletes and Hyrox competitors</h2>
-      <p>Your recovery score says you're ready. Your legs disagree. This guide covers the 6 blind spots in wearable data that hold athletes back.</p>
+      <h3>For Athletes</h3>
+      <p>6 blind spots your wearable has. Covers muscle damage, training monotony, nutrition gaps, and why green scores lie.</p>
+      <a href="/athletes/" class="card-btn">Get the athlete guide</a>
     </div>
-    <a href="/athletes/" class="card-btn">Get the athlete guide</a>
-  </div>
-  <div class="ea-card">
-    <div>
+    <div class="guide-card">
       <div class="card-icon">💊</div>
-      <h2>For GLP-1 and body recomp</h2>
-      <p>Your wearable says you're recovering great. Your DEXA says you lost muscle. This guide covers the 5 blind spots GLP-1 users miss.</p>
+      <h3>For GLP-1 Users</h3>
+      <p>What your wearable misses while you're on semaglutide or tirzepatide. The data gap between your scale and your DEXA.</p>
+      <a href="/glp-1/" class="card-btn">Get the GLP-1 guide</a>
     </div>
-    <a href="/glp-1/" class="card-btn">Get the GLP-1 guide</a>
   </div>
 </section>
 
-<!-- Bottom -->
-<section class="ea-bottom">
-  <p>Both guides are free. Enter your name and email on the next page to download instantly.</p>
+<hr class="divider">
+
+<!-- PROOF -->
+<section class="proof-section">
+  <h2>People already doing this manually</h2>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <blockquote>"I woke up at 3am and couldn't fall back asleep for two hours. Felt like shit. But I got a green recovery. Why?"</blockquote>
+      <span class="attribution">r/whoop</span>
+    </div>
+    <div class="proof-card">
+      <blockquote>"Started exporting my data into ChatGPT to get actual insights. It's insane that I have to do this manually when I'm paying for three subscriptions."</blockquote>
+      <span class="attribution">r/whoop</span>
+    </div>
+    <div class="proof-card">
+      <blockquote>"5 months on Mounjaro. Down 18kg. Whoop recovery has been the best it's ever been. Got a DEXA scan last week and found out about 4kg of that 18 was lean mass."</blockquote>
+      <span class="attribution">r/Mounjaro</span>
+    </div>
+  </div>
 </section>
 
-<!-- Footer -->
-<footer class="ea-footer">
-  <a href="https://x.com/p247ai">X / Twitter</a>
-  <a href="https://instagram.com/p247ai">Instagram</a>
-  <a href="/">p247.io</a>
-  <br><br>
-  © {{ 'now' | date: "%Y" }} P247. All rights reserved.
-</footer>
+<hr class="divider">
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <h2>Stop flying blind between scans.</h2>
+  <p>P247 is building the interpretation layer your wearable is missing. Join early access and be first to know when we launch.</p>
+  <form class="ea-form" onsubmit="return submitForm(event, this, 'c628d30d-de8c-40e3-be5e-d6893c36db0f')">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Get early access</button>
+    <p class="form-msg"></p>
+  </form>
+  <p class="cta-note">Free to join. No card required. No spam.</p>
+</section>
+
+<script>
+function submitForm(e, form, formId) {
+  e.preventDefault();
+  var btn = form.querySelector('button');
+  var msg = form.querySelector('.form-msg');
+  var firstname = form.querySelector('input[name="firstname"]').value.trim();
+  var email = form.querySelector('input[name="email"]').value.trim();
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  msg.style.display = 'none';
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/' + formId, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fields: [
+        { name: 'firstname', value: firstname },
+        { name: 'email', value: email }
+      ],
+      context: { pageUri: window.location.href, pageName: document.title }
+    })
+  })
+  .then(function(res) {
+    if (res.ok || res.status === 200) {
+      form.querySelector('.fields').style.display = 'none';
+      btn.style.display = 'none';
+      msg.textContent = "You're in. We'll reach out before launch.";
+      msg.className = 'form-msg success';
+      msg.style.display = 'block';
+      if (typeof gtag === 'function') {
+        gtag('event', 'sign_up', { method: 'early_access', page_location: window.location.href });
+      }
+    } else { throw new Error('fail'); }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Get early access';
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.className = 'form-msg error';
+    msg.style.display = 'block';
+  });
+  return false;
+}
+</script>
