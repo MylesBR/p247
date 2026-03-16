@@ -270,6 +270,8 @@ permalink: /early-access/
   }
 </style>
 
+<script src="https://js.hsforms.net/forms/embed/21624983.js" defer></script>
+
 <!-- Logo -->
 <div class="ea-header">
   <a href="/" class="ea-logo">
@@ -284,14 +286,7 @@ permalink: /early-access/
   <h1>You track everything.<br><span class="accent">Nothing connects it.</span></h1>
   <p class="sub">Five apps. Zero synthesis. P247 connects your wearable, nutrition, and body comp data so you know if you're losing fat or muscle. Not in 12 weeks. Now.</p>
 
-  <form id="ea-form-top" class="ea-form" onsubmit="return submitEAForm(event, this)">
-    <div class="fields">
-      <input type="text" name="firstname" placeholder="First name" required>
-      <input type="email" name="email" placeholder="Email" required>
-    </div>
-    <button type="submit">Get early access</button>
-    <p class="form-msg"></p>
-  </form>
+  <div class="hs-form-frame" data-region="na1" data-form-id="c628d30d-de8c-40e3-be5e-d6893c36db0f" data-portal-id="21624983"></div>
   <p class="ea-note">Free to join. No card required. No spam.</p>
 </section>
 
@@ -371,14 +366,7 @@ permalink: /early-access/
   <h2>Stop flying blind between scans.</h2>
   <p>Join the waitlist. Be first to know when we launch.</p>
 
-  <form id="ea-form-bottom" class="ea-form" onsubmit="return submitEAForm(event, this)">
-    <div class="fields">
-      <input type="text" name="firstname" placeholder="First name" required>
-      <input type="email" name="email" placeholder="Email" required>
-    </div>
-    <button type="submit">Get early access</button>
-    <p class="form-msg"></p>
-  </form>
+  <div class="hs-form-frame" data-region="na1" data-form-id="c628d30d-de8c-40e3-be5e-d6893c36db0f" data-portal-id="21624983"></div>
   <p class="ea-note">No card required. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -391,59 +379,4 @@ permalink: /early-access/
   © {{ 'now' | date: "%Y" }} P247. All rights reserved.
 </footer>
 
-<script>
-function submitEAForm(e, form) {
-  e.preventDefault();
-  var btn = form.querySelector('button');
-  var msg = form.querySelector('.form-msg');
-  var firstname = form.querySelector('input[name="firstname"]').value.trim();
-  var email = form.querySelector('input[name="email"]').value.trim();
 
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-  msg.style.display = 'none';
-
-  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      fields: [
-        { name: 'firstname', value: firstname },
-        { name: 'email', value: email }
-      ],
-      context: {
-        pageUri: window.location.href,
-        pageName: 'P247 Early Access'
-      }
-    })
-  })
-  .then(function(res) {
-    if (res.ok || res.status === 200) {
-      form.querySelector('.fields').style.display = 'none';
-      btn.style.display = 'none';
-      msg.textContent = "You're in. We'll reach out before launch.";
-      msg.className = 'form-msg success';
-      msg.style.display = 'block';
-
-      // GA4 event
-      if (typeof gtag === 'function') {
-        gtag('event', 'sign_up', {
-          method: 'early_access',
-          page_location: window.location.href
-        });
-      }
-    } else {
-      throw new Error('Submission failed');
-    }
-  })
-  .catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Get early access';
-    msg.textContent = 'Something went wrong. Try again.';
-    msg.className = 'form-msg error';
-    msg.style.display = 'block';
-  });
-
-  return false;
-}
-</script>
