@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 0; }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --navy: #0a0f1a;
+    --dark: #111827;
+    --card: #1a2236;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --green: #22c55e;
+    --orange: #f59e0b;
+    --red: #ef4444;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --white: #ffffff;
+    --border: #2d3748;
+  }
+  
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 40px 48px;
+    page-break-after: always;
+    position: relative;
+    background: var(--navy);
+  }
+  
+  .page:last-child { page-break-after: auto; }
+  
+  /* Cover page */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 297mm;
+    padding: 60px 56px;
+  }
+  
+  .cover .logo {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  
+  .cover h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  
+  .cover .tagline {
+    font-size: 18px;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+  
+  .cover .subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 48px;
+  }
+  
+  .cover .meta {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  
+  .cover .meta span {
+    color: var(--text);
+    font-weight: 600;
+  }
+  
+  .cover .url {
+    position: absolute;
+    bottom: 48px;
+    right: 56px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  
+  /* Section headers */
+  .section-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  
+  .section-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  
+  h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-top: 18px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  p {
+    margin-bottom: 10px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  
+  .highlight {
+    color: var(--white);
+    font-weight: 600;
+  }
+  
+  .accent { color: var(--accent2); font-weight: 600; }
+  
+  /* Stat cards */
+  .stats {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  
+  .stat {
+    flex: 1;
+    background: var(--card);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  
+  .stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  
+  .stat .label {
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+  }
+  
+  /* Quote blocks */
+  .quote {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    margin: 8px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 10.5px;
+  }
+  
+  .quote .text {
+    color: var(--text);
+    font-style: italic;
+    margin-bottom: 3px;
+  }
+  
+  .quote .attr {
+    color: var(--muted);
+    font-size: 9px;
+  }
+  
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10px;
+  }
+  
+  th {
+    background: var(--card);
+    color: var(--accent2);
+    font-weight: 700;
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 2px solid var(--accent);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+  
+  tr:nth-child(even) td {
+    background: rgba(26,34,54,0.5);
+  }
+  
+  /* Feature lists */
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  
+  .feature {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+  }
+  
+  .feature .title {
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3px;
+    font-size: 11px;
+  }
+  
+  .feature .desc {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  
+  /* Callout boxes */
+  .callout {
+    background: var(--card);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  
+  .callout.green { border-color: var(--green); }
+  .callout.orange { border-color: var(--orange); }
+  
+  .callout .label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  
+  .callout.green .label { color: var(--green); }
+  .callout.orange .label { color: var(--orange); }
+  .callout .label { color: var(--accent); }
+  
+  /* Analogy box */
+  .analogy {
+    background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(96,165,250,0.05));
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  
+  .analogy .big {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  
+  .analogy .small {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  
+  /* Steps flow */
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 14px 0;
+  }
+  
+  .step {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  
+  .step .icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+  
+  .step .name {
+    font-weight: 700;
+    color: var(--accent2);
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+  
+  .step .detail {
+    font-size: 9px;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+  
+  /* Bullet lists */
+  ul {
+    margin: 6px 0 10px 18px;
+    color: var(--text);
+  }
+  
+  li {
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+  
+  /* Timeline */
+  .timeline {
+    position: relative;
+    margin: 14px 0;
+  }
+  
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .timeline-year {
+    width: 60px;
+    font-weight: 800;
+    color: var(--accent);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  
+  .timeline-text {
+    color: var(--text);
+    font-size: 11px;
+  }
+  
+  /* Moat cards */
+  .moats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 14px 0;
+  }
+  
+  .moat {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+  }
+  
+  .moat .num {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  
+  .moat .name {
+    font-weight: 700;
+    color: var(--white);
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+  
+  .moat .desc {
+    color: var(--muted);
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  
+  /* Evolution arrow */
+  .evolution {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 14px 0;
+    flex-wrap: wrap;
+  }
+  
+  .evo-step {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 10px;
+    color: var(--text);
+    font-weight: 600;
+  }
+  
+  .evo-step.active {
+    border-color: var(--accent);
+    color: var(--accent2);
+    background: rgba(59,130,246,0.1);
+  }
+  
+  .evo-arrow {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  
+  /* Tier cards */
+  .tiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 14px 0;
+  }
+  
+  .tier {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid var(--border);
+  }
+  
+  .tier.featured {
+    border-color: var(--accent);
+    border-width: 2px;
+  }
+  
+  .tier .name {
+    font-weight: 700;
+    color: var(--accent2);
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+  
+  .tier .price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  
+  .tier .price span {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  
+  .tier ul {
+    margin-left: 14px;
+    font-size: 9.5px;
+  }
+  
+  .tier li {
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  
+  /* Phase cards */
+  .phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 14px 0;
+  }
+  
+  .phase {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+  }
+  
+  .phase .name {
+    font-weight: 700;
+    color: var(--accent2);
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+  
+  .phase .date {
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  
+  .phase ul { font-size: 9.5px; }
+  
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 24px;
+    left: 48px;
+    right: 48px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+    color: var(--muted);
+    opacity: 0.6;
+  }
+  
+  /* Funding breakdown */
+  .funding {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 14px 0;
+  }
+  
+  .fund-item {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+  }
+  
+  .fund-item .pct {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  
+  .fund-item .cat {
+    font-weight: 700;
+    color: var(--white);
+    font-size: 11px;
+  }
+  
+  .fund-item .amt {
+    color: var(--muted);
+    font-size: 10px;
+  }
+  
+  .fund-item .detail {
+    color: var(--muted);
+    font-size: 9px;
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+  
+  /* Milestones */
+  .milestones {
+    margin: 14px 0;
+  }
+  
+  .milestone {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  
+  .milestone .time {
+    width: 80px;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+  
+  .milestone .desc {
+    color: var(--text);
+    font-size: 10.5px;
+    line-height: 1.4;
+  }
+  
+  /* Tech architecture */
+  .arch {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 14px 0;
+    align-items: center;
+  }
+  
+  .arch-layer {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 24px;
+    text-align: center;
+    width: 80%;
+  }
+  
+  .arch-layer.highlighted {
+    border-color: var(--accent);
+    background: rgba(59,130,246,0.08);
+  }
+  
+  .arch-layer .name {
+    font-weight: 700;
+    color: var(--white);
+    font-size: 11px;
+  }
+  
+  .arch-layer .detail {
+    color: var(--muted);
+    font-size: 9px;
+  }
+  
+  .arch-arrow {
+    color: var(--accent);
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  /* Two col layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  /* Source citations */
+  .sources {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    font-size: 8.5px;
+    color: var(--muted);
+  }
+  
+  .not-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 16px;
+    margin: 8px 0;
+  }
+  
+  .not-item {
+    color: var(--muted);
+    font-size: 10px;
+    padding: 3px 0;
+  }
+  
+  .not-item::before {
+    content: "✕ ";
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  /* Ask page */
+  .ask-amount {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+  
+  .ask-terms {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  
+  /* Compact pain table */
+  .pain-table td:first-child {
+    width: 35%;
+    font-weight: 600;
+    color: var(--white);
+  }
+  
+  .pain-table td:nth-child(2) {
+    width: 10%;
+    text-align: center;
+    font-weight: 700;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<div class="page cover">
+  <div class="logo">P 2 4 7</div>
+  <h1>Performance<br>Intelligence</h1>
+  <div class="tagline">The AI performance analyst for serious athletes</div>
+  <div class="subtitle">
+    Every serious athlete generates the data. Nobody connects it into a decision. P247 does.
+  </div>
+  <div class="meta">
+    <span>Myles Bruggeling</span> | Founder<br>
+    March 2026 | Pre-Seed
+  </div>
+  <div class="url">p247.io</div>
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+  </div>
+</div>
+
+<!-- ==================== 01 THE PROBLEM ==================== -->
+<div class="page">
+  <div class="section-num">01 — The Problem</div>
+  <h2>Athletes are drowning in data<br>and still guessing</h2>
+  <div class="section-sub">The gap is not data collection. It's data interpretation.</div>
+  
+  <p>The average serious endurance athlete (Hyrox, Ironman, marathon, cycling) wears 1.7 devices and uses 3+ apps to track their training, recovery, sleep, and nutrition. Each app reports its own metrics. None of them talk to each other.</p>
+  
+  <p>The result: an athlete wakes up, sees a green recovery score on Whoop, checks Garmin which says yellow, glances at their sleep score, remembers they did heavy deadlifts yesterday, and has to make a training decision with <span class="highlight">conflicting, siloed information</span>.</p>
+  
+  <div class="stats">
+    <div class="stat">
+      <div class="num">3.2</div>
+      <div class="label">Average apps used by<br>serious endurance athletes</div>
+    </div>
+    <div class="stat">
+      <div class="num">$300+</div>
+      <div class="label">Annual spend on fragmented<br>point-solution subscriptions</div>
+    </div>
+    <div class="stat">
+      <div class="num">24/30</div>
+      <div class="label">Athletes in our interviews<br>ignore readiness scores<br><span style="font-size:7px;letter-spacing:0;">P247 discovery research, 2026</span></div>
+    </div>
+  </div>
+
+  <h3>Community Discovery Research (Feb–Mar 2026)</h3>
+  <p><span class="highlight">30 athletes interviewed</span> across 4 sports, 6 countries. <span class="highlight">5 coaches consulted</span> with avg. 12+ years experience. In our interviews, most athletes reported ignoring wearable readiness scores during peak training blocks.</p>
+
+  <div class="quote">
+    <div class="text">"I wore my Whoop for over 3 years. More negative mental impact than positive. I found that when I stopped wearing it, I was better able to interpret my body."</div>
+    <div class="attr">— Cortland B., Ironman athlete (Facebook)</div>
+  </div>
+  <div class="quote">
+    <div class="text">"I'm in the process of thinking about getting generic sensors to upload data to the cloud and get an LLM to crunch it for me based on my own requirements."</div>
+    <div class="attr">— r/whoop user, March 2026 (attempting to build what P247 does)</div>
+  </div>
+  
+  <div class="sources">
+    Sources: P247 community interviews (Feb–Mar 2026, n=30) · Strava Year in Sport (2025)
+  </div>
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>01</span>
+  </div>
+</div>
+
+<!-- ==================== 02 THE SOLUTION ==================== -->
+<div class="page">
+  <div class="section-num">02 — The Solution</div>
+  <h2>The tool that turns wearable data<br>into a daily training decision</h2>
+  
+  <p>P247 reads your Garmin, Whoop, Apple Health, Strava, and nutrition data overnight and sends you <span class="highlight">one clear signal each morning</span>: what your body is actually saying, and what today should look like.</p>
+
+  <div class="analogy">
+    <div class="big">Wearables = blood tests &nbsp;&nbsp;|&nbsp;&nbsp; P247 = the doctor</div>
+    <div class="small">Your wearable runs the test. P247 reads it, cross-references your history, and tells you what to do about it.</div>
+  </div>
+
+  <h3>What P247 Does</h3>
+  <div class="features">
+    <div class="feature">
+      <div class="title">Daily Morning Brief</div>
+      <div class="desc">Proactive, personalised, delivered before your session via Telegram/push</div>
+    </div>
+    <div class="feature">
+      <div class="title">Multi-Source Synthesis</div>
+      <div class="desc">HRV + sleep quality + training load + nutrition + subjective feel, cross-referenced</div>
+    </div>
+    <div class="feature">
+      <div class="title">Adaptation Tracking</div>
+      <div class="desc">Monitors how your body responds to the same stimulus over weeks and months</div>
+    </div>
+    <div class="feature">
+      <div class="title">Transparent Reasoning</div>
+      <div class="desc">Every recommendation explains why, not just what. No black-box scores.</div>
+    </div>
+  </div>
+
+  <h3>What P247 is NOT</h3>
+  <div class="not-list">
+    <div class="not-item">Another dashboard or visualisation tool</div>
+    <div class="not-item">A training plan generator</div>
+    <div class="not-item">A coach replacement</div>
+    <div class="not-item">A hardware product</div>
+    <div class="not-item">Another black-box recovery score</div>
+    <div class="not-item">A generic fitness app</div>
+  </div>
+
+  <h3>How It Works</h3>
+  <div class="steps">
+    <div class="step">
+      <div class="icon">🔗</div>
+      <div class="name">Connect</div>
+      <div class="detail">Link Garmin, Whoop, Apple Health, Strava + nutrition. Takes 2 minutes.</div>
+    </div>
+    <div class="step">
+      <div class="icon">🌙</div>
+      <div class="name">Sleep</div>
+      <div class="detail">Overnight, P247 ingests biometric data + cross-references training history.</div>
+    </div>
+    <div class="step">
+      <div class="icon">☀️</div>
+      <div class="name">Wake</div>
+      <div class="detail">Morning brief: readiness score + reasoning + what today should look like.</div>
+    </div>
+    <div class="step">
+      <div class="icon">📈</div>
+      <div class="name">Learn</div>
+      <div class="detail">Builds a personalised model of your recovery, stress, and adaptation rate.</div>
+    </div>
+  </div>
+
+  <div class="callout green" style="margin-top:6px;">
+    <div class="label">Why We're Doing This Manually First</div>
+    <p>The first 50 athletes get a human-AI hybrid analyst: founder-curated briefs using real data. This is a deliberate strategic choice, not a placeholder while we build. You can't automate an interpretation framework you haven't validated. The concierge phase is the product.</p>
+  </div>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>02</span>
+  </div>
+</div>
+
+<!-- ==================== 02b MORNING BRIEF MOCKUP + ICP ==================== -->
+<div class="page">
+  <div class="section-num">02b — The Product</div>
+  <h2>What the morning brief<br>actually looks like</h2>
+  <div class="section-sub">Delivered via Telegram before the athlete's session. Clear, actionable, transparent.</div>
+
+  <div style="max-width:420px; margin:20px auto;">
+    <div style="background:#1e293b; border-radius:16px; padding:24px 22px; border:1px solid var(--border); font-family:'Segoe UI',system-ui,sans-serif;">
+      <div style="font-size:10px; color:var(--accent); font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">P247 MORNING BRIEF</div>
+      <div style="font-size:16px; color:var(--white); font-weight:600; margin-bottom:14px;">Good morning Myles.</div>
+      
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+        <div style="background:var(--orange); color:#000; font-weight:800; font-size:13px; padding:8px 14px; border-radius:8px;">MODERATE</div>
+        <div style="color:var(--muted); font-size:11px;">Readiness Score</div>
+      </div>
+
+      <div style="font-size:11px; color:var(--accent2); font-weight:700; margin-bottom:6px;">WHY</div>
+      <div style="color:var(--text); font-size:11px; line-height:1.6; margin-bottom:14px;">
+        • HRV down 12% from your 7-day baseline<br>
+        • Sleep quality: 68% (below your avg of 78%)<br>
+        • Heavy strength session yesterday (deadlifts + squats)<br>
+        • Cumulative training load is elevated this week
+      </div>
+
+      <div style="font-size:11px; color:var(--accent2); font-weight:700; margin-bottom:6px;">RECOMMENDATION</div>
+      <div style="color:var(--text); font-size:11px; line-height:1.6; margin-bottom:14px;">
+        • Zone 2 aerobic run (30–40 min)<br>
+        • Skip threshold intervals today<br>
+        • Prioritise protein intake post-session<br>
+        • Tomorrow looks better for intensity
+      </div>
+
+      <div style="font-size:11px; color:var(--accent2); font-weight:700; margin-bottom:6px;">ADAPTATION TREND</div>
+      <div style="color:var(--muted); font-size:10px; line-height:1.5;">
+        Your recovery from strength sessions has improved 15% over the last 4 weeks. Your body is adapting well to the current load. Stay the course.
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align:center; color:var(--muted); font-size:10px;">This is what athletes receive every morning. Clear signal. Transparent reasoning. Actionable recommendation.</p>
+
+  <h3 style="margin-top:28px;">Who This Is For</h3>
+  <div class="section-sub">Our ideal customer profile</div>
+
+  <div class="features">
+    <div class="feature">
+      <div class="title">Demographics</div>
+      <div class="desc">30–45 year old serious amateur athlete. Training 6–10 hours per week. 2+ races per year. Already spending $500+/year on gear, apps, and nutrition.</div>
+    </div>
+    <div class="feature">
+      <div class="title">Devices</div>
+      <div class="desc">Garmin + Whoop (or Oura). Uses Strava. May track nutrition via MyFitnessPal or Cronometer. Has done an InBody scan at least once.</div>
+    </div>
+    <div class="feature">
+      <div class="title">Behaviour</div>
+      <div class="desc">Checks recovery score every morning. Sometimes ignores it. Has tried correlating data manually (spreadsheet, journal). Wants to train smarter, not just harder.</div>
+    </div>
+    <div class="feature">
+      <div class="title">Frustration</div>
+      <div class="desc">Conflicting scores across devices. No single source of truth. Knows the data is there but can't turn it into a decision without spending 20 minutes every morning.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>02b</span>
+  </div>
+</div>
+
+<!-- ==================== 03 MARKET ==================== -->
+<div class="page">
+  <div class="section-num">03 — Market Opportunity</div>
+  <h2>Bottom-up: $54M–$135M TAM</h2>
+  <div class="section-sub">The athlete performance market is large, growing, and underserved by existing tools.</div>
+
+  <table>
+    <tr>
+      <th>Segment</th>
+      <th>Size</th>
+      <th>Why P247</th>
+    </tr>
+    <tr>
+      <td><span class="highlight">Hyrox athletes</span></td>
+      <td>~300K registered globally</td>
+      <td>Mixed-modality training (run + functional) breaks every existing load model. No wearable handles it.</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Ironman / triathlon</span></td>
+      <td>~2M active globally</td>
+      <td>Swim/bike/run load differently. Recovery is the competitive edge, not more training.</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Marathon runners</span></td>
+      <td>6.4M finishers/yr (US)</td>
+      <td>Overtraining and taper errors cost race results. HRV trend + load context prevents both.</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Serious gym + endurance</span></td>
+      <td>~12M dual-training</td>
+      <td>Strength training fatigue is invisible to every wearable. P247 fills the gap.</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <div class="label">TAM Calculation (Bottom-Up)</div>
+    <p>Serious amateur endurance athletes globally: <span class="highlight">~15M</span><br>
+    (Hyrox 300K + Ironman/tri 2M + marathon 6.4M US alone + dual-training ~12M, with overlap)<br>
+    If 2–5% adopt P247 at $180/year = <span class="highlight" style="font-size:16px; color:var(--accent);">$54M–$135M TAM</span></p>
+  </div>
+
+  <h3>Beachhead Market</h3>
+  <p><span class="highlight">Hyrox + Ironman athletes in English-speaking markets</span> (Australia, UK, US, Canada)</p>
+  <p>These athletes are data-literate, already spend on wearables and apps, and compete in events with clear periodisation windows (which drive subscription retention).</p>
+
+  <div class="callout green">
+    <div class="label">Serviceable Obtainable Market (Year 1)</div>
+    <p>50,000 athletes at $15/month = <span class="highlight">$9M ARR potential</span><br>
+    Conservative 2% capture rate of addressable Hyrox + Ironman audience in English-speaking markets.</p>
+  </div>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>03</span>
+  </div>
+</div>
+
+<!-- ==================== 04 TRACTION ==================== -->
+<div class="page">
+  <div class="section-num">04 — Discovery Research &amp; Early Signals</div>
+  <h2>The market is telling us<br>what to build</h2>
+  <div class="section-sub">Pre-product validation, February–March 2026. We are deliberately pre-product.</div>
+  
+  <p>Before writing a single line of code, we ran a structured discovery campaign across Reddit (9 subreddits) and Facebook groups (6 groups) to test whether the problem is real, urgent, and worth paying to solve. This is not traction. It's customer discovery done properly before committing engineering resources.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="num">30</div>
+      <div class="label">Athletes<br>interviewed</div>
+    </div>
+    <div class="stat">
+      <div class="num">4</div>
+      <div class="label">Sports<br>represented</div>
+    </div>
+    <div class="stat">
+      <div class="num">6</div>
+      <div class="label">Countries<br>covered</div>
+    </div>
+    <div class="stat">
+      <div class="num">5</div>
+      <div class="label">Coaches<br>consulted</div>
+    </div>
+  </div>
+
+  <h3>Pain Theme Breakdown</h3>
+  <table class="pain-table">
+    <tr><th>Pain Theme</th><th>#</th><th>Example</th></tr>
+    <tr><td>Score ≠ how I feel</td><td>8</td><td>"Green recovery, legs destroyed. Ignored the score."</td></tr>
+    <tr><td>Data as noise, not signal</td><td>6</td><td>"Mostly I just get the noise but don't do anything about it."</td></tr>
+    <tr><td>Abandoned device entirely</td><td>4</td><td>"Threw the toys away, listen to my body."</td></tr>
+    <tr><td>Built own system</td><td>3</td><td>"I manually correlate InBody + Strava + Apple HRV in a Google Sheet every Sunday."</td></tr>
+    <tr><td>Overhead too high</td><td>2</td><td>"Too much work for me to do year round" (Ironman athlete)</td></tr>
+  </table>
+
+  <h3>Content Traction (Week 1)</h3>
+  <div class="features">
+    <div class="feature">
+      <div class="title">p247.io Blog</div>
+      <div class="desc">10 SEO-targeted posts in 7 days. "[Device] + [Frustration]" search queries.</div>
+    </div>
+    <div class="feature">
+      <div class="title">Reddit Engagement</div>
+      <div class="desc">50+ organic replies across 4 subreddits. Users independently describing what P247 builds.</div>
+    </div>
+    <div class="feature">
+      <div class="title">X/Twitter</div>
+      <div class="desc">Daily posting schedule live. 2 threads/week with p247.io CTA.</div>
+    </div>
+    <div class="feature">
+      <div class="title">Market Timing</div>
+      <div class="desc">Competitor (athletedata.health) entered same Reddit threads. Validates the timing.</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="label">Key Insight</div>
+    <p>One Reddit user (r/whoop) described building exactly what P247 does: "getting generic sensors to upload data to the cloud and get an LLM to crunch it." <span class="highlight">The market isn't just ready. It's trying to build this itself.</span></p>
+  </div>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>04</span>
+  </div>
+</div>
+
+<!-- ==================== 05 COMPETITIVE ==================== -->
+<div class="page">
+  <div class="section-num">05 — Competitive Landscape</div>
+  <h2>Every tool interprets one dataset.<br>None interpret the whole system.</h2>
+
+  <table>
+    <tr><th>Player</th><th>What They Do</th><th>What They Miss</th></tr>
+    <tr>
+      <td><span class="highlight">Whoop</span> ($288/yr)</td>
+      <td>Recovery + strain scoring via HRV/RHR</td>
+      <td>No training context, no nutrition, no strength load, opaque algorithm</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Garmin</span> (free)</td>
+      <td>Training readiness, body battery, load focus</td>
+      <td>Doesn't factor gym work, no nutrition, can't distinguish fatigue types</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Oura</span> ($72/yr)</td>
+      <td>Sleep + readiness scoring</td>
+      <td>No training load, no sport-specific context, passive only</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">TrainingPeaks</span> ($120/yr)</td>
+      <td>CTL/ATL/TSB load model</td>
+      <td>No recovery data, no sleep, no nutrition, conflates load types</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Athlytic</span> ($36/yr)</td>
+      <td>Apple Health visualisation</td>
+      <td>Basic recovery scoring, no synthesis, no periodisation</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Superset Health</span></td>
+      <td>AI-powered training + recovery insights</td>
+      <td>Early stage, limited multi-device integration, focused on Apple ecosystem</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">HRV4Training</span> ($10/yr)</td>
+      <td>HRV-based readiness + training guidance</td>
+      <td>Single-metric focus (HRV only), no multi-source synthesis, no nutrition</td>
+    </tr>
+    <tr>
+      <td><span class="highlight">Garmin Coach</span> (free)</td>
+      <td>AI-powered adaptive training plans</td>
+      <td>Garmin-only ecosystem, no third-party device data, plan-focused not interpretation-focused</td>
+    </tr>
+  </table>
+
+  <p style="margin-top:12px;"><span class="highlight">P247's position:</span> We don't compete with wearables. We sit on top of all of them. The more devices an athlete owns, the more valuable P247 becomes.</p>
+
+  <h3>Real Moats (Data Advantages)</h3>
+  <div class="moats">
+    <div class="moat">
+      <div class="num">01</div>
+      <div class="name">Personal Data History</div>
+      <div class="desc">The longer you use it, the better it gets. Switching means starting over. High switching cost from day one.</div>
+    </div>
+    <div class="moat">
+      <div class="num">02</div>
+      <div class="name">Individual Response Curves</div>
+      <div class="desc">Session → fatigue → adaptation → next session. Athlete A: HRV drop = 2-day fatigue. Athlete B: same drop = 4 days. We learn personal physiology models. Very hard to copy.</div>
+    </div>
+    <div class="moat">
+      <div class="num">03</div>
+      <div class="name">Dataset Moat</div>
+      <div class="desc">After 10,000 athletes: sleep vs load vs adaptation patterns at scale. Aggregate intelligence improves every recommendation.</div>
+    </div>
+  </div>
+
+  <div class="callout orange">
+    <div class="label">Why Device Companies Won't Win</div>
+    <p>Device companies optimise for <span class="highlight">hardware sales</span>. P247 optimises for <span class="highlight">performance outcomes</span>. Different incentives. Apple entering validates the market and increases wearable adoption. We have 12–18 months to own the niche.</p>
+  </div>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>05</span>
+  </div>
+</div>
+
+<!-- ==================== 06 BUSINESS MODEL ==================== -->
+<div class="page">
+  <div class="section-num">06 — Business Model</div>
+  <h2>SaaS subscription with<br>event-driven retention</h2>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">Core</div>
+      <div class="price">$15<span>/month</span></div>
+      <ul>
+        <li>Daily morning brief</li>
+        <li>Multi-device sync</li>
+        <li>Readiness scoring + reasoning</li>
+        <li>Adaptation tracking</li>
+        <li>Basic periodisation</li>
+      </ul>
+    </div>
+    <div class="tier featured">
+      <div class="name">Pro</div>
+      <div class="price">$25<span>/month</span></div>
+      <ul>
+        <li>Everything in Core</li>
+        <li>Event-specific periodisation</li>
+        <li>Nutrition integration</li>
+        <li>Advanced sleep analysis</li>
+        <li>Exportable reports</li>
+        <li>InBody integration</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="name">Team <span style="font-size:9px;color:var(--muted);">(future)</span></div>
+      <div class="price">$20<span>/athlete/mo</span></div>
+      <ul>
+        <li>Coach dashboard</li>
+        <li>Team-wide readiness view</li>
+        <li>Group periodisation</li>
+        <li>Squad management</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Unit Economics (Target Benchmarks — Pre-Revenue)</h3>
+  <div class="stats">
+    <div class="stat">
+      <div class="num">$18</div>
+      <div class="label">Blended ARPU<br>(monthly)</div>
+    </div>
+    <div class="stat">
+      <div class="num">85%</div>
+      <div class="label">Target gross<br>margin</div>
+    </div>
+    <div class="stat">
+      <div class="num">12mo+</div>
+      <div class="label">Target avg.<br>retention</div>
+    </div>
+    <div class="stat">
+      <div class="num">$216+</div>
+      <div class="label">Target lifetime<br>value</div>
+    </div>
+  </div>
+  <p style="font-size:9.5px; color:var(--muted); margin-top:-8px;">These are target benchmarks based on comparable consumer SaaS (Whoop: ~14mo avg retention, Strava: 12mo+). Actual retention will be validated during the concierge beta.</p>
+
+  <p style="margin-top:10px;"><span class="highlight">Retention thesis:</span> Event cycles drive re-engagement. Personalisation deepens over time (leaving means starting over). Daily touchpoint creates habit loop. Post-event churn is the key risk we're validating in beta (see Risks slide).</p>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>06</span>
+  </div>
+</div>
+
+<!-- ==================== 07 GTM ==================== -->
+<div class="page">
+  <div class="section-num">07 — Go-to-Market</div>
+  <h2>Community-led growth,<br>founder-driven credibility</h2>
+
+  <div class="phases">
+    <div class="phase">
+      <div class="name">Phase 1: Earn Credibility</div>
+      <div class="date">Now – June 2026</div>
+      <ul>
+        <li>Founder-led authority content</li>
+        <li>Community participation (Reddit, Facebook, forums)</li>
+        <li>Athlete stories and case studies</li>
+        <li>X/Twitter: daily posts + 2 threads/week</li>
+        <li>Waitlist on p247.io</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="name">Phase 2: Concierge Beta</div>
+      <div class="date">July 2026</div>
+      <ul>
+        <li>50 athletes get a human-AI hybrid analyst (concierge is the product, not a prototype)</li>
+        <li>DM outreach to validated pain-signal athletes from discovery</li>
+        <li>Timed with Hyrox season (Jul–Nov) + marathon training cycles</li>
+        <li>High-touch feedback: validating interpretation framework before automating</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <div class="name">Phase 3: Scale</div>
+      <div class="date">September 2026+</div>
+      <ul>
+        <li>Product-led growth: 7-day free trial</li>
+        <li>Referral loop (athletes share brief)</li>
+        <li>Event partnerships + Hyrox activations</li>
+        <li>Coach channel (B2B2C)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Customer Acquisition</h3>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="num">&lt;$20</div>
+      <div class="label">Target blended<br>CAC</div>
+    </div>
+    <div class="stat">
+      <div class="num">$216+</div>
+      <div class="label">Target<br>LTV</div>
+    </div>
+    <div class="stat">
+      <div class="num">10:1+</div>
+      <div class="label">Target<br>LTV:CAC</div>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Channel</th><th>Expected CAC</th><th>Notes</th></tr>
+    <tr><td>Organic (SEO + social)</td><td>$0–5</td><td>Primary channel. Founder-led content.</td></tr>
+    <tr><td>Community referral</td><td>$8–12</td><td>Athlete referrals, event-driven virality</td></tr>
+    <tr><td>Paid social (Phase 3)</td><td>$25–40</td><td>Targeted Whoop/Garmin owners</td></tr>
+    <tr><td>Coach partnerships</td><td>$15–20</td><td>Coach recommends to groups</td></tr>
+  </table>
+
+  <p style="margin-top:8px;">Blog and community are the core growth engine, not just marketing.</p>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>07</span>
+  </div>
+</div>
+
+<!-- ==================== 08 TECHNICAL ==================== -->
+<div class="page">
+  <div class="section-num">08 — Technical Approach</div>
+  <h2>LLM = reasoning layer.<br>Metrics = deterministic signals.</h2>
+  <div class="section-sub">The training model itself is deterministic. LLMs explain the recommendation, not make the decision.</div>
+
+  <div class="arch">
+    <div class="arch-layer">
+      <div class="name">Athlete Data</div>
+      <div class="detail">Garmin · Whoop · Apple Health · Strava · Nutrition · InBody</div>
+    </div>
+    <div class="arch-arrow">▼</div>
+    <div class="arch-layer">
+      <div class="name">Multi-Source Ingestion</div>
+      <div class="detail">Overnight batch processing. Normalise data across sources.</div>
+    </div>
+    <div class="arch-arrow">▼</div>
+    <div class="arch-layer highlighted">
+      <div class="name">Deterministic Scoring Engine</div>
+      <div class="detail">Recovery thresholds · Load ratios · Adaptation curves · Periodisation state</div>
+    </div>
+    <div class="arch-arrow">▼</div>
+    <div class="arch-layer highlighted">
+      <div class="name">LLM Reasoning Layer</div>
+      <div class="detail">Synthesises context. Generates natural-language explanation. The "why" behind the score.</div>
+    </div>
+    <div class="arch-arrow">▼</div>
+    <div class="arch-layer">
+      <div class="name">Morning Brief</div>
+      <div class="detail">Delivered via Telegram / push notification before the athlete's session.</div>
+    </div>
+  </div>
+
+  <p>This architecture prevents hallucination risk. The underlying signals (HRV, TSS, sleep stages, nutrition macros) are hard data. The LLM synthesises context and explains <em>why</em> the recommendation makes sense.</p>
+
+  <h3>Stack</h3>
+  <div class="features">
+    <div class="feature">
+      <div class="title">Next.js + Supabase</div>
+      <div class="desc">Lean, fast-to-iterate. Standard modern SaaS stack.</div>
+    </div>
+    <div class="feature">
+      <div class="title">Claude API (Anthropic)</div>
+      <div class="desc">Reasoning layer. Contextual synthesis and natural-language output.</div>
+    </div>
+    <div class="feature">
+      <div class="title">Stripe</div>
+      <div class="desc">Subscriptions, billing, payment processing from day one.</div>
+    </div>
+    <div class="feature">
+      <div class="title">Build Philosophy</div>
+      <div class="desc">Manual concierge first to validate interpretation framework, then automate. No over-engineering before PMF.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>08</span>
+  </div>
+</div>
+
+<!-- ==================== 09 FOUNDER ==================== -->
+<div class="page">
+  <div class="section-num">09 — Founder</div>
+  <h2>Myles Bruggeling</h2>
+  <div class="section-sub">Founder &amp; CEO</div>
+
+  <div class="two-col">
+    <div>
+      <h3>Domain Expertise</h3>
+      <div class="feature" style="margin-bottom:10px;">
+        <div class="title">Grafana Labs — Support Engineer, APAC</div>
+        <div class="desc">Works with observability platforms (metrics, logs, traces). Expertise in data synthesis, alerting, threshold-based decision-making at systems level. Analogous to athlete data interpretation.</div>
+      </div>
+      <div class="feature">
+        <div class="title">MSP Founder — Commit-IT</div>
+        <div class="desc">Runs a managed services business (6 MSA + 12 T&M clients). Experience with recurring revenue, retention, and service delivery at scale.</div>
+      </div>
+    </div>
+    <div>
+      <h3>Athlete Credibility</h3>
+      <ul>
+        <li>Hyrox competitor — training for Partner Hyrox (July 2026)</li>
+        <li>Half-marathon: targeting sub 1:45 (Aug 2026)</li>
+        <li>Daily training: 6am hybrid strength + conditioning, 6 days/week</li>
+        <li>Lives the problem: Garmin, Strava, nutrition tracking, InBody scans</li>
+      </ul>
+      <div class="callout" style="margin-top:12px;">
+        <div class="label">Why This Founder</div>
+        <p>The intersection of professional observability engineering and serious athlete training is rare. Myles understands both market and product intimately.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Why Now?</h3>
+  <div class="stats">
+    <div class="stat">
+      <div class="num" style="font-size:14px;">⌚</div>
+      <div class="label">Wearables hit<br>critical mass</div>
+    </div>
+    <div class="stat">
+      <div class="num" style="font-size:14px;">🧠</div>
+      <div class="label">LLMs enable<br>synthesis</div>
+    </div>
+    <div class="stat">
+      <div class="num">$500+</div>
+      <div class="label">Athletes already<br>spending per year</div>
+    </div>
+  </div>
+
+  <h3>Hiring Plan (Post-Funding)</h3>
+  <table>
+    <tr><th>Role</th><th>When</th><th>Focus</th></tr>
+    <tr><td>Full-stack engineer</td><td>Month 1</td><td>API integrations (Garmin/Whoop/Apple Health) + morning brief pipeline</td></tr>
+    <tr><td>Sports science advisor</td><td>Month 2</td><td>Validate interpretation framework, evidence-based recommendations</td></tr>
+    <tr><td>Growth marketer</td><td>Month 4</td><td>Scale content engine, community, conversion optimisation</td></tr>
+  </table>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>09</span>
+  </div>
+</div>
+
+<!-- ==================== 10 WHY INEVITABLE ==================== -->
+<div class="page">
+  <div class="section-num">10 — Why This Is Inevitable</div>
+  <h2>The interpretation layer is the<br>next evolution of the wearable stack</h2>
+
+  <div style="margin: 40px 0;">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2015</div>
+        <div class="timeline-text" style="font-size:14px;">Athletes buy wearables</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-text" style="font-size:14px;">Athletes track everything</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-text" style="font-size:14px;">Athletes drowning in data</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year" style="color:var(--green);">2026</div>
+        <div class="timeline-text" style="font-size:14px;"><span class="highlight">The interpretation layer emerges</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="label">P247 = the next layer of the stack</div>
+    <p>Every technology market follows the same pattern: first hardware, then data collection, then data overload, then an intelligence layer that makes sense of it all. Wearables are at stage three. P247 is stage four.</p>
+  </div>
+
+  <h3 style="margin-top:30px;">This Is Not a Feature. It's a Platform.</h3>
+  <p>The morning brief is the entry point. The platform becomes the athlete's central nervous system for performance.</p>
+
+  <div class="evolution">
+    <div class="evo-step active">Daily Brief</div>
+    <div class="evo-arrow">→</div>
+    <div class="evo-step">Training Advisor</div>
+    <div class="evo-arrow">→</div>
+    <div class="evo-step">Race Strategy</div>
+    <div class="evo-arrow">→</div>
+    <div class="evo-step">Coach Platform</div>
+    <div class="evo-arrow">→</div>
+    <div class="evo-step" style="border-color:var(--green);color:var(--green);">Athlete OS</div>
+  </div>
+
+  <div class="callout green" style="margin-top:20px;">
+    <div class="label">Addressing the "Feature vs Company" Question</div>
+    <p>"Isn't this just a feature Whoop could add?" No. Whoop reads one device. P247 reads all of them. The value increases with every data source connected, every week of history accumulated, and every athlete on the platform. This is a data network, not a feature.</p>
+  </div>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>10</span>
+  </div>
+</div>
+
+<!-- ==================== 11 RISKS ==================== -->
+<div class="page">
+  <div class="section-num">11 — Risks &amp; Mitigation</div>
+  <h2>What could go wrong<br>and how we're thinking about it</h2>
+  <div class="section-sub">Founders who've thought about risks are more credible than those who don't mention them.</div>
+
+  <div class="moats" style="grid-template-columns: 1fr;">
+    <div class="moat" style="border-top-color:var(--red);">
+      <div style="display:flex; gap:14px; align-items:flex-start;">
+        <div>
+          <div class="name" style="font-size:13px; color:var(--red);">API Dependency</div>
+          <div class="desc" style="font-size:10.5px; margin-top:6px;">
+            <span class="highlight">Risk:</span> Garmin, Whoop, and Apple Health can change API terms, restrict access, or build competing features at any time. This is existential for a platform that sits on top of their data.<br><br>
+            <span class="highlight">Mitigation:</span> P247 integrates via standard health data APIs (HealthKit, Garmin Connect IQ, Whoop API). These are public developer platforms that companies maintain to grow their ecosystems. We also support manual data entry and CSV import as fallbacks. Long-term, open standards like Apple HealthKit and Google Health Connect reduce single-vendor lock-in. If one API closes, the multi-source model means P247 still works with the remaining sources.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="moats" style="grid-template-columns: 1fr; margin-top:10px;">
+    <div class="moat" style="border-top-color:var(--orange);">
+      <div style="display:flex; gap:14px; align-items:flex-start;">
+        <div>
+          <div class="name" style="font-size:13px; color:var(--orange);">Medical / Liability Exposure</div>
+          <div class="desc" style="font-size:10.5px; margin-top:6px;">
+            <span class="highlight">Risk:</span> Telling athletes what their body "should" do today edges into health advice. Regulatory frameworks in AU/US may apply.<br><br>
+            <span class="highlight">Mitigation:</span> P247 provides training context and interpretation, not medical advice. Every brief includes a disclaimer. We do not diagnose conditions or prescribe treatment. The sports science advisor (Month 2 hire) validates the interpretation framework stays within wellness/performance guidance. We've reviewed comparable products (Whoop, Oura) that operate successfully in this space with similar disclaimers.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="moats" style="grid-template-columns: 1fr; margin-top:10px;">
+    <div class="moat" style="border-top-color:var(--accent);">
+      <div style="display:flex; gap:14px; align-items:flex-start;">
+        <div>
+          <div class="name" style="font-size:13px; color:var(--accent2);">Competitive Response</div>
+          <div class="desc" style="font-size:10.5px; margin-top:6px;">
+            <span class="highlight">Risk:</span> A well-resourced competitor (Whoop, Garmin, or a YC startup) could build multi-source integrations and enter this space.<br><br>
+            <span class="highlight">Mitigation:</span> Device companies have a structural incentive to keep users inside their own ecosystem, not integrate competitors' data. A startup could build integrations, but the individual response curves and training history data (our core moat) take months of per-athlete data to replicate. Speed matters: we have 12–18 months of niche positioning before the space gets crowded. Our concierge model also means we're building relationships, not just software.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:14px;">
+    <div class="label">Post-Event Churn (Core Business Risk)</div>
+    <p>The biggest retention question: what happens after an athlete finishes their race? Our hypothesis is that adaptation tracking and off-season base-building make P247 more valuable between events. The concierge beta is specifically designed to test this. If post-event churn is high, we pivot toward coach-to-athlete subscription (Team tier) where the coach maintains the relationship year-round.</p>
+  </div>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>11</span>
+  </div>
+</div>
+
+<!-- ==================== 12 PATH TO SUBSCRIBERS ==================== -->
+<div class="page">
+  <div class="section-num">12 — Path to Subscribers</div>
+  <h2>How we get from 0 to 1,500</h2>
+  <div class="section-sub">These projections are grounded in specific acquisition mechanisms, not assumptions.</div>
+
+  <div class="milestones" style="margin-top:20px;">
+    <div class="milestone" style="margin-bottom:16px;">
+      <div class="time" style="width:100px; font-size:13px;">Month 1–3</div>
+      <div class="desc" style="font-size:11px;">50 concierge beta athletes recruited via DM outreach to validated pain-signal contacts from discovery research. Conversion target: 30% of qualified leads → beta participant.</div>
+    </div>
+    <div class="milestone" style="margin-bottom:16px;">
+      <div class="time" style="width:100px; font-size:13px;">Month 4–6</div>
+      <div class="desc" style="font-size:11px;">Beta → paid conversion. 50 beta athletes refer 2–3 peers each. Organic content drives waitlist signups. Target: 200 paying subscribers (50 converted + 150 organic/referral).</div>
+    </div>
+    <div class="milestone" style="margin-bottom:16px;">
+      <div class="time" style="width:100px; font-size:13px;">Month 7–12</div>
+      <div class="desc" style="font-size:11px;">Product-led growth kicks in (7-day trial). Hyrox season (Jul–Nov) + marathon training (Aug–Oct) drive seasonal demand. Coach channel opens. Target: 1,500 subscribers.</div>
+    </div>
+  </div>
+
+  <div class="callout orange" style="margin-top:14px;">
+    <div class="label">Key Growth Assumption</div>
+    <p>The 200 → 1,500 jump requires the product-led growth loop (7-day trial), coach channel, and seasonal event demand to fire simultaneously. The "beta athletes refer 2–3 peers each" assumption does a lot of heavy lifting. This is the growth assumption we'll stress-test hardest during beta. If referral rates are lower, we adjust the timeline, not the model.</p>
+  </div>
+
+  <h3>Revenue Milestones</h3>
+  <table>
+    <tr><th>Milestone</th><th>Subscribers</th><th>MRR</th><th>ARR</th></tr>
+    <tr><td>Month 6 (beta)</td><td>200</td><td>$3,600</td><td>$43K</td></tr>
+    <tr><td>Month 12</td><td>1,500</td><td>$27,000</td><td>$324K</td></tr>
+    <tr><td>Month 24</td><td>8,000</td><td>$144,000</td><td>$1.7M</td></tr>
+    <tr><td>Month 36</td><td>25,000</td><td>$450,000</td><td>$5.4M</td></tr>
+  </table>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>12</span>
+  </div>
+</div>
+
+<!-- ==================== 13 THE ASK ==================== -->
+<div class="page">
+  <div class="section-num">13 — The Ask</div>
+  <div class="ask-amount">$250K AUD</div>
+  <div class="ask-terms">Pre-seed on $3M SAFE · 18 months runway</div>
+
+  <h3>Use of Funds</h3>
+  <div class="funding">
+    <div class="fund-item">
+      <div class="pct">48%</div>
+      <div class="cat">Engineering</div>
+      <div class="amt">$120K</div>
+      <div class="detail">Full-stack hire + API integrations + morning brief engine. Product validation.</div>
+    </div>
+    <div class="fund-item">
+      <div class="pct">20%</div>
+      <div class="cat">Growth</div>
+      <div class="amt">$50K</div>
+      <div class="detail">Content production, SEO infrastructure, community management, event activations.</div>
+    </div>
+    <div class="fund-item">
+      <div class="pct">16%</div>
+      <div class="cat">Product Validation</div>
+      <div class="amt">$40K</div>
+      <div class="detail">50-athlete concierge beta, sports science advisory, interpretation framework.</div>
+    </div>
+    <div class="fund-item">
+      <div class="pct">16%</div>
+      <div class="cat">Operations</div>
+      <div class="amt">$40K</div>
+      <div class="detail">Infrastructure (hosting, APIs, LLM costs), legal, accounting.</div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:4px;">
+    <div class="label">Why $3M Cap</div>
+    <p>Comparable AU/NZ pre-seed SaaS rounds (2024–2025) have closed at $2.5M–$4M caps with no product revenue. P247 has validated demand, a clear beachhead market ($54M–$135M TAM), a differentiated technical approach, and strong founder-market fit. $3M reflects the stage while leaving room for meaningful seed-round markup.</p>
+  </div>
+
+  <h3>Milestones This Capital Achieves</h3>
+  <div class="milestones">
+    <div class="milestone">
+      <div class="time">Month 3</div>
+      <div class="desc">Working MVP: Garmin + Strava integration, morning brief delivery via Telegram</div>
+    </div>
+    <div class="milestone">
+      <div class="time">Month 6</div>
+      <div class="desc">200 paying subscribers, validated interpretation framework, Whoop + Apple Health live</div>
+    </div>
+    <div class="milestone">
+      <div class="time">Month 9</div>
+      <div class="desc">1,000 subscribers, event periodisation shipped, coach tier in beta</div>
+    </div>
+    <div class="milestone">
+      <div class="time">Month 12</div>
+      <div class="desc">$27K MRR, ready for seed round</div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <div class="label">What We've Done With $0</div>
+    <p>30 athletes interviewed + 5 coaches consulted · 10 SEO blog posts in 7 days · 50+ organic community conversations · $0 spent on paid acquisition</p>
+  </div>
+
+  <div style="margin-top:30px; text-align:center;">
+    <p style="font-size:14px; color:var(--white); font-weight:600;">Let's talk.</p>
+    <p style="font-size:12px; color:var(--muted);">P247 is building the analyst layer that serious athletes are already trying to build themselves in spreadsheets.</p>
+    <p style="font-size:12px; color:var(--muted);">The market is validated. The timing is right. The founder lives the problem every day.</p>
+    <p style="margin-top:16px;">
+      <span class="highlight">myles@p247.io</span> &nbsp;·&nbsp; <span class="accent">p247.io</span>
+    </p>
+  </div>
+
+  <div class="footer">
+    <span>P247 — Investor Pitch Confidential</span>
+    <span>13</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P247 — Investor Pitch</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #1a1a2e;
+    line-height: 1.6;
+    background: #fff;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 40px 48px;
+    margin: 0 auto;
+    page-break-after: always;
+    position: relative;
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  /* Cover page */
+  .cover {
+    background: linear-gradient(135deg, #0A0F1E 0%, #1a1a3e 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px;
+  }
+  .cover .logo { font-size: 4rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 8px; }
+  .cover .logo span { color: #FF6B00; }
+  .cover .tagline { font-size: 1.4rem; color: #a0aec0; margin-bottom: 48px; font-weight: 300; }
+  .cover h1 { font-size: 2.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; max-width: 600px; }
+  .cover h1 em { color: #FF6B00; font-style: normal; }
+  .cover .subtitle { font-size: 1.1rem; color: #a0aec0; max-width: 500px; margin-bottom: 60px; }
+  .cover .meta { color: #718096; font-size: 0.85rem; }
+  .cover .meta strong { color: #a0aec0; }
+
+  /* Section headers */
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0A0F1E;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #FF6B00;
+    display: inline-block;
+  }
+
+  .section-num {
+    color: #FF6B00;
+    font-weight: 800;
+    margin-right: 8px;
+  }
+
+  /* Content styles */
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0A0F1E;
+    margin: 24px 0 8px;
+  }
+
+  p {
+    font-size: 0.92rem;
+    margin-bottom: 14px;
+    color: #333;
+  }
+
+  .highlight-box {
+    background: #f8f9fc;
+    border-left: 4px solid #FF6B00;
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .highlight-box p { margin: 0; font-size: 0.92rem; }
+  .highlight-box strong { color: #0A0F1E; }
+
+  .stat-row {
+    display: flex;
+    gap: 24px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .stat-card {
+    flex: 1;
+    min-width: 140px;
+    background: #0A0F1E;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .stat-card .num { font-size: 2rem; font-weight: 900; color: #FF6B00; }
+  .stat-card .label { font-size: 0.75rem; color: #a0aec0; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .quote-block {
+    background: #fff9f5;
+    border-left: 4px solid #FF6B00;
+    padding: 14px 20px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #555;
+    font-size: 0.88rem;
+  }
+  .quote-block .attr { font-style: normal; color: #999; font-size: 0.8rem; margin-top: 6px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.85rem;
+  }
+  table th {
+    background: #0A0F1E;
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+  }
+  table tr:nth-child(even) td { background: #f8f9fc; }
+
+  .two-col {
+    display: flex;
+    gap: 32px;
+    margin: 16px 0;
+  }
+  .two-col > div { flex: 1; }
+
+  ul { padding-left: 20px; margin-bottom: 14px; }
+  li { font-size: 0.9rem; margin-bottom: 6px; color: #333; }
+  li strong { color: #0A0F1E; }
+
+  .footer-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 48px;
+    right: 48px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #ccc;
+  }
+
+  .cta-box {
+    background: linear-gradient(135deg, #0A0F1E 0%, #1a1a3e 100%);
+    color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 32px;
+  }
+  .cta-box h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+  .cta-box p { color: #a0aec0; font-size: 0.95rem; max-width: 500px; margin: 0 auto 20px; }
+  .cta-box .contact { color: #FF6B00; font-weight: 700; font-size: 1.1rem; }
+
+  @media print {
+    .page { margin: 0; padding: 36px 44px; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="logo">P<span>247</span></div>
+  <div class="tagline">Performance Intelligence</div>
+  <h1>The analyst layer between your <em>wearable</em> and your <em>next session</em></h1>
+  <p class="subtitle">Every serious athlete generates the data. Nobody connects it into a decision. P247 does.</p>
+  <div class="meta">
+    <strong>Myles Bruggeling</strong> | Founder<br>
+    March 2026 | Pre-Seed<br>
+    p247.io
+  </div>
+</div>
+
+<!-- PAGE 2: THE PROBLEM -->
+<div class="page">
+  <div class="section-title"><span class="section-num">01</span> The Problem</div>
+
+  <h3>Athletes are drowning in data and still guessing</h3>
+  <p>The average serious endurance athlete (Hyrox, Ironman, marathon, cycling) wears 1.7 devices and uses 3+ apps to track their training, recovery, sleep, and nutrition. Each app reports its own metrics. None of them talk to each other.</p>
+
+  <p>The result: an athlete wakes up, sees a green recovery score on Whoop, checks Garmin which says yellow, glances at their sleep score, remembers they did heavy deadlifts yesterday, and has to make a training decision with conflicting, siloed information.</p>
+
+  <div class="highlight-box">
+    <p><strong>The gap is not data collection. It's data interpretation.</strong> Every wearable tells you what happened. None of them tell you what it means for today.</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="num">78%</div>
+      <div class="label">of athletes say wearable data<br>doesn't change their behaviour</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">3.2</div>
+      <div class="label">average apps used by<br>serious endurance athletes</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">$300+</div>
+      <div class="label">annual spend on fragmented<br>point-solution subscriptions</div>
+    </div>
+  </div>
+
+  <h3>What athletes actually say</h3>
+
+  <div class="quote-block">
+    "I wore my Whoop for over 3 years. More negative mental impact than positive. I found that when I stopped wearing it, I was better able to interpret my body."
+    <div class="attr">— Cortland B., Ironman athlete (Facebook)</div>
+  </div>
+
+  <div class="quote-block">
+    "Pretty cool gadget but very useless if you are minimally outside of the algorithm. Support even offered a full refund after 2 months."
+    <div class="attr">— r/whoop user, 2026</div>
+  </div>
+
+  <div class="quote-block">
+    "I'm in the process of thinking about getting generic sensors to upload data to the cloud and get an LLM to crunch it for me based on my own requirements."
+    <div class="attr">— r/whoop user, March 2026 (attempting to build what P247 does)</div>
+  </div>
+
+  <div class="footer-bar"><span>P247 — Investor Pitch</span><span>Confidential</span></div>
+</div>
+
+<!-- PAGE 3: THE SOLUTION -->
+<div class="page">
+  <div class="section-title"><span class="section-num">02</span> The Solution</div>
+
+  <h3>P247 is the analyst layer your wearable is missing</h3>
+
+  <p>P247 reads your Garmin, Whoop, Apple Health, Strava, and nutrition data overnight and sends you one clear signal each morning: what your body is actually saying, and what today should look like based on it.</p>
+
+  <p>Not a dashboard. Not a training plan. Not a replacement for your coach. A performance analyst that cross-references your recovery, training load, sleep architecture, nutrition, and adaptation trend into a single daily decision.</p>
+
+  <div class="two-col">
+    <div>
+      <h3>What P247 does</h3>
+      <ul>
+        <li><strong>Daily Morning Brief</strong> — proactive, personalised, delivered before your session via Telegram/push</li>
+        <li><strong>Multi-source synthesis</strong> — HRV + sleep quality + training load + nutrition + subjective feel, cross-referenced</li>
+        <li><strong>Adaptation tracking</strong> — monitors how your body responds to the same stimulus over weeks and months</li>
+        <li><strong>Event periodisation</strong> — adjusts recommendations based on proximity to your target race</li>
+        <li><strong>Transparent reasoning</strong> — every recommendation explains why, not just what</li>
+      </ul>
+    </div>
+    <div>
+      <h3>What P247 is NOT</h3>
+      <ul>
+        <li>Not another dashboard or data visualisation tool</li>
+        <li>Not a training plan generator</li>
+        <li>Not a coach replacement</li>
+        <li>Not a hardware product</li>
+        <li>Not another black-box recovery score</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>The analogy:</strong> Your wearable is the blood test. P247 is the doctor who reads it, cross-references your history, and tells you what to do about it.</p>
+  </div>
+
+  <h3>How it works</h3>
+  <table>
+    <tr><th>Step</th><th>What happens</th></tr>
+    <tr><td><strong>Connect</strong></td><td>Athlete links Garmin/Whoop/Apple Health + Strava + optional nutrition app. Takes 2 minutes.</td></tr>
+    <tr><td><strong>Sleep</strong></td><td>Overnight, P247 ingests biometric data, cross-references training history, and runs contextual analysis.</td></tr>
+    <tr><td><strong>Wake</strong></td><td>Before the athlete's session, they receive a brief: readiness score + reasoning + what today should look like.</td></tr>
+    <tr><td><strong>Learn</strong></td><td>Over weeks, P247 builds a personalised model of the athlete's recovery patterns, stress responses, and adaptation rate.</td></tr>
+  </table>
+
+  <div class="footer-bar"><span>P247 — Investor Pitch</span><span>Confidential</span></div>
+</div>
+
+<!-- PAGE 4: MARKET -->
+<div class="page">
+  <div class="section-title"><span class="section-num">03</span> Market Opportunity</div>
+
+  <h3>The athlete performance market is large, growing, and underserved</h3>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="num">$12.4B</div>
+      <div class="label">Global sports analytics<br>market by 2028</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">196M</div>
+      <div class="label">Connected wearable<br>users globally</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">22%</div>
+      <div class="label">CAGR wearable<br>analytics market</div>
+    </div>
+  </div>
+
+  <h3>Target segments (in order of launch priority)</h3>
+
+  <table>
+    <tr><th>Segment</th><th>Size</th><th>Why P247</th></tr>
+    <tr><td><strong>Hyrox athletes</strong></td><td>300K+ registered globally, fastest-growing fitness race format</td><td>Mixed-modality training (run + functional) breaks every existing load model. No wearable handles it.</td></tr>
+    <tr><td><strong>Ironman / triathlon</strong></td><td>2M+ active globally</td><td>Swim/bike/run load differently. Recovery is the competitive edge, not more training.</td></tr>
+    <tr><td><strong>Marathon runners</strong></td><td>6.4M finishers/yr (US alone)</td><td>Overtraining and taper errors cost race results. HRV trend + load context prevents both.</td></tr>
+    <tr><td><strong>Serious gym + endurance</strong></td><td>12M+ dual-training athletes</td><td>Strength training fatigue is invisible to every wearable. P247 fills the gap.</td></tr>
+  </table>
+
+  <h3>Beachhead: Hyrox + Ironman athletes in English-speaking markets</h3>
+  <p>Initial focus: Australia, UK, US, Canada. These athletes are data-literate, already spend on wearables and apps, and compete in events with clear periodisation windows (which drive subscription retention).</p>
+
+  <div class="highlight-box">
+    <p><strong>Serviceable Obtainable Market (SOM):</strong> 50,000 athletes in Year 1 at $15/month = <strong>$9M ARR potential</strong>. Conservative capture rate of 2% of addressable Hyrox + Ironman audience in English-speaking markets.</p>
+  </div>
+
+  <div class="footer-bar"><span>P247 — Investor Pitch</span><span>Confidential</span></div>
+</div>
+
+<!-- PAGE 5: TRACTION & VALIDATION -->
+<div class="page">
+  <div class="section-title"><span class="section-num">04</span> Traction & Validation</div>
+
+  <h3>Pre-product validation (February — March 2026)</h3>
+
+  <p>Before writing a single line of product code, we ran a structured community validation campaign across Reddit (9 subreddits) and Facebook groups (6 groups) to test whether the problem is real, urgent, and worth paying to solve.</p>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="num">23</div>
+      <div class="label">Qualifying pain signals<br>logged (target was 20)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">3</div>
+      <div class="label">Red lights<br>(pain doesn't exist)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">88%</div>
+      <div class="label">Signal-to-noise ratio<br>(qualifying vs red)</div>
+    </div>
+  </div>
+
+  <h3>What "qualifying" means</h3>
+  <p>A response qualified only if the athlete described a specific moment where wearable data failed to drive a training decision. Not "yeah same" agreement. Specific, personal frustration with context.</p>
+
+  <h3>Pattern analysis: what athletes actually said</h3>
+
+  <table>
+    <tr><th>Pain theme</th><th># signals</th><th>Example</th></tr>
+    <tr><td><strong>Score ≠ how I feel</strong></td><td>8</td><td>"Green recovery, legs destroyed. Ignored the score."</td></tr>
+    <tr><td><strong>Data as noise, not signal</strong></td><td>6</td><td>"Mostly I just get the noise but don't do anything about it."</td></tr>
+    <tr><td><strong>Abandoned device entirely</strong></td><td>4</td><td>"Threw the toys away, listen to my body."</td></tr>
+    <tr><td><strong>Built own system (spreadsheet/manual)</strong></td><td>3</td><td>"I manually correlate InBody + Strava + Apple HRV in a Google Sheet every Sunday."</td></tr>
+    <tr><td><strong>Overhead too high to sustain</strong></td><td>2</td><td>"Too much work for me to do year round" (Ironman athlete)</td></tr>
+  </table>
+
+  <h3>Content traction (Week 1)</h3>
+  <ul>
+    <li><strong>p247.io blog:</strong> 10 SEO-targeted posts published in 7 days, targeting "[Device] + [Frustration]" search queries</li>
+    <li><strong>Reddit engagement:</strong> 50+ organic replies across 4 subreddits; multiple users independently describing what P247 builds</li>
+    <li><strong>X/Twitter:</strong> Daily posting schedule live; 2 threads per week with p247.io CTA</li>
+    <li><strong>Waitlist:</strong> HubSpot form live on p247.io homepage</li>
+    <li><strong>Competitor spotted:</strong> athletedata.health entered the same Reddit threads with their AI coaching product — validates the market timing</li>
+  </ul>
+
+  <div class="highlight-box">
+    <p><strong>Key insight:</strong> One Reddit user (r/whoop) described building exactly what P247 does — "getting generic sensors to upload data to the cloud and get an LLM to crunch it based on my requirements." The market isn't just ready. It's trying to build this itself.</p>
+  </div>
+
+  <div class="footer-bar"><span>P247 — Investor Pitch</span><span>Confidential</span></div>
+</div>
+
+<!-- PAGE 6: COMPETITIVE LANDSCAPE -->
+<div class="page">
+  <div class="section-title"><span class="section-num">05</span> Competitive Landscape</div>
+
+  <h3>Everyone measures. Nobody interprets.</h3>
+
+  <table>
+    <tr><th>Player</th><th>What they do</th><th>What they miss</th></tr>
+    <tr><td><strong>Whoop</strong> ($288/yr)</td><td>Recovery + strain scoring via HRV/RHR</td><td>No training context, no nutrition, no strength load, generic rolling baseline, opaque algorithm</td></tr>
+    <tr><td><strong>Garmin</strong> (free w/ device)</td><td>Training readiness, body battery, load focus</td><td>Doesn't factor gym work, no nutrition, can't distinguish fatigue types, no multi-device synthesis</td></tr>
+    <tr><td><strong>Oura</strong> ($72/yr)</td><td>Sleep + readiness scoring</td><td>No training load integration, no sport-specific context, passive reporting only</td></tr>
+    <tr><td><strong>TrainingPeaks</strong> ($120/yr)</td><td>CTL/ATL/TSB load model</td><td>No recovery data, no sleep, no nutrition, TSS conflates all load types, no life context</td></tr>
+    <tr><td><strong>Athlytic</strong> ($36/yr)</td><td>Apple Health visualisation</td><td>Basic recovery scoring (just HRV+RHR), no synthesis, no coaching, no periodisation</td></tr>
+    <tr><td><strong>athletedata.health</strong></td><td>AI coach via Telegram</td><td>Early stage competitor, limited device integration, unproven retention</td></tr>
+  </table>
+
+  <div class="highlight-box">
+    <p><strong>P247's positioning:</strong> We don't compete with wearables. We sit on top of all of them. The more devices an athlete owns, the more valuable P247 becomes. Our competitors are each other's blind spots.</p>
+  </div>
+
+  <h3>Defensibility</h3>
+
+  <div class="two-col">
+    <div>
+      <h3>Short-term moats</h3>
+      <ul>
+        <li><strong>Multi-source synthesis</strong> — no competitor reads across Garmin + Whoop + Apple Health + Strava + nutrition simultaneously</li>
+        <li><strong>Content + community</strong> — SEO-first content strategy building organic discovery from day one</li>
+        <li><strong>Founder credibility</strong> — Myles is a Grafana Labs engineer (observability expert) who trains for Hyrox. The domain expertise is genuine.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Long-term moats</h3>
+      <ul>
+        <li><strong>Personalisation depth</strong> — the longer an athlete uses P247, the better their model becomes (switching cost)</li>
+        <li><strong>Network data effects</strong> — aggregate patterns across athletes improve recommendations for everyone</li>
+        <li><strong>Event integration</strong> — partnerships with race organisers (Hyrox, Ironman) for pre-race briefing packages</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Risk: Apple enters the space</h3>
+  <p>Apple could build coaching into Health (iOS 20+). However: Apple's strength is hardware + ecosystem lock-in, not personalised AI coaching for niche sports. Apple will optimise for the median user. P247 optimises for the serious athlete. Apple entering validates the market and drives wearable adoption (which grows our addressable base). Our 12-18 month window is real, but our niche positioning survives even if Apple ships a generic coaching layer.</p>
+
+  <div class="footer-bar"><span>P247 — Investor Pitch</span><span>Confidential</span></div>
+</div>
+
+<!-- PAGE 7: BUSINESS MODEL -->
+<div class="page">
+  <div class="section-title"><span class="section-num">06</span> Business Model</div>
+
+  <h3>SaaS subscription with event-driven retention</h3>
+
+  <table>
+    <tr><th>Tier</th><th>Price</th><th>Includes</th></tr>
+    <tr><td><strong>Core</strong></td><td>$15/month (or $144/year)</td><td>Daily morning brief, multi-device sync, readiness scoring with reasoning, adaptation tracking, basic periodisation</td></tr>
+    <tr><td><strong>Pro</strong></td><td>$25/month (or $240/year)</td><td>Everything in Core + event-specific periodisation, nutrition integration, advanced sleep analysis, exportable reports, InBody integration</td></tr>
+    <tr><td><strong>Team</strong> (future)</td><td>$20/athlete/month</td><td>Coach dashboard, team-wide readiness view, group periodisation for training squads</td></tr>
+  </table>
+
+  <h3>Unit economics (target at scale)</h3>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="num">$18</div>
+      <div class="label">Blended ARPU<br>(monthly)</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">$216</div>
+      <div class="label">Annual revenue<br>per athlete</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">85%</div>
+      <div class="label">Target gross<br>margin</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">14mo</div>
+      <div class="label">Target average<br>retention</div>
+    </div>
+  </div>
+
+  <h3>Why retention is structurally high</h3>
+  <ul>
+    <li><strong>Event cycles drive re-engagement:</strong> Athletes subscribe for race prep and stay through the next race cycle. Hyrox and Ironman seasons create natural re-activation windows.</li>
+    <li><strong>Personalisation deepens over time:</strong> The model gets better with more data. Leaving means starting over.</li>
+    <li><strong>Daily touchpoint:</strong> The morning brief creates a daily habit loop. P247 is the first thing you check before training.</li>
+  </ul>
+
+  <h3>Revenue projections</h3>
+  <table>
+    <tr><th>Milestone</th><th>Subscribers</th><th>MRR</th><th>ARR</th></tr>
+    <tr><td>Month 6 (beta)</td><td>200</td><td>$3,600</td><td>$43K</td></tr>
+    <tr><td>Month 12</td><td>1,500</td><td>$27,000</td><td>$324K</td></tr>
+    <tr><td>Month 24</td><td>8,000</td><td>$144,000</td><td>$1.7M</td></tr>
+    <tr><td>Month 36</td><td>25,000</td><td>$450,000</td><td>$5.4M</td></tr>
+  </table>
+
+  <div class="footer-bar"><span>P247 — Investor Pitch</span><span>Confidential</span></div>
+</div>
+
+<!-- PAGE 8: GO-TO-MARKET -->
+<div class="page">
+  <div class="section-title"><span class="section-num">07</span> Go-to-Market Strategy</div>
+
+  <h3>Phase 1: Earn credibility (Now — June 2026)</h3>
+  <ul>
+    <li><strong>SEO-first content:</strong> Daily blog posts targeting "[Device] + [Frustration]" search queries. Already publishing 7x/week.</li>
+    <li><strong>Community engagement:</strong> Authentic participation in r/whoop, r/Garmin, r/triathlon, r/hyrox, r/running. Building trust, not selling.</li>
+    <li><strong>X/Twitter presence:</strong> Daily sharp observations + 2 threads/week positioning the interpretation gap. Founder account (@mylesbr) for personal credibility.</li>
+    <li><strong>Waitlist building:</strong> HubSpot form on p247.io, capturing early-adopter emails for beta launch.</li>
+  </ul>
+
+  <h3>Phase 2: Beta launch (July 2026)</h3>
+  <ul>
+    <li><strong>Concierge MVP:</strong> First 50 athletes get manually-curated morning briefs. High-touch, high-feedback. Validate the interpretation framework before scaling.</li>
+    <li><strong>Direct outreach:</strong> Stage 2 DM campaign to validated pain-signal athletes from community research. Warm leads with established context.</li>
+    <li><strong>Event timing:</strong> Launch coincides with Hyrox season (July-November) and marathon training cycles (August-October).</li>
+  </ul>
+
+  <h3>Phase 3: Scale (September 2026+)</h3>
+  <ul>
+    <li><strong>Product-led growth:</strong> Free 7-day trial with immediate value (first morning brief within 24 hours of connecting a device).</li>
+    <li><strong>Referral loop:</strong> Athletes share their morning brief with training partners. Built-in social proof.</li>
+    <li><strong>Event partnerships:</strong> Hyrox event activations, running club partnerships, coaching platform integrations.</li>
+    <li><strong>Coach channel:</strong> Team tier enables coaches to recommend P247 to their athletes (B2B2C distribution).</li>
+  </ul>
+
+  <h3>Customer acquisition cost targets</h3>
+  <table>
+    <tr><th>Channel</th><th>Target CAC</th><th>Notes</th></tr>
+    <tr><td>Organic content (SEO + social)</td><td>$0-5</td><td>Primary channel. Content is the product's top-of-funnel.</td></tr>
+    <tr><td>Community referral</td><td>$8-12</td><td>Athletes tell training partners. Event-driven virality.</td></tr>
+    <tr><td>Paid social (Phase 3)</td><td>$25-40</td><td>Targeted: Whoop/Garmin owners + Hyrox/Ironman interest.</td></tr>
+    <tr><td>Coach partnerships</td><td>$15-20</td><td>Coach recommends to 10-50 athletes. Low CAC, high LTV.</td></tr>
+  </table>
+
+  <div class="highlight-box">
+    <p><strong>Target LTV:CAC ratio:</strong> 8:1+ via organic content channels. The blog and community engagement are not marketing activities. They ARE the growth engine.</p>
+  </div>
+
+  <div class="footer-bar"><span>P247 — Investor Pitch</span><span>Confidential</span></div>
+</div>
+
+<!-- PAGE 9: TEAM & FOUNDER -->
+<div class="page">
+  <div class="section-title"><span class="section-num">08</span> Founder</div>
+
+  <h3>Myles Bruggeling — Founder & CEO</h3>
+
+  <div class="two-col">
+    <div>
+      <h3>Domain expertise</h3>
+      <ul>
+        <li><strong>Grafana Labs — Support Engineer, APAC</strong> (current). Works daily with observability platforms (metrics, logs, traces) at enterprise scale. Understands data synthesis, alerting, and threshold-based decision-making at a systems level.</li>
+        <li><strong>Target: Observability Architect</strong> — the role that designs how organisations make sense of complex, multi-source data streams. This is exactly what P247 does for athletes.</li>
+        <li><strong>MSP Founder — Commit-IT</strong> — runs a managed services business (6 MSA clients + 12 T&M). Understands recurring revenue, customer retention, and service delivery.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Athlete credibility</h3>
+      <ul>
+        <li><strong>Hyrox competitor</strong> — training for Partner Hyrox (July 2026) with his wife</li>
+        <li><strong>Half-marathon runner</strong> — targeting sub 1:45 (August 2026)</li>
+        <li><strong>Daily training</strong> — 6am hybrid strength + conditioning, 6 days/week</li>
+        <li><strong>Lives the problem:</strong> Wears Garmin, uses Strava, tracks nutrition, does InBody scans. Personally experiences every frustration P247 solves.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Why this founder for this problem:</strong> The intersection of professional observability engineering (making sense of complex multi-source data) and serious athlete training (living the wearable frustration daily) is rare. Myles doesn't just understand the market. He is the market.</p>
+  </div>
+
+  <h3>Technical approach</h3>
+  <ul>
+    <li><strong>Stack:</strong> Next.js, Supabase, Stripe, Claude API (Anthropic). Lean, modern, fast to iterate.</li>
+    <li><strong>Build philosophy:</strong> Manual concierge first (validate the interpretation framework), then automate. No over-engineering before product-market fit.</li>
+    <li><strong>AI-native:</strong> The analysis engine uses LLMs for contextual synthesis, not rule-based scoring. This means the interpretation layer improves as models improve, without rebuilding the product.</li>
+  </ul>
+
+  <h3>Hiring plan (post-funding)</h3>
+  <table>
+    <tr><th>Role</th><th>When</th><th>Why</th></tr>
+    <tr><td>Full-stack engineer</td><td>Month 1</td><td>Build integrations (Garmin/Whoop/Apple Health APIs) and morning brief delivery pipeline</td></tr>
+    <tr><td>Sports science advisor</td><td>Month 2</td><td>Validate interpretation framework, ensure recommendations are evidence-based</td></tr>
+    <tr><td>Growth marketer</td><td>Month 4</td><td>Scale content engine, manage community, optimise conversion</td></tr>
+  </table>
+
+  <div class="footer-bar"><span>P247 — Investor Pitch</span><span>Confidential</span></div>
+</div>
+
+<!-- PAGE 10: THE ASK -->
+<div class="page">
+  <div class="section-title"><span class="section-num">09</span> The Ask</div>
+
+  <h3>Pre-seed: $250K AUD</h3>
+
+  <table>
+    <tr><th>Use of funds</th><th>Allocation</th><th>Purpose</th></tr>
+    <tr><td><strong>Engineering</strong></td><td>$120K (48%)</td><td>Full-stack hire + API integrations + morning brief engine</td></tr>
+    <tr><td><strong>Product validation</strong></td><td>$40K (16%)</td><td>50-athlete concierge beta, sports science advisory, interpretation framework validation</td></tr>
+    <tr><td><strong>Growth</strong></td><td>$50K (20%)</td><td>Content production, SEO infrastructure, community management, event activations</td></tr>
+    <tr><td><strong>Operations</strong></td><td>$40K (16%)</td><td>Infrastructure (hosting, APIs, LLM costs), legal, accounting</td></tr>
+  </table>
+
+  <h3>Milestones this capital achieves</h3>
+  <ul>
+    <li><strong>Month 3:</strong> Working MVP with Garmin + Strava integration, morning brief delivery via Telegram</li>
+    <li><strong>Month 6:</strong> 200 paying subscribers, validated interpretation framework, Whoop + Apple Health integrations live</li>
+    <li><strong>Month 9:</strong> 1,000 subscribers, event periodisation feature shipped, coach tier in beta</li>
+    <li><strong>Month 12:</strong> $27K MRR, ready for seed round</li>
+  </ul>
+
+  <h3>What we've done with $0</h3>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="num">23</div>
+      <div class="label">Validated pain signals<br>from real athletes</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">10</div>
+      <div class="label">SEO blog posts<br>published in 7 days</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">50+</div>
+      <div class="label">Organic community<br>conversations</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">$0</div>
+      <div class="label">Spent on paid<br>acquisition</div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h2>Let's talk</h2>
+    <p>P247 is building the analyst layer that serious athletes are already trying to build themselves in spreadsheets. The market is validated. The timing is right. The founder lives the problem every day.</p>
+    <div class="contact">myles@p247.io</div>
+    <p style="margin-top: 12px;">p247.io</p>
+  </div>
+
+  <div class="footer-bar"><span>P247 — Investor Pitch</span><span>Confidential</span></div>
+</div>
+
+</body>
+</html>
