@@ -143,12 +143,8 @@ title: P247 — Performance Intelligence for serious athletes
   <h1>Your wearable measures.<br><span>P247 interprets.</span></h1>
   <p class="lead">One morning brief. Every signal your wearable misses. Before your session, not after.</p>
 
-  <form id="p247-form-hero" class="p247-form" onsubmit="return submitP247Form(event, this)">
-    <input type="text" name="firstname" placeholder="First name" required>
-    <input type="email" name="email" placeholder="Email address" required>
-    <button type="submit">Get early access</button>
-    <p class="form-msg" style="display:none;"></p>
-  </form>
+  <script src="https://js.hsforms.net/forms/embed/21624983.js" defer></script>
+  <div class="hs-form-frame" data-region="na1" data-form-id="5427ec1f-c4c3-4bce-a0d2-079874d6d005" data-portal-id="21624983"></div>
   <p class="cta-note">Get your first morning brief free. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -185,12 +181,7 @@ title: P247 — Performance Intelligence for serious athletes
 <section class="bottom-cta">
   <h2>We're building the interpretation layer your wearable is missing.</h2>
   <p>Early access is opening soon.</p>
-  <form id="p247-form-bottom" class="p247-form" onsubmit="return submitP247Form(event, this)">
-    <input type="text" name="firstname" placeholder="First name" required>
-    <input type="email" name="email" placeholder="Email address" required>
-    <button type="submit">Get early access</button>
-    <p class="form-msg" style="display:none;"></p>
-  </form>
+  <div class="hs-form-frame" data-region="na1" data-form-id="5427ec1f-c4c3-4bce-a0d2-079874d6d005" data-portal-id="21624983"></div>
   <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
 </section>
 
@@ -213,50 +204,7 @@ title: P247 — Performance Intelligence for serious athletes
 </section>
 
 <script>
-function submitP247Form(e, form) {
-  e.preventDefault();
-  var btn = form.querySelector('button');
-  var msg = form.querySelector('.form-msg');
-  var firstname = form.querySelector('input[name="firstname"]').value.trim();
-  var email = form.querySelector('input[name="email"]').value.trim();
-
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-  msg.style.display = 'none';
-
-  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      fields: [
-        { name: 'firstname', value: firstname },
-        { name: 'email', value: email }
-      ],
-      context: {
-        pageUri: window.location.href,
-        pageName: document.title
-      }
-    })
-  })
-  .then(function(res) {
-    if (res.ok || res.status === 200) {
-      form.querySelector('input[name="firstname"]').style.display = 'none';
-      form.querySelector('input[name="email"]').style.display = 'none';
-      btn.style.display = 'none';
-      msg.textContent = "You're on the list. We'll be in touch before launch.";
-      msg.className = 'form-msg success';
-      msg.style.display = 'block';
-    } else {
-      throw new Error('Submission failed');
-    }
-  })
-  .catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Get early access';
-    msg.textContent = 'Something went wrong. Try again.';
-    msg.className = 'form-msg error';
-    msg.style.display = 'block';
-  });
+// Legacy form JS removed - now using HubSpot embedded forms
 
   return false;
 }
