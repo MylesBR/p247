@@ -251,7 +251,7 @@ description: Your wearable can't tell you if you're losing muscle or fat on sema
       <input type="text" name="firstname" placeholder="First name" required>
       <input type="email" name="email" placeholder="Email" required>
     </div>
-    <button type="submit">Get early access</button>
+    <button type="submit">Download the free guide</button>
     <p class="form-msg"></p>
   </form>
   <p class="cta-note">Free. No spam. Unsubscribe anytime.</p>
@@ -322,7 +322,7 @@ description: Your wearable can't tell you if you're losing muscle or fat on sema
       <input type="text" name="firstname" placeholder="First name" required>
       <input type="email" name="email" placeholder="Email" required>
     </div>
-    <button type="submit">Get early access</button>
+    <button type="submit">Download the free guide</button>
     <p class="form-msg"></p>
   </form>
   <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
@@ -354,11 +354,18 @@ function submitForm(e, form, formId) {
     if (res.ok || res.status === 200) {
       form.querySelector('.fields').style.display = 'none';
       btn.style.display = 'none';
-      msg.textContent = "You're in. We'll reach out before launch.";
+      msg.innerHTML = 'Your guide is downloading now. Check your inbox too. ✅';
       msg.className = 'form-msg success';
       msg.style.display = 'block';
+      // Trigger PDF download
+      var dl = document.createElement('a');
+      dl.href = '/guides/glp1-guide.pdf';
+      dl.download = 'P247-GLP1-Guide.pdf';
+      document.body.appendChild(dl);
+      dl.click();
+      document.body.removeChild(dl);
       if (typeof gtag === 'function') {
-        gtag('event', 'sign_up', { method: 'early_access', page_location: window.location.href });
+        gtag('event', 'generate_lead', { method: 'glp1_guide_download', page_location: window.location.href });
       }
     } else { throw new Error('fail'); }
   })

@@ -379,11 +379,18 @@ function submitForm(e, form, formId) {
     if (res.ok || res.status === 200) {
       form.querySelector('.fields').style.display = 'none';
       btn.style.display = 'none';
-      msg.textContent = "Check your inbox. The guide is on its way. ✅";
+      msg.innerHTML = 'Your guide is downloading now. Check your inbox too. ✅';
       msg.className = 'form-msg success';
       msg.style.display = 'block';
+      // Trigger PDF download
+      var dl = document.createElement('a');
+      dl.href = '/guides/athlete-guide.pdf';
+      dl.download = 'P247-Athlete-Guide.pdf';
+      document.body.appendChild(dl);
+      dl.click();
+      document.body.removeChild(dl);
       if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', { method: 'guide_download', page_location: window.location.href });
+        gtag('event', 'generate_lead', { method: 'athlete_guide_download', page_location: window.location.href });
       }
     } else { throw new Error('fail'); }
   })

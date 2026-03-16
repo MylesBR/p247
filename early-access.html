@@ -1,7 +1,7 @@
 ---
 layout: landing
 title: "Early Access — P247"
-description: "Connect your wearable, nutrition, and body comp data. See what's actually happening to your muscle mass. Not in 12 weeks. Now."
+description: "Connect your wearable, nutrition, and body comp data. See what's actually happening. Not in 12 weeks. Now."
 permalink: /early-access/
 ---
 
@@ -32,6 +32,7 @@ permalink: /early-access/
     line-height: 1.12;
     margin-bottom: 20px;
     letter-spacing: -0.5px;
+    color: #fff;
   }
   .ea-hero h1 .accent { color: #00B4FF; }
   .ea-hero .sub {
@@ -39,185 +40,71 @@ permalink: /early-access/
     line-height: 1.6;
     color: #a0b4cc;
     max-width: 520px;
-    margin: 0 auto 36px;
+    margin: 0 auto 48px;
   }
 
-  /* Form */
-  .ea-form {
-    max-width: 420px;
+  /* Split cards */
+  .ea-split {
+    max-width: 720px;
     margin: 0 auto;
-  }
-  .ea-form .fields {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-  .ea-form input {
-    flex: 1;
-    background: #1a2540;
-    border: 1px solid #2d3f5e;
-    color: #fff;
-    border-radius: 8px;
-    padding: 14px 16px;
-    font-size: 1rem;
-    font-family: inherit;
-    -webkit-appearance: none;
-    transition: border-color 0.15s;
-  }
-  .ea-form input::placeholder { color: #5a6f8a; }
-  .ea-form input:focus { outline: none; border-color: #00B4FF; }
-  .ea-form button {
-    width: 100%;
-    background: #FF6B00;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 14px 32px;
-    font-size: 1.05rem;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background 0.15s, transform 0.1s;
-  }
-  .ea-form button:hover { background: #e05e00; transform: translateY(-1px); }
-  .ea-form button:active { transform: translateY(0); }
-  .ea-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-  .ea-form .form-msg {
-    margin-top: 14px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-align: center;
-    display: none;
-  }
-  .ea-form .form-msg.success { color: #4ADE80; }
-  .ea-form .form-msg.error { color: #ff6b6b; }
-  .ea-note {
-    text-align: center;
-    font-size: 0.82rem;
-    color: #4a5568;
-    margin-top: 14px;
-  }
-
-  /* Problem section */
-  .ea-problem {
-    max-width: 600px;
-    margin: 72px auto 0;
     padding: 0 24px;
-  }
-  .ea-problem h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 32px;
-    color: #e2e8f0;
-  }
-  .ea-problem-grid {
-    display: grid;
-    gap: 16px;
-  }
-  .ea-problem-card {
-    background: #111827;
-    border: 1px solid #1e2d45;
-    border-radius: 10px;
-    padding: 20px 24px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-  .ea-problem-card .icon {
-    font-size: 1.4rem;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .ea-problem-card .text {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: #c0cee0;
-  }
-  .ea-problem-card .text strong { color: #fff; font-weight: 600; }
-
-  /* Voices section */
-  .ea-voices {
-    max-width: 600px;
-    margin: 64px auto 0;
-    padding: 0 24px;
-  }
-  .ea-voices h2 {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #4a5568;
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  .ea-voice {
-    border-left: 3px solid #00B4FF;
-    padding: 14px 20px;
-    margin-bottom: 14px;
-    background: rgba(0, 180, 255, 0.04);
-    border-radius: 0 8px 8px 0;
-  }
-  .ea-voice q {
-    font-style: italic;
-    color: #c0cee0;
-    font-size: 0.93rem;
-    line-height: 1.55;
-    quotes: none;
-  }
-  .ea-voice .src {
-    font-size: 0.78rem;
-    color: #4a5568;
-    margin-top: 6px;
-    display: block;
-  }
-
-  /* What you get */
-  .ea-what {
-    max-width: 600px;
-    margin: 64px auto 0;
-    padding: 0 24px;
-  }
-  .ea-what h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 28px;
-    color: #e2e8f0;
-  }
-  .ea-what-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 24px;
   }
-  .ea-what-item {
-    text-align: center;
-    padding: 24px 16px;
+  .ea-card {
     background: #111827;
     border: 1px solid #1e2d45;
-    border-radius: 10px;
+    border-radius: 14px;
+    padding: 36px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  .ea-what-item .wi-icon { font-size: 1.6rem; margin-bottom: 10px; }
-  .ea-what-item .wi-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: #fff; }
-  .ea-what-item .wi-desc { font-size: 0.82rem; color: #7a8ba5; line-height: 1.5; }
+  .ea-card .card-icon {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+  }
+  .ea-card h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .ea-card p {
+    font-size: 0.93rem;
+    color: #a0b4cc;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+  .ea-card .card-btn {
+    display: inline-block;
+    background: #FF6B00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .ea-card .card-btn:hover { background: #e05e00; transform: translateY(-1px); }
+  .ea-card .card-btn:active { transform: translateY(0); }
 
-  /* Bottom CTA */
+  /* Bottom section */
   .ea-bottom {
     max-width: 520px;
     margin: 72px auto 0;
     padding: 0 24px 80px;
     text-align: center;
   }
-  .ea-bottom h2 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-    color: #fff;
-  }
   .ea-bottom p {
-    color: #718096;
-    font-size: 0.95rem;
-    margin-bottom: 28px;
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 
   /* Footer */
@@ -230,46 +117,13 @@ permalink: /early-access/
   }
   .ea-footer a { color: #4a5568; text-decoration: none; margin: 0 8px; }
 
-  /* Tablet */
-  @media (max-width: 768px) {
-    .ea-hero h1 { font-size: 2.1rem; }
-    .ea-what-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  }
-
-  /* Mobile */
   @media (max-width: 600px) {
-    .ea-header { padding: 16px 16px 0; }
-    .ea-hero { padding: 32px 16px 0; }
-    .ea-hero h1 { font-size: 1.65rem; letter-spacing: -0.3px; line-height: 1.2; margin-bottom: 16px; }
-    .ea-hero .sub { font-size: 1rem; margin-bottom: 28px; }
-    .ea-form { max-width: 100%; }
-    .ea-form .fields { flex-direction: column; gap: 8px; }
-    .ea-form input { padding: 12px 14px; font-size: 0.95rem; }
-    .ea-form button { padding: 14px 24px; font-size: 1rem; }
-    .ea-problem { margin-top: 48px; padding: 0 16px; }
-    .ea-problem h2 { font-size: 1.25rem; margin-bottom: 20px; }
-    .ea-problem-card { padding: 16px 18px; gap: 12px; }
-    .ea-problem-card .text { font-size: 0.9rem; }
-    .ea-voices { margin-top: 48px; padding: 0 16px; }
-    .ea-voice { padding: 12px 16px; margin-bottom: 12px; }
-    .ea-voice q { font-size: 0.88rem; }
-    .ea-what { margin-top: 48px; padding: 0 16px; }
-    .ea-what h2 { font-size: 1.2rem; margin-bottom: 20px; }
-    .ea-what-grid { grid-template-columns: 1fr; gap: 12px; }
-    .ea-what-item { padding: 20px 16px; }
-    .ea-bottom { margin-top: 48px; padding: 0 16px 60px; }
-    .ea-bottom h2 { font-size: 1.3rem; }
-    .ea-footer { padding: 20px 16px; }
-  }
-
-  /* Small mobile */
-  @media (max-width: 380px) {
-    .ea-hero h1 { font-size: 1.4rem; }
-    .ea-hero .sub { font-size: 0.92rem; }
-    .ea-problem-card .icon { font-size: 1.2rem; }
+    .ea-hero h1 { font-size: 1.8rem; }
+    .ea-hero { padding-top: 40px; }
+    .ea-split { grid-template-columns: 1fr; gap: 16px; }
+    .ea-card { padding: 28px 24px; }
   }
 </style>
-
 
 <!-- Logo -->
 <div class="ea-header">
@@ -283,100 +137,32 @@ permalink: /early-access/
 <!-- Hero -->
 <section class="ea-hero">
   <h1>You track everything.<br><span class="accent">Nothing connects it.</span></h1>
-  <p class="sub">Five apps. Zero synthesis. P247 connects your wearable, nutrition, and body comp data so you know if you're losing fat or muscle. Not in 12 weeks. Now.</p>
-
-  <form class="ea-form" onsubmit="return submitForm(event, this, 'c628d30d-de8c-40e3-be5e-d6893c36db0f')">
-    <div class="fields">
-      <input type="text" name="firstname" placeholder="First name" required>
-      <input type="email" name="email" placeholder="Email" required>
-    </div>
-    <button type="submit">Get early access</button>
-    <p class="form-msg"></p>
-  </form>
-  <p class="ea-note">Free to join. No card required. No spam.</p>
+  <p class="sub">P247 connects your wearable, nutrition, and body comp data so you see the full picture. Pick the guide that fits you.</p>
 </section>
 
-<!-- Problem cards -->
-<section class="ea-problem">
-  <h2>The problem with wearable data</h2>
-  <div class="ea-problem-grid">
-    <div class="ea-problem-card">
-      <span class="icon">📊</span>
-      <div class="text"><strong>Five apps, zero answers.</strong> Your watch, scale, food tracker, and recovery app all measure something. None of them talk to each other.</div>
+<!-- Split paths -->
+<section class="ea-split">
+  <div class="ea-card">
+    <div>
+      <div class="card-icon">🏋️</div>
+      <h2>For athletes and Hyrox competitors</h2>
+      <p>Your recovery score says you're ready. Your legs disagree. This guide covers the 6 blind spots in wearable data that hold athletes back.</p>
     </div>
-    <div class="ea-problem-card">
-      <span class="icon">🟢</span>
-      <div class="text"><strong>Green score, bad session.</strong> You got a 90% recovery. But you slept four hours and skipped dinner. The number lied because it can't see the full picture.</div>
+    <a href="/guide/" class="card-btn">Get the athlete guide</a>
+  </div>
+  <div class="ea-card">
+    <div>
+      <div class="card-icon">💊</div>
+      <h2>For GLP-1 and body recomp</h2>
+      <p>Your wearable says you're recovering great. Your DEXA says you lost muscle. This guide covers the 5 blind spots GLP-1 users miss.</p>
     </div>
-    <div class="ea-problem-card">
-      <span class="icon">💪</span>
-      <div class="text"><strong>Losing muscle, gaining weight.</strong> On a GLP-1? Your scale says progress. But without body comp context, you could be losing the wrong kind of weight.</div>
-    </div>
-    <div class="ea-problem-card">
-      <span class="icon">🤖</span>
-      <div class="text"><strong>Manual data exports.</strong> You're copying CSVs into ChatGPT just to get an insight your $30/month wearable should already give you.</div>
-    </div>
+    <a href="/glp-1/" class="card-btn">Get the GLP-1 guide</a>
   </div>
 </section>
 
-<!-- Community voices -->
-<section class="ea-voices">
-  <h2>People already doing this manually</h2>
-  <div class="ea-voice">
-    <q>I woke up at 3am and couldn't fall back asleep for two hours. Felt like shit. But I got a green recovery. Why?</q>
-    <span class="src">r/whoop</span>
-  </div>
-  <div class="ea-voice">
-    <q>Started exporting my data into ChatGPT to get actual insights. It's insane that I have to do this manually when I'm paying for three subscriptions.</q>
-    <span class="src">r/whoop</span>
-  </div>
-  <div class="ea-voice">
-    <q>I'm thinking about getting generic sensors to upload data to the cloud and get an LLM to crunch it based on my own requirements.</q>
-    <span class="src">r/whoop, March 2026</span>
-  </div>
-  <div class="ea-voice">
-    <q>I have five different apps telling me five different things. None of them talk to each other.</q>
-    <span class="src">r/GarminWatches</span>
-  </div>
-</section>
-
-<!-- What you get -->
-<section class="ea-what">
-  <h2>What early access gets you</h2>
-  <div class="ea-what-grid">
-    <div class="ea-what-item">
-      <div class="wi-title">Morning brief</div>
-      <div class="wi-desc">One message each morning telling you whether to train hard, back off, or rest. And why.</div>
-    </div>
-    <div class="ea-what-item">
-      <div class="wi-title">Connected data</div>
-      <div class="wi-desc">Wearable + nutrition + body comp in one place. No more copy-pasting CSVs.</div>
-    </div>
-    <div class="ea-what-item">
-      <div class="wi-title">Trend tracking</div>
-      <div class="wi-desc">See if your training is building muscle or just burning you out. Week over week, not guess over guess.</div>
-    </div>
-    <div class="ea-what-item">
-      <div class="wi-title">Lean mass tracking</div>
-      <div class="wi-desc">Connect your resistance training and protein intake to actual body comp trends between scans.</div>
-    </div>
-  </div>
-</section>
-
-<!-- Bottom CTA -->
+<!-- Bottom -->
 <section class="ea-bottom">
-  <h2>Stop flying blind between scans.</h2>
-  <p>Join the waitlist. Be first to know when we launch.</p>
-
-  <form class="ea-form" onsubmit="return submitForm(event, this, 'c628d30d-de8c-40e3-be5e-d6893c36db0f')">
-    <div class="fields">
-      <input type="text" name="firstname" placeholder="First name" required>
-      <input type="email" name="email" placeholder="Email" required>
-    </div>
-    <button type="submit">Get early access</button>
-    <p class="form-msg"></p>
-  </form>
-  <p class="ea-note">Free to join. No card required. No spam.</p>
+  <p>Both guides are free. Enter your name and email on the next page to download instantly.</p>
 </section>
 
 <!-- Footer -->
@@ -387,47 +173,3 @@ permalink: /early-access/
   <br><br>
   © {{ 'now' | date: "%Y" }} P247. All rights reserved.
 </footer>
-
-<script>
-function submitForm(e, form, formId) {
-  e.preventDefault();
-  var btn = form.querySelector('button');
-  var msg = form.querySelector('.form-msg');
-  var firstname = form.querySelector('input[name="firstname"]').value.trim();
-  var email = form.querySelector('input[name="email"]').value.trim();
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-  msg.style.display = 'none';
-  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/' + formId, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      fields: [
-        { name: 'firstname', value: firstname },
-        { name: 'email', value: email }
-      ],
-      context: { pageUri: window.location.href, pageName: document.title }
-    })
-  })
-  .then(function(res) {
-    if (res.ok || res.status === 200) {
-      form.querySelector('.fields').style.display = 'none';
-      btn.style.display = 'none';
-      msg.textContent = "You're in. We'll reach out before launch.";
-      msg.className = 'form-msg success';
-      msg.style.display = 'block';
-      if (typeof gtag === 'function') {
-        gtag('event', 'sign_up', { method: 'early_access', page_location: window.location.href });
-      }
-    } else { throw new Error('fail'); }
-  })
-  .catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Get early access';
-    msg.textContent = 'Something went wrong. Try again.';
-    msg.className = 'form-msg error';
-    msg.style.display = 'block';
-  });
-  return false;
-}
-</script>
