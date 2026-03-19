@@ -7,6 +7,7 @@ author: Myles Bruggeling
 # Blog settings
 permalink: /blog/:slug/
 future: false
+timezone: Australia/Sydney
 
 # Theme
 theme: minima
