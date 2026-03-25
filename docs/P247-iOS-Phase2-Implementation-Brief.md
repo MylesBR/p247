@@ -277,10 +277,39 @@ Activities are now synced from Strava into the P247 database. The iOS app can di
 
 1. **Activity feed screen** showing recent activities (name, type, time, distance, HR, pace)
 2. **Pull-to-refresh** calls `POST /activities/sync` then reloads the list
-3. **Activity detail view** with full metrics on tap
+3. **Activity detail view** with full enriched data (see Section 5.1 below)
 4. **Weekly summary card** on the home screen or activity tab
 
-**Estimate:** 2-3 days.
+### 5.1 Activity Detail View (Enriched — Backend Live)
+
+`GET /activities/{strava_id}` now returns Apple Fitness-level detail. The backend runs enrichment on first view (fetches Strava streams, calculates zones/TRIMP/effort, generates AI summary) and caches everything.
+
+**Sections to render (conditional by activity type, see `P247-Activity-Detail-Enrichment-Spec.md` for full matrix):**
+
+| Section | Data field | Chart type |
+|---|---|---|
+| AI Summary | `summary` | Text paragraph |
+| Body Regions | `body_regions` | Tag pills (strength/workout only) |
+| Heart Rate | `heart_rate.samples` | Bar chart, color by zone |
+| HR Zones | `heart_rate.zones` | Horizontal stacked bars (6 zones) |
+| HR Zone Context | `heart_rate.zones_context` | Text |
+| Effort | `effort.score`, `effort.label`, `effort.comparison` | Score dial (0-10) |
+| Training Load | `training_load.trimp_exp` | Gauge |
+| Training Load Focus | `training_load.focus` | Stacked bar (anaerobic/high/low aerobic) |
+| Training Load Effect | `training_load.effect` | Before/after gauges |
+| Intensity | `intensity.percentage`, `intensity.label` | Progress bar |
+| Speed/Pace | `speed.samples` | Bar chart (runs/rides) |
+| Elevation | `elevation.samples` | Area chart (runs/rides/walks) |
+| Route Map | `route.coordinates` | MapKit polyline |
+| Power | `power.samples` | Line chart (if data exists) |
+| HR Recovery | `heart_rate.recovery` | Line chart + rating badge |
+| METs | `mets` | Single value display |
+
+Use **Swift Charts** for all time-series. HR chart bars should be color-coded by zone (see spec for zone boundary calculations).
+
+**Estimate:** 2 weeks for full detail view with charts, map, and all conditional sections.
+
+**Full spec:** `p247/docs/P247-Activity-Detail-Enrichment-Spec.md`
 
 ---
 
@@ -291,11 +320,12 @@ Activities are now synced from Strava into the P247 database. The iOS app can di
 | 1 | HealthKit native sync | 2-3 days | No |
 | 2 | Plan tab (Events → Plan) | 3-4 days | No |
 | 3 | Coach image attachments | 2-3 days | No |
-| 4 | Strava activity feed | 2-3 days | No |
-| 5 | Hydration display | 30 min | No |
-| 6 | Push notifications | 1 week | Yes (APNs `.p8` key) |
+| 4 | Strava activity feed (list + sync) | 2-3 days | No |
+| 5 | Activity detail view (enriched, charts, map) | 2 weeks | No |
+| 6 | Hydration display | 30 min | No |
+| 7 | Push notifications | 1 week | Yes (APNs `.p8` key) |
 
-Items 1-5 can start immediately. All backend work is complete.
+Items 1-6 can start immediately. All backend work is complete.
 
 ---
 
