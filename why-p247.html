@@ -1,0 +1,316 @@
+---
+layout: default
+title: Why P247? — The Interpretation Layer Your Wearable is Missing
+permalink: /why-p247/
+---
+
+<style>
+  .wp-hero {
+    background: #0A0F1E;
+    color: #fff;
+    padding: 80px 20px 64px;
+    text-align: center;
+    margin: -1px;
+    border-radius: 10px;
+  }
+  .wp-hero h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 16px; color: #fff; line-height: 1.15; }
+  .wp-hero h1 span { color: #00B4FF; }
+  .wp-hero .lead { color: #c0cee0; max-width: 600px; margin: 0 auto; font-size: 1.15rem; line-height: 1.55; }
+
+  .features-section { max-width: 860px; margin: 56px auto; padding: 0 24px; }
+  .features-section h2 { font-size: 1.6rem; font-weight: 700; text-align: center; margin-bottom: 48px; }
+
+  .feature-row {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 48px;
+    align-items: flex-start;
+  }
+  .feature-row.reverse { flex-direction: row-reverse; }
+  .feature-icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    background: #0A0F1E;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+  }
+  .feature-content { flex: 1; }
+  .feature-content h3 { font-size: 1.15rem; font-weight: 700; margin: 0 0 8px; color: #0A0F1E; }
+  .feature-content p { color: #555; font-size: 0.95rem; line-height: 1.6; margin: 0; }
+
+  .comparison-section {
+    background: #f7f9fc;
+    padding: 56px 24px;
+    margin: 48px 0;
+  }
+  .comparison-section h2 { text-align: center; font-size: 1.4rem; font-weight: 700; margin-bottom: 32px; }
+  .comparison-table {
+    max-width: 760px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.92rem;
+  }
+  .comparison-table th {
+    background: #0A0F1E;
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comparison-table th:first-child { border-radius: 8px 0 0 0; }
+  .comparison-table th:last-child { border-radius: 0 8px 0 0; }
+  .comparison-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #333;
+  }
+  .comparison-table tr:nth-child(even) td { background: #fff; }
+  .comparison-table .check { color: #22c55e; font-weight: 700; }
+  .comparison-table .cross { color: #cbd5e1; }
+
+  .bottom-cta {
+    background: #0A0F1E;
+    padding: 48px 24px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0 -1px -1px;
+  }
+  .bottom-cta h2 { color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+  .bottom-cta p { color: #a0aec0; font-size: 0.95rem; margin-bottom: 24px; }
+  .bottom-cta .cta-note { font-size: 0.85rem; color: #718096; margin-top: 12px; }
+
+  .ea-form { max-width: 420px; margin: 0 auto; }
+  .ea-form .fields { display: flex; gap: 10px; margin-bottom: 10px; }
+  .ea-form input {
+    flex: 1; background: #1a2540; border: 1px solid #2d3f5e; color: #fff;
+    border-radius: 8px; padding: 14px 16px; font-size: 1rem; font-family: inherit;
+    -webkit-appearance: none; transition: border-color 0.15s;
+  }
+  .ea-form input::placeholder { color: #5a6f8a; }
+  .ea-form input:focus { outline: none; border-color: #00B4FF; }
+  .ea-form button {
+    width: 100%; background: #FF6B00; color: #fff; border: none;
+    border-radius: 8px; padding: 14px 32px; font-size: 1.05rem; font-weight: 700;
+    cursor: pointer; font-family: inherit; transition: background 0.15s, transform 0.1s;
+  }
+  .ea-form button:hover { background: #e05e00; transform: translateY(-1px); }
+  .ea-form button:active { transform: translateY(0); }
+  .ea-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .ea-form .form-msg { margin-top: 14px; font-size: 0.95rem; font-weight: 600; text-align: center; display: none; }
+  .ea-form .form-msg.success { color: #4ADE80; }
+  .ea-form .form-msg.error { color: #ff6b6b; }
+
+  @media (max-width: 640px) {
+    .feature-row, .feature-row.reverse { flex-direction: column; gap: 16px; }
+    .wp-hero h1 { font-size: 1.8rem; }
+    .comparison-table { font-size: 0.82rem; }
+    .comparison-table th, .comparison-table td { padding: 8px 10px; }
+  }
+</style>
+
+<!-- HERO -->
+<section class="wp-hero">
+  <h1>Your wearable collects data.<br><span>P247 tells you what it means.</span></h1>
+  <p class="lead">Every morning, before your session, P247 cross-references your recovery, training load, sleep, nutrition, and body composition to tell you what your body is actually saying.</p>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <h2>What P247 Does</h2>
+
+  <div class="feature-row">
+    <div class="feature-icon">☀️</div>
+    <div class="feature-content">
+      <h3>Morning Brief</h3>
+      <p>A daily performance brief delivered before your session. Recovery score, training readiness, coaching insights, and what to focus on today. Not a dashboard you have to interpret. A brief that tells you what to do.</p>
+    </div>
+  </div>
+
+  <div class="feature-row reverse">
+    <div class="feature-icon">🧠</div>
+    <div class="feature-content">
+      <h3>AI Performance Coach</h3>
+      <p>A personal coaching agent that knows your training history, body composition, injury status, and goals. Ask it anything. It remembers what you told it last week and adapts its advice as your data changes. Not a chatbot with canned responses.</p>
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="feature-icon">😴</div>
+    <div class="feature-content">
+      <h3>Sleep Analysis</h3>
+      <p>Deep sleep, REM, awakenings, sleep efficiency, and how last night actually affects today's readiness. Your wearable gives you a sleep score. P247 tells you why it matters for your training and what to change.</p>
+    </div>
+  </div>
+
+  <div class="feature-row reverse">
+    <div class="feature-icon">📊</div>
+    <div class="feature-content">
+      <h3>Training Load Intelligence</h3>
+      <p>CTL, ATL, TSB, and weekly load trends synthesised from every workout. P247 tracks your chronic and acute training load so you can see whether you're building fitness or digging a recovery hole. Across all your activities, not just one sport.</p>
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="feature-icon">💪</div>
+    <div class="feature-content">
+      <h3>Body Composition Tracking</h3>
+      <p>Track skeletal muscle mass, body fat percentage, and visceral fat over time. Especially important if you're on GLP-1 medication or cutting weight for competition. See whether you're losing fat or muscle, not just "weight".</p>
+    </div>
+  </div>
+
+  <div class="feature-row reverse">
+    <div class="feature-icon">🥩</div>
+    <div class="feature-content">
+      <h3>Nutrition Integration</h3>
+      <p>Protein, calories, fibre, and macros pulled from your tracking app. P247 correlates your nutrition with your recovery and training performance so you can see the impact of what you eat, not just what you lift.</p>
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="feature-icon">❤️</div>
+    <div class="feature-content">
+      <h3>HRV &amp; Recovery</h3>
+      <p>Heart rate variability, resting heart rate, and recovery trends tracked continuously. P247 flags when your recovery is genuinely compromised versus when a single metric is misleading you. Context, not just numbers.</p>
+    </div>
+  </div>
+
+  <div class="feature-row reverse">
+    <div class="feature-icon">🏃</div>
+    <div class="feature-content">
+      <h3>Running Mechanics</h3>
+      <p>Ground contact time, vertical oscillation, stride length, cadence, and VO2 Max trends. Useful data that most wearables collect but never help you act on. P247 connects your mechanics to your performance trajectory.</p>
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="feature-icon">🔗</div>
+    <div class="feature-content">
+      <h3>Connect Everything</h3>
+      <p>Apple Health, Strava, and more. P247 pulls data from the tools you already use and synthesises it in one place. No manual exports, no spreadsheets, no pasting data into ChatGPT.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison-section">
+  <h2>P247 vs. Your Current Stack</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Wearable App</th>
+        <th>Manual/ChatGPT</th>
+        <th>P247</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Morning brief before your session</td>
+        <td class="cross">✕</td>
+        <td class="cross">✕</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>Cross-device data synthesis</td>
+        <td class="cross">✕</td>
+        <td>Manual export</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>AI coach that knows your history</td>
+        <td class="cross">✕</td>
+        <td>No memory</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>Training load (CTL/ATL/TSB)</td>
+        <td>Some apps</td>
+        <td>Spreadsheet</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>Body comp + nutrition correlation</td>
+        <td class="cross">✕</td>
+        <td>Manual</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>Recovery context (not just a score)</td>
+        <td>Score only</td>
+        <td class="cross">✕</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>Remembers your injuries &amp; goals</td>
+        <td class="cross">✕</td>
+        <td class="cross">✕</td>
+        <td class="check">✓</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <h2>Stop interpreting. Start performing.</h2>
+  <p>Early access is opening soon.</p>
+  <form class="ea-form" onsubmit="return submitForm(event, this, 'a87ac2bc-5ce8-4fbb-b2f3-3f6500ac3b4e')">
+    <div class="fields">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <button type="submit">Get early access</button>
+    <p class="form-msg"></p>
+  </form>
+  <p class="cta-note">No card required. No spam. Unsubscribe anytime.</p>
+</section>
+
+<script>
+function submitForm(e, form, formId) {
+  e.preventDefault();
+  var btn = form.querySelector('button');
+  var msg = form.querySelector('.form-msg');
+  var firstname = form.querySelector('input[name="firstname"]').value.trim();
+  var email = form.querySelector('input[name="email"]').value.trim();
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  msg.style.display = 'none';
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/21624983/' + formId, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fields: [
+        { name: 'firstname', value: firstname },
+        { name: 'email', value: email }
+      ],
+      context: { pageUri: window.location.href, pageName: document.title }
+    })
+  })
+  .then(function(res) {
+    if (res.ok || res.status === 200) {
+      form.querySelector('.fields').style.display = 'none';
+      btn.style.display = 'none';
+      msg.textContent = "You're on the list. We'll be in touch before launch.";
+      msg.className = 'form-msg success';
+      msg.style.display = 'block';
+      if (typeof gtag === 'function') {
+        gtag('event', 'sign_up', { method: 'early_access', page_location: window.location.href });
+      }
+    } else { throw new Error('fail'); }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Get early access';
+    msg.textContent = 'Something went wrong. Try again.';
+    msg.className = 'form-msg error';
+    msg.style.display = 'block';
+  });
+  return false;
+}
+</script>
