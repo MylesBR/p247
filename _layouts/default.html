@@ -6,13 +6,29 @@
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N17N4BXHLN"></script>
+  <!-- Google Analytics — only loads if user has consented -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N17N4BXHLN');
+
+    function loadGA4() {
+      if (document.querySelector('script[src*="googletagmanager"]')) return;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-N17N4BXHLN';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-N17N4BXHLN', { anonymize_ip: true });
+    }
+
+    // Auto-load if already consented
+    if (localStorage.getItem('p247_cookie_consent') === 'accepted') {
+      loadGA4();
+    }
+    // Respect DNT
+    if (navigator.doNotTrack === '1') {
+      localStorage.setItem('p247_cookie_consent', 'declined');
+    }
   </script>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -37,13 +53,41 @@
 
   <main>{{ content }}</main>
 
-  <footer style="background:#0A0F1E; color:#555; text-align:center; padding:32px 20px; margin-top:60px; font-size:0.85rem;">
-    <p style="margin:0 0 8px;">
-      <a href="https://x.com/p247ai" style="color:#555; text-decoration:none; margin:0 8px;">X / Twitter</a>
-      <a href="https://instagram.com/p247ai" style="color:#555; text-decoration:none; margin:0 8px;">Instagram</a>
-    </p>
-    <p style="margin:0; color:#333;">© {{ 'now' | date: "%Y" }} P247. All rights reserved.</p>
-  </footer>
+  {% include footer.html %}
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#0d1526; border-top:1px solid #1e2d4a; padding:16px 24px; z-index:9999; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
+    <div style="max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <p style="margin:0; color:#c0cad8; font-size:0.9rem; flex:1; min-width:280px;">
+        We use cookies for analytics to understand how you use our site. No advertising cookies.
+        <a href="/cookies" style="color:#00B4FF; text-decoration:none; margin-left:4px;">Learn more</a>
+      </p>
+      <div style="display:flex; gap:10px; flex-shrink:0;">
+        <button onclick="cookieDecline()" style="background:transparent; color:#5a6f8a; border:1px solid #2d3f5e; border-radius:6px; padding:8px 18px; font-size:0.85rem; cursor:pointer; font-family:inherit;">Decline</button>
+        <button onclick="cookieAccept()" style="background:#00B4FF; color:#fff; border:none; border-radius:6px; padding:8px 18px; font-size:0.85rem; font-weight:600; cursor:pointer; font-family:inherit;">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var consent = localStorage.getItem('p247_cookie_consent');
+      if (!consent && navigator.doNotTrack !== '1') {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+    })();
+
+    function cookieAccept() {
+      localStorage.setItem('p247_cookie_consent', 'accepted');
+      document.getElementById('cookie-banner').style.display = 'none';
+      loadGA4();
+    }
+
+    function cookieDecline() {
+      localStorage.setItem('p247_cookie_consent', 'declined');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
